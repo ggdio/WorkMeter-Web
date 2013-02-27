@@ -13,17 +13,17 @@
 	<!-- PÁGINAS DE ERRO -->
 	<error-page>
 	<error-code>404</error-code>
-	<location>/404</location>
+	<location>/error/404</location>
 	</error-page>
 	
 	<error-page>
 	<error-code>400</error-code>
-	<location>/400</location>
+	<location>/error/400</location>
 	</error-page>
 	
 	<error-page>
 	<exception-type>java.lang.Exception</exception-type>
-	<location>/exception</location>
+	<location>/error/exception</location>
 	</error-page>
 	
 	<!-- =================================================================================================== -->

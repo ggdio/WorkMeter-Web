@@ -15,6 +15,10 @@
 
 <html>
 
+<!-- IMPORT JQUERY+BOOTSTRAP -->
+<script type="text/javascript" src="${jquery}"></script>
+<script type="text/javascript" src="${bootstrap_js}"></script>
+
 <!-- JAVASCRIPT -->
 <script type="text/javascript">
 	$(document).ready(function()
@@ -56,10 +60,6 @@
 	<meta name="expires" content="never"/>
 </head>
 
-<!-- IMPORT JQUERY+BOOTSTRAP -->
-<script type="text/javascript" src="${jquery}"></script>
-<script type="text/javascript" src="${bootstrap_js}"></script>
-
 <body background="${background}">
 	
     <!-- BARRA DE NAVEGAÇÃO -->
@@ -85,28 +85,7 @@
 		    </form>
 	    </div>
     </div>
-    
-    <br>
-	    
-	    <!-- SLIDE -->
-<!-- 		<div id="slide_header" class="carousel span4 pull-right"> -->
-			
-			<!-- ITEMS -->
-<!-- 			<div class="carousel-inner"> -->
-<!-- 					<div class="item active"> -->
-<%-- 						<img src="${slide_a}" width="100%" height="96px"/> --%>
-<!-- 					</div> -->
-<!-- 					<div class="item"> -->
-<%-- 						<img src="${slide_b}" width="100%" height="96x"/> --%>
-<!-- 					</div> -->
-<!-- 					<div class="item"> -->
-<%-- 						<img src="${slide_c}" width="100%" height="96px"/> --%>
-<!-- 					</div> -->
-<!-- 					<div class="item"> -->
-<%-- 						<img src="${slide_d}" width="100%" height="96px"/> --%>
-<!-- 					</div> -->
-<!-- 					<div class="item"> -->
-<%-- 						<img src="${slide_e}" width="100%" height="96px"/> --%>
-<!-- 					</div> -->
-<!-- 			</div> -->
-	<br><br>  
+
+	<br/>
+	<br/>
+	<br/>

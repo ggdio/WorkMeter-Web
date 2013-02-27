@@ -9,51 +9,29 @@
 						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 						http://www.springframework.org/schema/context 
 						http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-	
-	<context:component-scan base-package="br.com.ggdio.workmeter" />
-<!-- 	<jpa:repositories base-package="br.com.ggdio.workmeter" /> -->
 
 	<!-- Habilita Annotations -->
 	<mvc:annotation-driven />
 	
+	<!-- Base de Pacotes -->
+	<context:component-scan base-package="br.com.ggdio.workmeter" />
+	
+	<!-- Configuracao Database -->
+	<import resource="classpath:database/datasource.xml"/>
+	<import resource="classpath:database/hibernate.xml"/>
+	
 	<!-- Pasta de Resources -->
 	<mvc:resources location="/resources/" mapping="/resources/**"/>
-	
-	<!-- Handler do Spring de Views -->
+
+	<!-- View Handler -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
-	
+
 	<!-- Handler de Upload -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10000000" />
 	</bean>
-
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="emf" />
-	</bean>
-
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="org.postgresql.Driver" />
-		<property name="url" value="jdbc:postgresql://127.0.0.1/ggdio-workmeter" />
-		<property name="username" value="workmeter" />
-		<property name="password" value="ggdio" />
-	</bean>
-
-	<bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="br.com.ggdio.workmeter.model" />
-		<property name="persistenceProvider">
-			<bean class="org.hibernate.ejb.HibernatePersistence" />
-		</property>
-		<property name="jpaProperties">
-			<map>
-				<entry key="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-				<entry key="hibernate.hbm2ddl.auto" value="update"/>
-				<entry key="hibernate.show_sql" value="true" />
-			</map>
-		</property>
-	</bean>
-	
+		
 </beans>

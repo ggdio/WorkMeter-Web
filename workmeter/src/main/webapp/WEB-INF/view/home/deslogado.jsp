@@ -4,15 +4,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tag" %>
 
 <c:url value="/resources/img/icon.png" var="icon"/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+
 <!-- ALERTA -->
 <div class="container">
 	<br><br><br><br><br><br>
@@ -35,15 +27,3 @@
 		</ul>
 	</jsp:attribute>
 </tag:popup>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>

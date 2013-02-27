@@ -1,0 +1,23 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Workspace Metadata #
+.metadata/
+workmeter/.metadata/
+
+# Eclipse Settings #
+/workmeter/.settings/
+/workmeter/.classpath
+/workmeter/.project
+
+# Tomcat Server #
+/Servers
+/Servers/
+
+# Compiled Sources #
+workmeter/bin/
+workmeter/target/

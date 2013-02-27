@@ -45,7 +45,7 @@
 	    <org.springframework.version>3.2.0.RELEASE</org.springframework.version>
 
 	    <!-- VERSÃO DO HIBERNATE -->
-	    <org.hibernate.version>3.6.10.Final</org.hibernate.version>
+	    <org.hibernate.version>4.1.9.Final</org.hibernate.version>
 
 	</properties>
 
@@ -125,11 +125,11 @@
 	<dependencies>
 
 		<!-- SOURCESPHERE CORE -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>br.com.sourcesphere</groupId> -->
-<!-- 			<artifactId>core</artifactId> -->
-<!-- 			<version>${br.com.sourcesphere.core.version}</version> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>br.com.sourcesphere</groupId>
+			<artifactId>core</artifactId>
+			<version>${br.com.sourcesphere.core.version}</version>
+		</dependency>
 
 		<!-- SPRING WEB -->
 		<dependency>
