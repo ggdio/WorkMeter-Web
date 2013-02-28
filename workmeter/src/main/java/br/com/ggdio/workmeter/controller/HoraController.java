@@ -1,27 +1,23 @@
 package br.com.ggdio.workmeter.controller;
 
-import org.joda.time.DateTime;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.ggdio.workmeter.dao.HoraDao;
 import br.com.ggdio.workmeter.model.Hora;
-import br.com.ggdio.workmeter.model.TipoHora;
+import br.com.ggdio.workmeter.service.HoraService;
 
 @Controller
 @RequestMapping("/hora/")
 public final class HoraController extends MasterController 
 {
+	@Autowired
+	private HoraService horaService;
 	
 	@RequestMapping("salvar")
-	public void saveOrUpdate(HoraDao dao)
+	public void saveOrUpdate(Hora hora)
 	{
-		Hora hora = new Hora();
-		hora.setId(null);
-		hora.setRegistro(DateTime.now());
-		hora.setTipo(TipoHora.INICIO);
-		hora = dao.saveOrUpdate(hora);
-		System.out.println(hora.getId());
+		horaService.adiciona(hora);
 	}
 	
 	@Override

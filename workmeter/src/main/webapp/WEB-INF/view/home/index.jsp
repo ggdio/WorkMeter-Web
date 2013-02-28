@@ -7,7 +7,7 @@
 <jsp:include page="/resources/html/header.jsp"/>
 
 <div id="conteudo">
-<jsp:include page="${pathConteudo}"/>
+	<jsp:include page="${pathConteudo}"/>
 </div>
 
 <jsp:include page="/resources/html/footer.jsp"/>

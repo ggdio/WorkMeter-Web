@@ -16,7 +16,7 @@ public class HomeController extends MasterController
 	@RequestMapping("index/conteudo")
 	public String viewConteudoIndex()
 	{
-		return getView("logado");
+		return getView("deslogado");
 	}
 	
 	@Override
