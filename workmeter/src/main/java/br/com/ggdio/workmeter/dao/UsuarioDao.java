@@ -17,7 +17,7 @@ import br.com.ggdio.workmeter.model.Usuario;
  *
  */
 @Repository("usuarioDao")
-public final class UsuarioDao extends DefaultDao<Usuario>
+public final class UsuarioDao extends MasterDao<Usuario>
 {
 	private Logger log = Logger.getLogger(UsuarioDao.class);
 	/**

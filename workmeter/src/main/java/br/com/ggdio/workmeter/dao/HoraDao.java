@@ -12,7 +12,7 @@ import br.com.ggdio.workmeter.model.Hora;
  *
  */
 @Repository("horaDao")
-public final class HoraDao extends DefaultDao<Hora>
+public final class HoraDao extends MasterDao<Hora>
 {
 	/**
 	 * Construtor usado pelo Spring

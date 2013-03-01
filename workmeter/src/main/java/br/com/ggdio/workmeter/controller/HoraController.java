@@ -9,7 +9,7 @@ import br.com.ggdio.workmeter.service.HoraService;
 
 @Controller
 @RequestMapping("/hora/")
-public final class HoraController extends DefaultController<Hora>
+public final class HoraController extends MasterController<Hora>
 {
 	@Autowired
 	public HoraController(HoraService horaService) 

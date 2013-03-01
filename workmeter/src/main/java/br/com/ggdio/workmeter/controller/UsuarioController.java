@@ -12,7 +12,7 @@ import br.com.ggdio.workmeter.service.UsuarioService;
 
 @Controller
 @RequestMapping("/usuario/")
-public final class UsuarioController extends DefaultController<Usuario>
+public final class UsuarioController extends MasterController<Usuario>
 {
 	@Autowired
 	public UsuarioController(UsuarioService usuarioService) 
@@ -41,7 +41,7 @@ public final class UsuarioController extends DefaultController<Usuario>
 		super.remover(usuario);
 	}
 	
-	@RequestMapping("/login/formulario")
+	@RequestMapping("formulario")
 	public String viewFormulario()
 	{
 		return getView("formulario");

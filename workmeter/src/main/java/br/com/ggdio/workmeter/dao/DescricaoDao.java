@@ -12,7 +12,7 @@ import br.com.ggdio.workmeter.model.Descricao;
  *
  */
 @Repository("descricaoDao")
-public final class DescricaoDao extends DefaultDao<Descricao>
+public final class DescricaoDao extends MasterDao<Descricao>
 {
 	/**
 	 * Construtor usado pelo Spring

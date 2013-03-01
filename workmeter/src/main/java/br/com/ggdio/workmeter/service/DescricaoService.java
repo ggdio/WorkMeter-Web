@@ -7,7 +7,7 @@ import br.com.ggdio.workmeter.dao.DescricaoDao;
 import br.com.ggdio.workmeter.model.Descricao;
 
 @Service("descricaoService")
-public final class DescricaoService extends DefaultService<Descricao>
+public final class DescricaoService extends MasterService<Descricao>
 {
 	@Autowired
 	public DescricaoService(DescricaoDao descricaoDao) 

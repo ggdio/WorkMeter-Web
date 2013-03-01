@@ -3,6 +3,7 @@ package br.com.ggdio.workmeter.controller;
 import org.apache.log4j.Logger;
 
 import br.com.ggdio.workmeter.service.MasterService;
+import br.com.ggdio.workmeter.view.ViewHandler;
 
 /**
  * The Master Controller
@@ -10,7 +11,7 @@ import br.com.ggdio.workmeter.service.MasterService;
  *
  * @param <T> - Type of the entity to be used
  */
-public abstract class MasterController<T>
+public abstract class MasterController<T> implements ViewHandler
 {
 	/**
 	 * Logger
@@ -58,21 +59,14 @@ public abstract class MasterController<T>
 		getService().remove(entidade);
 	}
 	
-	/**
-	 * Recupera a base de views especifica do controller
-	 * @return Base de diretorio das views
-	 */
-	protected String getBase()
+	@Override
+	public String getBase()
 	{
 		return "";
 	}
 	
-	/**
-	 * Recupera a view especifica a partir da base de diretorio
-	 * @param view - Nome da view(Ex: index.jsp)
-	 * @return String
-	 */
-	protected String getView(String view)
+	@Override
+	public String getView(String view)
 	{
 		return getBase()+view;
 	}

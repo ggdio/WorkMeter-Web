@@ -8,7 +8,7 @@ import br.com.ggdio.workmeter.dao.exception.EntityNotFoundException;
 import br.com.ggdio.workmeter.model.Usuario;
 
 @Service("usuarioService")
-public final class UsuarioService extends DefaultService<Usuario>
+public final class UsuarioService extends MasterService<Usuario>
 {
 	@Autowired
 	public UsuarioService(UsuarioDao usuarioDao) 
