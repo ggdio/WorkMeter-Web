@@ -64,7 +64,7 @@ public abstract class MasterController<T>
 	 */
 	protected String getBase()
 	{
-		return "/";
+		return "";
 	}
 	
 	/**

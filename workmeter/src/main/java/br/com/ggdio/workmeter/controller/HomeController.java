@@ -3,16 +3,15 @@ package br.com.ggdio.workmeter.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@SuppressWarnings(value={"unchecked","rawtypes"})
-@Controller
-@RequestMapping("/")
 
 /**
  * Controlador da pagina inicial
  * @author guilherme
  *
  */
-public class HomeController extends DefaultController
+@Controller
+@RequestMapping("/")
+public class HomeController extends DefaultController<Object>
 {
 	public HomeController() 
 	{
@@ -34,6 +33,6 @@ public class HomeController extends DefaultController
 	@Override
 	public String getBase() 
 	{
-		return "home/";
+		return super.getBase()+"home/";
 	}
 }

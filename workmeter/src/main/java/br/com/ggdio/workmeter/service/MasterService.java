@@ -61,4 +61,13 @@ public abstract class MasterService<T>
 	{
 		return dao.listAll();
 	}
+	
+	/**
+	 * Gets the dao being used
+	 * @return the Dao used
+	 */
+	protected MasterDao<T> getDao()
+	{
+		return this.dao;
+	}
 }
