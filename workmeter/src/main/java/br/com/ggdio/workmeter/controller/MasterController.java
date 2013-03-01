@@ -2,15 +2,67 @@ package br.com.ggdio.workmeter.controller;
 
 import org.apache.log4j.Logger;
 
-public abstract class MasterController 
+import br.com.ggdio.workmeter.service.MasterService;
+
+/**
+ * The Master Controller
+ * @author Guilherme Dio
+ *
+ * @param <T> - Type of the entity to be used
+ */
+public abstract class MasterController<T>
 {
+	/**
+	 * Logger
+	 */
 	public static final Logger log = Logger.getLogger(MasterController.class.getName());
 	
 	/**
-	 * Define a base de views especifica do controller
+	 * Service default
+	 */
+	protected final MasterService<T> service;
+	
+	/**
+	 * Constructs the Master Controller with an service that must be injected
+	 * @param service
+	 */
+	public MasterController(MasterService<T> service)
+	{
+		this.service = service;
+	}
+	
+	/**
+	 * Insere uma entidade
+	 * @param entidade
+	 */
+	protected void adicionar(T entidade)
+	{
+		getService().add(entidade);
+	}
+	
+	/**
+	 * Altera uma entidade
+	 * @param entidade
+	 */
+	protected void alterar(T entidade)
+	{
+		getService().alter(entidade);
+	}
+	
+	/**
+	 * Remove uma entidade
+	 * @param entidade
+	 */
+	protected void remover(T entidade)
+	{
+		getService().remove(entidade);
+	}
+	
+	/**
+	 * Recupera a base de views especifica do controller
 	 * @return Base de diretorio das views
 	 */
-	public String getBase()
+	protected String getBase()
 	{
 		return "/";
 	}
@@ -20,8 +72,17 @@ public abstract class MasterController
 	 * @param view - Nome da view(Ex: index.jsp)
 	 * @return String
 	 */
-	public String getView(String view)
+	protected String getView(String view)
 	{
 		return getBase()+view;
+	}
+	
+	/**
+	 * Retorna o service sendo utilizado
+	 * @return
+	 */
+	protected MasterService<T> getService() 
+	{
+		return this.service;
 	}
 }

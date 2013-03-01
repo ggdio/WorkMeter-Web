@@ -23,7 +23,7 @@
 <script type="text/javascript">
 	$(document).ready(function()
 	{
-		$('#btnToggle').dropdown();
+		$('#btnDropdown').dropdown();
 		
 		$('#btnPesquisar').click(function(event)
 		{
@@ -72,9 +72,9 @@
 			    	<li class="dropdown">
 					    <a id="btnDropdown" class="dropdown-toggle" data-toggle="dropdown" href="#"><b>Menu</b><b class="caret"></b></a>
 					    <ul class="dropdown-menu">
-						    <li><a href="#">Item A</a></li>
-						    <li><a href="#">Item B</a></li>
-						    <li><a href="#">Item C</a></li>
+						    <li><a href="#itemA">Item A</a></li>
+						    <li><a href="#itemB">Item B</a></li>
+						    <li><a href="#itemC">Item C</a></li>
 					    </ul>
 				    </li>
 			    </ul>

@@ -3,10 +3,22 @@ package br.com.ggdio.workmeter.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@SuppressWarnings(value={"unchecked","rawtypes"})
 @Controller
 @RequestMapping("/")
-public class HomeController extends MasterController
-{	
+
+/**
+ * Controlador da pagina inicial
+ * @author guilherme
+ *
+ */
+public class HomeController extends DefaultController
+{
+	public HomeController() 
+	{
+		super(null);
+	}
+	
 	@RequestMapping(value={"","index","home"})
 	public String viewIndex()
 	{

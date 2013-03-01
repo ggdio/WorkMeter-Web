@@ -9,15 +9,12 @@ import br.com.ggdio.workmeter.service.HoraService;
 
 @Controller
 @RequestMapping("/hora/")
-public final class HoraController extends MasterController 
+public final class HoraController extends DefaultController<Hora>
 {
 	@Autowired
-	private HoraService horaService;
-	
-	@RequestMapping("salvar")
-	public void saveOrUpdate(Hora hora)
+	public HoraController(HoraService horaService) 
 	{
-		horaService.adiciona(hora);
+		super(horaService);
 	}
 	
 	@Override
