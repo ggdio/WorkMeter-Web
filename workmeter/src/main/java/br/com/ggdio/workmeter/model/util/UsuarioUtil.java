@@ -3,7 +3,7 @@ package br.com.ggdio.workmeter.model.util;
 import br.com.ggdio.workmeter.dao.exception.EntityNotFoundException;
 import br.com.ggdio.workmeter.model.Usuario;
 import br.com.ggdio.workmeter.service.UsuarioService;
-import br.com.ggdio.workmeter.util.Assert;
+import br.com.sourcesphere.core.util.Assert;
 
 /**
  * Classe com utilidades para handle de usuario

@@ -7,9 +7,9 @@
 
 <!-- URL's -->
 <c:url var="home" value="/"/>
-<c:url value="/resources/jquery/JQuery.js" var="jquery"/>
-<c:url value="/resources/bootstrap/js/bootstrap.js" var="bootstrap_js"/>
-<c:url value="/resources/bootstrap/css/bootstrap-${estilo}.css" var="bootstrap_css" />
+<c:url value="/webresources/jquery/JQuery.js" var="jquery"/>
+<c:url value="/webresources/twitter-bootstrap/js/bootstrap.js" var="bootstrap_js"/>
+<c:url value="/webresources/twitter-bootstrap/css/bootstrap-${estilo}.css" var="bootstrap_css" />
 <c:url value="/resources/img/favicon.png" var="favicon"/>
 <c:url value="/resources/img/background.jpg" var="background"/>
 

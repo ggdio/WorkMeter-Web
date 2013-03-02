@@ -2,6 +2,7 @@ package br.com.ggdio.workmeter.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +13,7 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import br.com.ggdio.workmeter.util.Assert;
+import br.com.sourcesphere.core.util.Assert;
 
 @Entity
 @SQLDelete(sql="UPDATE usuario SET ativo = false where id = ?")
@@ -22,6 +23,7 @@ public final class Usuario
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	@Column(unique=true)
 	private String login;
 	private String senha;
 	private String nome;

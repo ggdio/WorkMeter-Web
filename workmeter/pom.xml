@@ -39,7 +39,7 @@
 	    <project.build.finalname>WorkmeterWeb-${project.version}</project.build.finalname>
 
 		<!-- VERSÃO DO CORE -->
-		<br.com.sourcesphere.core.version>1.0.0.RELEASE</br.com.sourcesphere.core.version>
+		<br.com.sourcesphere.core.version>1.1.0.RELEASE</br.com.sourcesphere.core.version>
 
 	    <!-- VERSÃO DO SPRING -->
 	    <org.springframework.version>3.2.0.RELEASE</org.springframework.version>
@@ -85,6 +85,34 @@
 				</configuration>
 			</plugin>
 			
+			<!-- SOURCE -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!-- JAVADOC -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
 			<!-- MANIFEST -->
 			<plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
@@ -126,6 +154,20 @@
 			<groupId>br.com.sourcesphere</groupId>
 			<artifactId>core</artifactId>
 			<version>${br.com.sourcesphere.core.version}</version>
+		</dependency>
+		
+		<!-- SOURCESPHERE CORE-WEB-RESOURCES -->
+		<dependency>
+			<groupId>br.com.sourcesphere</groupId>
+			<artifactId>core-web-resources</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+		
+		<!-- SERVLET API -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
 		</dependency>
 
 		<!-- SPRING WEB -->

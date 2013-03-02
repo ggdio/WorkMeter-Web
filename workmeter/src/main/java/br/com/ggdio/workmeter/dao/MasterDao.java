@@ -15,7 +15,7 @@ import org.springframework.core.GenericTypeResolver;
 import br.com.ggdio.workmeter.dao.exception.DaoException;
 import br.com.ggdio.workmeter.dao.exception.DaoInitializationException;
 import br.com.ggdio.workmeter.dao.exception.EntityNotFoundException;
-import br.com.ggdio.workmeter.util.Assert;
+import br.com.sourcesphere.core.util.Assert;
 
 /**
  * The Master DAO

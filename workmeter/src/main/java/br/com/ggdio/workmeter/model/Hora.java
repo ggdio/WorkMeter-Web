@@ -11,7 +11,7 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
-import br.com.ggdio.workmeter.util.Assert;
+import br.com.sourcesphere.core.util.Assert;
 
 @Entity
 public final class Hora

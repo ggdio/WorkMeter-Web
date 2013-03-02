@@ -10,9 +10,9 @@ import br.com.ggdio.workmeter.controller.response.ResponseDispatcher;
 import br.com.ggdio.workmeter.controller.response.ResponseStatus;
 import br.com.ggdio.workmeter.model.util.UsuarioUtil;
 import br.com.ggdio.workmeter.service.UsuarioService;
-import br.com.ggdio.workmeter.util.Assert;
 import br.com.ggdio.workmeter.view.PathHandler;
 import br.com.ggdio.workmeter.view.ViewHandler;
+import br.com.sourcesphere.core.util.Assert;
 
 @Controller
 @RequestMapping("/login/")

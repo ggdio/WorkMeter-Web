@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
-import br.com.ggdio.workmeter.util.Assert;
+import br.com.sourcesphere.core.util.Assert;
 
 @Entity
 public class Descricao 

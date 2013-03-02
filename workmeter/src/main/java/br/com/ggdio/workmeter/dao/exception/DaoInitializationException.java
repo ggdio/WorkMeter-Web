@@ -1,6 +1,6 @@
 package br.com.ggdio.workmeter.dao.exception;
 
-import br.com.ggdio.workmeter.exception.InitializationException;
+import br.com.sourcesphere.core.exception.InitializationException;
 
 /**
  * Handle DAO Initialization exception
