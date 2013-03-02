@@ -1,7 +1,7 @@
 package br.com.ggdio.workmeter.dao.exception;
 
 /**
- * Exception for handling DAO
+ * Exception for DAO handle
  * @author Guilherme Dio
  *
  */

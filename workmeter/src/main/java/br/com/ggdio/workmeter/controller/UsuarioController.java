@@ -22,23 +22,23 @@ public final class UsuarioController extends MasterController<Usuario>
 	
 	@Override
 	@RequestMapping(value="criar",method=RequestMethod.POST)
-	public void adicionar(Usuario usuario)
+	public void add(Usuario usuario)
 	{
-		super.adicionar(usuario);
+		super.add(usuario);
 	}
 	
 	@Override
 	@RequestMapping(value="alterar",method=RequestMethod.POST)
-	public void alterar(Usuario usuario)
+	public void alter(Usuario usuario)
 	{
-		super.alterar(usuario);
+		super.alter(usuario);
 	}
 	
 	@Override
 	@RequestMapping(value="remover",method=RequestMethod.POST)
-	public void remover(Usuario usuario)
+	public void delete(Usuario usuario)
 	{
-		super.remover(usuario);
+		super.delete(usuario);
 	}
 	
 	@RequestMapping("formulario")

@@ -1,6 +1,5 @@
 package br.com.ggdio.workmeter.dao;
 
-import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -19,7 +18,6 @@ import br.com.ggdio.workmeter.model.Usuario;
 @Repository("usuarioDao")
 public final class UsuarioDao extends MasterDao<Usuario>
 {
-	private Logger log = Logger.getLogger(UsuarioDao.class);
 	/**
 	 * Construtor usado pelo Spring
 	 * @param sessionFactory - Injetado pelo Spring
@@ -30,6 +28,13 @@ public final class UsuarioDao extends MasterDao<Usuario>
 		super(sessionFactory);
 	}
 	
+	/**
+	 * Realiza uma busca na base por usuario a partir de login e senha
+	 * @param login do usuario
+	 * @param senha do usuario
+	 * @return Usuario encontrado
+	 * @throws EntityNotFoundException - Se o usuario nao for encontrado na base
+	 */
 	public Usuario getUsuarioPorLoginESenha(String login,String senha)
 	{
 		Exception error = null;
@@ -43,16 +48,14 @@ public final class UsuarioDao extends MasterDao<Usuario>
 											.add(Restrictions.eq("senha", senha));
 			usuario = (Usuario) criteria.list().get(1);
 		}
-		catch(NullPointerException e)
+		catch(ArrayIndexOutOfBoundsException e)
 		{
 			String msg = "Nenhum usuario foi encontrado com o login='"+login+"' e senha='"+senha+"'";
 			error = new EntityNotFoundException(msg, e);
-			log.warn(msg);
 		}
 		catch(Exception e)
 		{
-			error = e;
-			log.error("Erro ao buscar usuario por login e senha('"+login+"','"+senha+"') ",e);
+			error = new Exception("Um erro inesperado ocorreu", e);
 		}
 		finally
 		{

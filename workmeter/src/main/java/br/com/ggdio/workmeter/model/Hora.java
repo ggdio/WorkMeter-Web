@@ -15,17 +15,17 @@ public final class Hora
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime registro;
 	@Enumerated(EnumType.STRING)
 	private TipoHora tipo;
 	
-	public Integer getId() 
+	public Long getId() 
 	{
 		return id;
 	}
-	public void setId(Integer id)
+	public void setId(Long id)
 	{
 		this.id = id;
 	}
