@@ -33,6 +33,16 @@ public final class UsuarioUtil
 	}
 	
 	/**
+	 * Constroi um {@link UsuarioUtil} com um login e senha, e um {@link UsuarioService}
+	 * @param usuario - Objeto contendo o usuario
+	 * @param service - Serviço para negocios
+	 */
+	public UsuarioUtil(String login,String senha, UsuarioService service) 
+	{
+		this(new Usuario(login, senha),service);
+	}
+	
+	/**
 	 * Verifica se o login e senha do usuario é valido
 	 * @return True - Se for valido
 	 * 		<p>False - Se não for valido

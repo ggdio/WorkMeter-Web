@@ -50,7 +50,7 @@ public class Assert
 	}
 	
 	/**
-	 * Constructs an instance of the {@link Assert} class with an default {@link IllegalArgumentException} value for exception type to be thrown
+	 * Constructs an instance of the {@link Assert} class with a default {@link IllegalArgumentException} value for exception type to be thrown
 	 * <p> and a {@link Logger} to register messages of error
 	 * @param classLogger - The logger of the class, to register messages
 	 * @return An instance of {@link Assert}
@@ -61,7 +61,19 @@ public class Assert
 	}
 	
 	/**
-	 * Constructs an instance of the {@link Assert} class with an default {@link IllegalArgumentException} value for exception type to be thrown
+	 * Constructs an instance of the {@link Assert} class with an {@link RuntimeException} type to be thrown on assertions check
+	 * <p> and a default {@link Logger} to register messages of error
+	 * @param exceptionType - The {@link RuntimeException} type to be thrown on assertions
+	 * @param classLogger - The {@link Logger} to be used for registering messages
+	 * @return An instance of {@link Assert}
+	 */
+	public Assert(Class<? extends RuntimeException> exceptionType)
+	{
+		this(defaultExceptionType,Assert.log);
+	}
+	
+	/**
+	 * Constructs an instance of the {@link Assert} class with a default {@link IllegalArgumentException} value for exception type to be thrown
 	 * @return An instance of {@link Assert}
 	 */
 	public Assert() 

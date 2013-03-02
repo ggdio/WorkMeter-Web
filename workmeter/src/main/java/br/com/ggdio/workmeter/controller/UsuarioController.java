@@ -66,4 +66,10 @@ public final class UsuarioController extends MasterController<Usuario>
 	{
 		return "usuario/";
 	}
+	
+	@Override
+	public String getPathBase() 
+	{
+		return "/usuario/";
+	}
 }

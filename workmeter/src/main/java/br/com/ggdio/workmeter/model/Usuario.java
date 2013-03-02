@@ -34,6 +34,12 @@ public final class Usuario
 		setAtivo(true);
 	}
 	
+	public Usuario(String login,String senha)
+	{
+		setLogin(login);
+		setSenha(senha);
+	}
+	
 	/**
 	 * Assert para segurança
 	 */

@@ -3,6 +3,7 @@ package br.com.ggdio.workmeter.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.ggdio.workmeter.view.PathHandler;
 import br.com.ggdio.workmeter.view.ViewHandler;
 
 
@@ -13,7 +14,7 @@ import br.com.ggdio.workmeter.view.ViewHandler;
  */
 @Controller
 @RequestMapping("/")
-public class HomeController implements ViewHandler
+public class HomeController implements ViewHandler,PathHandler
 {
 	/**
 	 * Recupera a view index
@@ -45,5 +46,11 @@ public class HomeController implements ViewHandler
 	public String getView(String view)
 	{
 		return getBase()+view;
+	}
+	
+	@Override
+	public String getPathBase() 
+	{
+		return "/";
 	}
 }

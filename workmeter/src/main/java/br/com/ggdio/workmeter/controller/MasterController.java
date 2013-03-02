@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import br.com.ggdio.workmeter.controller.response.ResponseDispatcher;
 import br.com.ggdio.workmeter.service.MasterService;
+import br.com.ggdio.workmeter.view.PathHandler;
 import br.com.ggdio.workmeter.view.ViewHandler;
 
 /**
@@ -14,7 +16,7 @@ import br.com.ggdio.workmeter.view.ViewHandler;
  *
  * @param <T> - Type of the entity to be used
  */
-public abstract class MasterController<T> implements ViewHandler
+public abstract class MasterController<T> implements ViewHandler,PathHandler
 {
 	/**
 	 * Logger
@@ -25,6 +27,11 @@ public abstract class MasterController<T> implements ViewHandler
 	 * The service to be used
 	 */
 	protected final MasterService<T> service;
+	
+	/**
+	 * The dispatcher handler for redirecting ou forwarding
+	 */
+	protected final ResponseDispatcher dispatcher = new ResponseDispatcher(this);
 	
 	/**
 	 * Constructs the Master Controller with an service that must be injected
@@ -118,5 +125,11 @@ public abstract class MasterController<T> implements ViewHandler
 	public String getView(String view)
 	{
 		return getBase()+view;
+	}
+	
+	@Override
+	public String getPathBase() 
+	{
+		return "";
 	}
 }

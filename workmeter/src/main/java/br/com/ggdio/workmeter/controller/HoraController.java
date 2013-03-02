@@ -22,4 +22,10 @@ public final class HoraController extends MasterController<Hora>
 	{
 		return "hora/";
 	}
+	
+	@Override
+	public String getPathBase() 
+	{
+		return "/hora/";
+	}
 }
