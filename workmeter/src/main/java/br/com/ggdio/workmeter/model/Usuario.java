@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
+import br.com.ggdio.workmeter.util.Assert;
+
 @Entity
 @SQLDelete(sql="UPDATE usuario SET ativo = false where id = ?")
 @Where(clause="ativo = true")
@@ -27,12 +29,23 @@ public final class Usuario
 	private List<Hora> horas;
 	private Boolean ativo;
 	
+	public Usuario() 
+	{
+		setAtivo(true);
+	}
+	
+	/**
+	 * Assert para segurança
+	 */
+	private final Assert assertion = new Assert();
+	
 	public Long getId() 
 	{
 		return id;
 	}
 	public void setId(Long id) 
 	{
+		assertion.notNull(id);
 		this.id = id;
 	}
 	public String getLogin() 
@@ -41,6 +54,7 @@ public final class Usuario
 	}
 	public void setLogin(String login) 
 	{
+		assertion.notEmpty(login);
 		this.login = login;
 	}
 	public String getSenha() 
@@ -49,6 +63,7 @@ public final class Usuario
 	}
 	public void setSenha(String senha) 
 	{
+		assertion.notEmpty(senha);
 		this.senha = senha;
 	}
 	public String getNome() 
@@ -57,10 +72,12 @@ public final class Usuario
 	}
 	public void setNome(String nome) 
 	{
+		assertion.notEmpty(nome);
 		this.nome = nome;
 	}
 	public String getEmpresa() 
 	{
+		assertion.notEmpty(empresa);
 		return empresa;
 	}
 	public void setEmpresa(String empresa) 
@@ -73,6 +90,7 @@ public final class Usuario
 	}
 	public void setHoras(List<Hora> horas) 
 	{
+		assertion.noNullElements(horas.toArray());
 		this.horas = horas;
 	}
 	public Boolean isAtivo()

@@ -1,7 +1,5 @@
 package br.com.ggdio.workmeter.util;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 
 import br.com.ggdio.workmeter.util.exception.AssertException;
@@ -75,7 +73,7 @@ public class Assert
 	 * Sets the exception type to be used
 	 * @param exceptionType - The {@link RuntimeException} type to be used
 	 */
-	protected void setExceptionType(Class<? extends RuntimeException> exceptionType) 
+	public void setExceptionType(Class<? extends RuntimeException> exceptionType) 
 	{
 		this.exceptionType = exceptionType;
 	}
@@ -84,7 +82,7 @@ public class Assert
 	 * Sets the {@link Logger} of the class, to register messages
 	 * @param classLogger - The class logger
 	 */
-	protected void setClassLogger(Logger classLogger) 
+	public void setClassLogger(Logger classLogger) 
 	{
 		this.classLogger = classLogger;
 	}
@@ -244,27 +242,6 @@ public class Assert
 	public void noNullElements(Object[] objects)
 	{
 		noNullElements(objects,getMessage("the array must not contain null elements"));
-	}
-	
-	/**
-	 * Asserts that an {@link List} of {@link Object} does not contain null elements
-	 * @param objects - {@link List} of {@link Object} array to be verified
-	 * @param msg - Message to be encapsulated on the exception, and shown in the log
-	 * @throws The specified {@link RuntimeException} or the default {@link IllegalArgumentException}(default), if the param do not accept the conditions
-	 */
-	public void noNullElements(List<Object> objects,String msg)
-	{
-		noNullElements(objects.toArray(), msg);
-	}
-	
-	/**
-	 * Asserts that an {@link List} of {@link Object} does not contain null elements
-	 * @param objects - {@link List} of {@link Object} array to be verified
-	 * @throws The specified {@link RuntimeException} or the default {@link IllegalArgumentException}(default), if the param do not accept the conditions
-	 */
-	public void noNullElements(List<Object> objects)
-	{
-		noNullElements(objects,"the list must not contain null elements");
 	}
 	
 	/**

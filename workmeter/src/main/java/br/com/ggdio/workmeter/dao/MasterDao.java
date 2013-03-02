@@ -13,7 +13,9 @@ import org.hibernate.Transaction;
 import org.springframework.core.GenericTypeResolver;
 
 import br.com.ggdio.workmeter.dao.exception.DaoException;
+import br.com.ggdio.workmeter.dao.exception.DaoInitializationException;
 import br.com.ggdio.workmeter.dao.exception.EntityNotFoundException;
+import br.com.ggdio.workmeter.util.Assert;
 
 /**
  * The Master DAO
@@ -41,14 +43,23 @@ public abstract class MasterDao<T>
 	private final Class<T> clazzType;
 	
 	/**
+	 * Assertion handler
+	 */
+	private final Assert assertion = new Assert(log);
+	
+	/**
 	 * Contructs the MasterDao with a SessionFactory
 	 * @param sessionFactory - The sessionFactory dependency
+	 * @throws DaoInitializationException - if the sessionFactory is empty
 	 */
 	@SuppressWarnings("unchecked")
 	public MasterDao(SessionFactory sessionFactory)
 	{
+		assertion.setExceptionType(DaoInitializationException.class);
+		assertion.notNull(sessionFactory);
 		this.sessionFactory = sessionFactory;
 		this.clazzType = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), MasterDao.class);
+		assertion.setExceptionType(DaoException.class);
 	}
 	
 	/**
@@ -57,6 +68,7 @@ public abstract class MasterDao<T>
 	 */
 	public void saveOrUpdate(T entity)
 	{
+		assertion.notNull(entity);
 		Exception error = null;
 		try 
 		{
@@ -84,6 +96,7 @@ public abstract class MasterDao<T>
 	 */
 	public void delete(T entity)
 	{
+		assertion.notNull(entity);
 		Exception error = null;
 		try
 		{
@@ -113,6 +126,7 @@ public abstract class MasterDao<T>
 	@SuppressWarnings("unchecked")
 	public T get(Serializable identifier)
 	{
+		assertion.notNull(identifier);
 		T entity = null;
 		Exception error = null;
 		try
@@ -147,6 +161,8 @@ public abstract class MasterDao<T>
 	@SuppressWarnings("unchecked")
 	public List<T> listAll(Integer firstResult,Integer maxResults)
 	{
+		assertion.notNull(firstResult);
+		assertion.notNull(maxResults);
 		Exception error = null;
 		List<T> entities = null;
 		try
@@ -182,6 +198,7 @@ public abstract class MasterDao<T>
 	 */
 	public List<T> listAll(Integer maxResults)
 	{
+		assertion.notNull(maxResults);
 		return listAll(0,maxResults);
 	}
 	
@@ -204,6 +221,9 @@ public abstract class MasterDao<T>
 	@SuppressWarnings("unchecked")
 	public List<T> hqlQuery(String hql,Integer firstResult,Integer maxResults)
 	{
+		assertion.notEmpty(hql);
+		assertion.notNull(firstResult);
+		assertion.notNull(maxResults);
 		Exception error = null;
 		List<T> entities = null;
 		try
@@ -241,6 +261,8 @@ public abstract class MasterDao<T>
 	 */
 	public List<T> hqlQuery(String hql,Integer maxResults)
 	{
+		assertion.notNull(hql);
+		assertion.notNull(maxResults);
 		return hqlQuery(hql,0,maxResults);
 	}
 	
@@ -251,6 +273,7 @@ public abstract class MasterDao<T>
 	 */
 	public List<T> hqlQuery(String hql)
 	{
+		assertion.notNull(hql);
 		return hqlQuery(hql,0);
 	}
 	
@@ -343,6 +366,7 @@ public abstract class MasterDao<T>
 	 */
 	protected void setSession(Session session)
 	{
+		assertion.notNull(session);
 		this.session = session;
 	}
 	
@@ -373,6 +397,7 @@ public abstract class MasterDao<T>
 	 */
 	protected void setTransaction(Transaction transaction) 
 	{
+		assertion.notNull(transaction);
 		this.transaction = transaction;
 	}
 	

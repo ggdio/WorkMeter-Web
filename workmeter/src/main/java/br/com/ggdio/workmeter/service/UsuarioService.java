@@ -18,6 +18,9 @@ public final class UsuarioService extends MasterService<Usuario>
 	 */
 	private UsuarioDao dao;
 	
+	/**
+	 * Tipo de algoritmo padrão para hash
+	 */
 	private final TipoAlgoritmo algoritmo = TipoAlgoritmo.MD5;
 	
 	@Autowired

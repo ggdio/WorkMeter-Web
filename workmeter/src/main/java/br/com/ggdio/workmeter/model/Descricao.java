@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import br.com.ggdio.workmeter.util.Assert;
+
 @Entity
 public class Descricao 
 {
@@ -18,12 +20,18 @@ public class Descricao
 	private String cliente;
 	private String descricao;
 	
+	/**
+	 * Assert para segurança
+	 */
+	private final Assert assertion = new Assert();
+	
 	public Long getId() 
 	{
 		return id;
 	}
 	public void setId(Long id)
 	{
+		assertion.notNull(id);
 		this.id = id;
 	}
 	public Hora getHoraInicial()
@@ -32,6 +40,7 @@ public class Descricao
 	}
 	public void setHoraInicial(Hora horaInicial) 
 	{
+		assertion.notNull(horaInicial);
 		this.horaInicial = horaInicial;
 	}
 	public Hora getHoraFinal() 
@@ -40,6 +49,7 @@ public class Descricao
 	}
 	public void setHoraFinal(Hora horaFinal) 
 	{
+		assertion.notNull(horaFinal);
 		this.horaFinal = horaFinal;
 	}
 	public String getCliente() 
@@ -48,6 +58,7 @@ public class Descricao
 	}
 	public void setCliente(String cliente) 
 	{
+		assertion.notEmpty(cliente);
 		this.cliente = cliente;
 	}
 	public String getDescricao() 
@@ -56,6 +67,7 @@ public class Descricao
 	}
 	public void setDescricao(String descricao) 
 	{
+		assertion.notEmpty(descricao);
 		this.descricao = descricao;
 	}
 }
