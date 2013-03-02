@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -15,7 +16,7 @@ import br.com.ggdio.workmeter.util.Assert;
 
 @Entity
 @SQLDelete(sql="UPDATE usuario SET ativo = false where id = ?")
-@Where(clause="ativo = true")
+@Where(clause="ativo = 't'")
 public final class Usuario 
 {
 	@Id
@@ -43,6 +44,7 @@ public final class Usuario
 	/**
 	 * Assert para segurança
 	 */
+	@Transient
 	private final Assert assertion = new Assert();
 	
 	public Long getId() 

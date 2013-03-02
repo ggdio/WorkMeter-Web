@@ -6,6 +6,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
@@ -26,6 +27,7 @@ public final class Hora
 	/**
 	 * Assert para segurança
 	 */
+	@Transient
 	private final Assert assertion = new Assert();
 	
 	public Long getId() 

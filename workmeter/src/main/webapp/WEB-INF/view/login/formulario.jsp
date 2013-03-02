@@ -5,9 +5,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tag" %>
 
-<c:url value="/login/executar" var="pathLogin"/>
-
-<form id="formUsuario" class="well" action="${pathCriar}" method="post">
+<c:url value="/login/executa" var="pathExecutaLogin"/>
+<div id="msgLogin">
+	<c:if test="${not empty responseLoginController}">
+		<font color="red">
+			<tag:alert id="alertaLoginController" titulo="Atenção" texto="${responseLoginController.message}" tipo="alert-warning" width="50%"/>
+		</font>
+	</c:if>
+</div>
+<form id="formUsuario" class="well" action="${pathExecutaLogin}" method="post">
 	<fieldset>
 		<label for="nome"><b>Login</b></label>
 		<input class="span5" type="text" id="txtNome" name="login" maxlength="100" placeholder="Seu login..."/><br/>

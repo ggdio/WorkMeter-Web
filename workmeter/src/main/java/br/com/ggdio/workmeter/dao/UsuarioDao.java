@@ -48,7 +48,7 @@ public final class UsuarioDao extends MasterDao<Usuario>
 											.add(Restrictions.eq("senha", senha));
 			usuario = (Usuario) criteria.list().get(1);
 		}
-		catch(ArrayIndexOutOfBoundsException e)
+		catch(IndexOutOfBoundsException e)
 		{
 			String msg = "Nenhum usuario foi encontrado com o login='"+login+"' e senha='"+senha+"'";
 			error = new EntityNotFoundException(msg, e);

@@ -1,5 +1,6 @@
 package br.com.ggdio.workmeter.model.util;
 
+import br.com.ggdio.workmeter.dao.exception.EntityNotFoundException;
 import br.com.ggdio.workmeter.model.Usuario;
 import br.com.ggdio.workmeter.service.UsuarioService;
 import br.com.ggdio.workmeter.util.Assert;
@@ -49,9 +50,14 @@ public final class UsuarioUtil
 	 */
 	public Boolean isUsuarioValido()
 	{
-		Usuario busca = service.buscaPorLoginESenha(usuario.getLogin(), usuario.getSenha());
-		if(busca == null)
+		try
+		{
+			service.buscaPorLoginESenha(usuario.getLogin(), usuario.getSenha());
+		}
+		catch(EntityNotFoundException e)
+		{
 			return false;
+		}
 		return true;
 	}
 }

@@ -18,6 +18,8 @@ import br.com.ggdio.workmeter.view.ViewHandler;
 @RequestMapping("/login/")
 public class LoginController implements ViewHandler,PathHandler
 {
+	@Autowired
+	private UsuarioService usuarioService;
 	private final ResponseDispatcher dispatcher = new ResponseDispatcher(this);
 	
 	@RequestMapping("formulario")
@@ -26,9 +28,8 @@ public class LoginController implements ViewHandler,PathHandler
 		return getView("formulario");
 	}
 	
-	@Autowired
 	@RequestMapping("executa")
-	public String executa(String login,String senha,UsuarioService usuarioService,Model model)
+	public String executa(String login,String senha,Model model)
 	{
 		UsuarioUtil util = new UsuarioUtil(login, senha, usuarioService);
 		try

@@ -56,7 +56,7 @@ public final class UsuarioService extends MasterService<Usuario>
 		}
 		catch(EntityNotFoundException e)
 		{
-			throw e;
+			throw (EntityNotFoundException)e;
 		}
 		catch(Exception e)
 		{

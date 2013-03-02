@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 import br.com.ggdio.workmeter.util.Assert;
 
@@ -23,6 +24,7 @@ public class Descricao
 	/**
 	 * Assert para segurança
 	 */
+	@Transient
 	private final Assert assertion = new Assert();
 	
 	public Long getId() 
