@@ -1,5 +1,7 @@
 package br.com.ggdio.workmeter.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -31,9 +33,12 @@ public class HomeController implements ViewHandler,PathHandler
 	 * @return Conteudo index
 	 */
 	@RequestMapping("index/conteudo")
-	public String viewConteudoIndex()
+	public String viewConteudoIndex(HttpSession session)
 	{
-		return getView("deslogado");
+		if(session.getAttribute("usuarioLogado") == null)
+			return getView("deslogado");
+		
+		return getView("logado");
 	}
 	
 	@Override

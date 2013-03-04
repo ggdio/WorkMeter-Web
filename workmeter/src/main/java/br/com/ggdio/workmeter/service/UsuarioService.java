@@ -1,9 +1,11 @@
 package br.com.ggdio.workmeter.service;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ggdio.workmeter.dao.UsuarioDao;
+import br.com.ggdio.workmeter.dao.exception.DaoException;
 import br.com.ggdio.workmeter.dao.exception.EntityNotFoundException;
 import br.com.ggdio.workmeter.model.Usuario;
 import br.com.ggdio.workmeter.service.exception.ServiceException;
@@ -22,6 +24,11 @@ public final class UsuarioService extends MasterService<Usuario>
 	 * Tipo de algoritmo padrão para hash
 	 */
 	private final TipoAlgoritmo algoritmo = TipoAlgoritmo.MD5;
+	
+	/**
+	 * Logger
+	 */
+	private static final Logger log = Logger.getLogger(UsuarioService.class);
 	
 	@Autowired
 	public UsuarioService(UsuarioDao usuarioDao) 
@@ -56,12 +63,18 @@ public final class UsuarioService extends MasterService<Usuario>
 		}
 		catch(EntityNotFoundException e)
 		{
-			throw (EntityNotFoundException)e;
+			log.warn(e.getMessage(), e);
+			throw e;
+		}
+		catch(DaoException e)
+		{
+			log.error(e.getMessage(), e);
+			throw e;
 		}
 		catch(Exception e)
 		{
-			String msg = "Ocorreu um erro inesperado ao buscar um usuario com o login("+login+") e senha("+senha+") no modelo";
-			throw new ServiceException(msg,e);
+			log.error(e.getMessage(), e);
+			throw new ServiceException(e);
 		}
 		return usuario;
 	}

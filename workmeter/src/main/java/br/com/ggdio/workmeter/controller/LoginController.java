@@ -1,8 +1,9 @@
 package br.com.ggdio.workmeter.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.ggdio.workmeter.controller.response.Response;
@@ -10,13 +11,11 @@ import br.com.ggdio.workmeter.controller.response.ResponseDispatcher;
 import br.com.ggdio.workmeter.controller.response.ResponseStatus;
 import br.com.ggdio.workmeter.model.util.UsuarioUtil;
 import br.com.ggdio.workmeter.service.UsuarioService;
-import br.com.ggdio.workmeter.view.PathHandler;
-import br.com.ggdio.workmeter.view.ViewHandler;
-import br.com.sourcesphere.core.util.Assert;
+import br.com.ggdio.workmeter.session.SessionUtil;
 
 @Controller
 @RequestMapping("/login/")
-public class LoginController implements ViewHandler,PathHandler
+public class LoginController extends br.com.ggdio.workmeter.controller.Controller
 {
 	@Autowired
 	private UsuarioService usuarioService;
@@ -29,21 +28,29 @@ public class LoginController implements ViewHandler,PathHandler
 	}
 	
 	@RequestMapping("executa")
-	public String executa(String login,String senha,Model model)
+	public String executa(String login,String senha,HttpServletRequest request)
 	{
+		SessionUtil sessionUtil = new SessionUtil(request);
+		//Valida se o usuario ja esta na sessao
+		if(sessionUtil.getUsuario() != null)
+		{
+			//Forward para o formulario de login com mensagem de alerta
+			prepareForward(request, new Response<String>(ResponseStatus.ERROR, "Voce ja esta conectado !"), dispatcher, "loginControllerResponse");
+			return dispatcher.generateForwardDispatch("formulario");
+		}
+		
+		//Verifica se o usuario é valido
 		UsuarioUtil util = new UsuarioUtil(login, senha, usuarioService);
-		try
+		if(!util.isUsuarioValido())
 		{
-			new Assert(IllegalStateException.class).isTrue(util.isUsuarioValido());
+			//Forward para o formulario de login com mensagem de alerta
+			prepareForward(request, new Response<String>(ResponseStatus.ERROR, "Login e/ou Senha invalidos !"), dispatcher, "loginControllerResponse");
+			return dispatcher.generateForwardDispatch("formulario");
 		}
-		catch(IllegalStateException e)
-		{
-			//Forward para o formulario de login
-			Response<String> response = new Response<String>(ResponseStatus.ERROR, "Login e/ou Senha invalidos !");
-			dispatcher.loadResponse(model, response, "responseLoginController");
-			return dispatcher.forwardDispatch("formulario");
-		}
-		return new HomeController().viewIndex();
+		
+		//Forward para o formulario de login com mensagem de alerta
+		prepareForward(request, new Response<String>(ResponseStatus.ERROR, "Seja bem vindo !"), dispatcher, "loginControllerResponse");
+		return dispatcher.generateForwardDispatch("formulario");
 	}
 
 	@Override
@@ -62,6 +69,18 @@ public class LoginController implements ViewHandler,PathHandler
 	public String getPathBase() 
 	{
 		return "/login/";
+	}
+	
+	@Override
+	public void prepareForward(HttpServletRequest request,Response<?> response,ResponseDispatcher dispatcher,String identifier)
+	{
+		dispatcher.loadResponse(request, response, identifier);
+	}
+	
+	@Override
+	public void prepareRedirect(HttpServletRequest request,Response<?> response,ResponseDispatcher dispatcher,String identifier)
+	{
+		dispatcher.loadResponse(request, response, identifier);
 	}
 
 }

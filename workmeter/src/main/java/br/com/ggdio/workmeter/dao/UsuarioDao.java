@@ -37,7 +37,6 @@ public final class UsuarioDao extends MasterDao<Usuario>
 	 */
 	public Usuario getUsuarioPorLoginESenha(String login,String senha)
 	{
-		Exception error = null;
 		Usuario usuario = null;
 		try
 		{
@@ -47,21 +46,23 @@ public final class UsuarioDao extends MasterDao<Usuario>
 											.add(Restrictions.eq("login", login))
 											.add(Restrictions.eq("senha", senha));
 			usuario = (Usuario) criteria.list().get(1);
+			commit();
 		}
 		catch(IndexOutOfBoundsException e)
 		{
-			String msg = "Nenhum usuario foi encontrado com o login='"+login+"' e senha='"+senha+"'";
-			error = new EntityNotFoundException(msg, e);
+			rollback();
+			throw new EntityNotFoundException("Nenhum usuario foi encontrado com o login='"+login+"' e senha(criptografada)='"+senha+"'");
+			
 		}
 		catch(Exception e)
 		{
-			error = new Exception("Um erro inesperado ocorreu", e);
+			rollback();
+			throw new DaoException("Um erro inesperado ocorreu ao buscar o usuario na base de dados", e);
 		}
 		finally
 		{
 			close();
 		}
-		if(error != null) throw new DaoException(error);
 		return usuario;
 	}
 }

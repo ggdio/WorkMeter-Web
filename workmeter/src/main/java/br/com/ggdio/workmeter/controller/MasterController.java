@@ -3,12 +3,13 @@ package br.com.ggdio.workmeter.controller;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 
+import br.com.ggdio.workmeter.controller.response.Response;
 import br.com.ggdio.workmeter.controller.response.ResponseDispatcher;
 import br.com.ggdio.workmeter.service.MasterService;
-import br.com.ggdio.workmeter.view.PathHandler;
-import br.com.ggdio.workmeter.view.ViewHandler;
 
 /**
  * The Master Controller
@@ -16,7 +17,7 @@ import br.com.ggdio.workmeter.view.ViewHandler;
  *
  * @param <T> - Type of the entity to be used
  */
-public abstract class MasterController<T> implements ViewHandler,PathHandler
+public abstract class MasterController<T> extends Controller
 {
 	/**
 	 * Logger
@@ -113,6 +114,30 @@ public abstract class MasterController<T> implements ViewHandler,PathHandler
 	protected MasterService<T> getService() 
 	{
 		return this.service;
+	}
+	
+	/**
+	 * Prepare the response to the front end
+	 * @param request - The request made by fron end
+	 * @param response - The response to be sent
+	 * @param dispatcher - The respone dispatcher
+	 * @param identifier - The {@link String} wich will identify the response on the the attributes
+	 */
+	public void prepareForward(HttpServletRequest request,Response<?> response,ResponseDispatcher dispatcher,String identifier)
+	{
+		dispatcher.loadResponse(request, response, identifier);
+	}
+	
+	/**
+	 * Prepare the response to the front end
+	 * @param request - The request made by fron end
+	 * @param response - The response to be sent
+	 * @param dispatcher - The respone dispatcher
+	 * @param identifier - The {@link String} wich will identify the response on the the attributes
+	 */
+	public void prepareRedirect(HttpServletRequest request,Response<?> response,ResponseDispatcher dispatcher,String identifier)
+	{
+		dispatcher.loadResponse(request, response, identifier);
 	}
 	
 	@Override

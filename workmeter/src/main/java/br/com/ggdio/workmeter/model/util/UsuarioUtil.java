@@ -12,7 +12,7 @@ import br.com.sourcesphere.core.util.Assert;
  */
 public final class UsuarioUtil 
 {
-	private final Usuario usuario;
+	private Usuario usuario;
 	private final UsuarioService service;
 	
 	/**
@@ -52,12 +52,17 @@ public final class UsuarioUtil
 	{
 		try
 		{
-			service.buscaPorLoginESenha(usuario.getLogin(), usuario.getSenha());
+			this.usuario = service.buscaPorLoginESenha(usuario.getLogin(), usuario.getSenha());
 		}
 		catch(EntityNotFoundException e)
 		{
 			return false;
 		}
 		return true;
+	}
+	
+	public Usuario getUsuario()
+	{
+		return this.usuario;
 	}
 }
