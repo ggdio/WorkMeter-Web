@@ -14,14 +14,6 @@
 <%@ attribute name="hidden" required="false" %>
 <%@ attribute name="classe" required="false" %>
 
-<!-- URL's -->
-<c:url value="/resources/jquery/JQuery.js" var="jquery"/>
-<c:url value="/resources/bootstrap/js/bootstrap.js" var="bootstrap_js"/>
-
-<!-- IMPORT JQUERY+BOOTSTRAP -->
-<script type="text/javascript" src="${jquery}"></script>
-<script type="text/javascript" src="${bootstrap_js}"></script>
-
 <!-- HTML -->
 <div align="${align}">
 	<div id="${id}" class="alert ${tipo} fade in ${classe}" style="width: ${width};height: ${height};" ${hidden}>

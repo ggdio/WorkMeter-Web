@@ -11,9 +11,9 @@
 <form id="formUsuario" action="${pathExecutaLogin}" method="post">
 	<fieldset>
 		<label for="nome"><b>Login</b></label>
-		<input class="span12" type="text" id="txtNome" name="login" maxlength="100" placeholder="Seu login..."/>
+		<input class="${param.campoSpan}" type="text" id="txtNome" name="login" maxlength="100" placeholder="Seu login..."/>
 		<label for="nome"><b>Senha</b></label>
-		<input class="span12" type="password" id="txtSenha" name="senha" maxlength="100" placeholder="Sua senha..."/>
+		<input class="${param.campoSpan}" type="password" id="txtSenha" name="senha" maxlength="100" placeholder="Sua senha..."/>
 	</fieldset>
 	<div class="form-actions">
 		<button id="btnLogin" type="submit" class="btn btn-primary btn-large">

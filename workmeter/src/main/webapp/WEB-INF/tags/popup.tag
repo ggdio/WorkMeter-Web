@@ -12,15 +12,6 @@
 <%@ attribute name="imagem" required="false" %>
 <%@ attribute name="retornar" required="false" description="Exibir botão de retorno(valor = 'retornar')" %>
 
-<!-- URL's -->
-<c:url value="/resources/jquery/JQuery.js" var="jquery"/>
-<c:url value="/resources/bootstrap/js/bootstrap.js" var="bootstrap_js"/>
-
-<!-- IMPORT JQUERY+BOOTSTRAP -->
-<script type="text/javascript" src="${jquery}"></script>
-<script type="text/javascript" src="${bootstrap_js}"></script>
-
-
 <!-- POPUP -->
 <div id="${id}" class="modal hide fade">
 	<div class="modal-header">

@@ -20,7 +20,11 @@
 <!-- Formulario de Login -->
 <tag:popup id="popupLogin" component="btnPopupLogin" imagem="${icon}" titulo="Login" retornar="retornar">
 	<jsp:attribute name="texto">
-	 	<c:import url="/usuario/login/formulario"/>
+		<div class="well">
+	 		<c:import url="/usuario/login/formulario">
+	 			<c:param name="campoSpan">span6</c:param>
+	 		</c:import>
+	 	</div>
 	</jsp:attribute>
 </tag:popup>
 
