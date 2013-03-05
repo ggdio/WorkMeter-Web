@@ -15,34 +15,38 @@ public class Response<T> implements Serializable
 	 */
 	private static final long serialVersionUID = 8852573722142351353L;
 	
-	private ResponseStatus status;
+	public static final String SUCCESS = "SUCCESS";
+	public static final String WARNING = "WARNING";
+	public static final String ERROR = "ERROR";
+	
 	private String message;
+	private String status;
 	private T information;
 	
 	public Response(){}
 	
-	public Response(ResponseStatus status,String message,T information)
+	public Response(String status,String message,T information)
 	{
 		setStatus(status);
 		setMessage(message);
 		setInformation(information);
 	}
 	
-	public Response(ResponseStatus status,String message)
+	public Response(String status,String message)
 	{
 		this(status, message, null);
 	}
 	
-	public Response(ResponseStatus status)
+	public Response(String status)
 	{
 		this(status, "Response from server", null);
 	}
 	
-	public ResponseStatus getStatus()
+	public String getStatus()
 	{
 		return status;
 	}
-	public void setStatus(ResponseStatus status)
+	public void setStatus(String status)
 	{
 		this.status = status;
 	}
