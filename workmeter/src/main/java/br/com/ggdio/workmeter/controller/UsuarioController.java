@@ -47,20 +47,6 @@ public final class UsuarioController extends MasterController<Usuario>
 		return getView("formulario");
 	}
 	
-	@RequestMapping("/login/executa")
-	public ModelAndView executaLogin(Usuario usuario,ModelAndView mav)
-	{
-		UsuarioUtil util = new UsuarioUtil(usuario, (UsuarioService)super.getService());
-		if(!util.isUsuarioValido())
-		{
-			mav.addObject("mensagem", "Login e/ou Senha invalidos");
-			mav.setViewName("forward:"+viewFormulario());
-		}
-		
-		mav.setViewName(new HomeController().viewIndex());
-		return mav;
-	}
-	
 	@Override
 	public String getBase() 
 	{

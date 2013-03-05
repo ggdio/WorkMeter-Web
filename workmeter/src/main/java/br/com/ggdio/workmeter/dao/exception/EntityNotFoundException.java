@@ -1,5 +1,10 @@
 package br.com.ggdio.workmeter.dao.exception;
 
+/**
+ * Exception for entity not found handling
+ * @author guilherme
+ *
+ */
 public class EntityNotFoundException extends DaoException 
 {
 	/**

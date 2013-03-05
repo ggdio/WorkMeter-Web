@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import br.com.ggdio.workmeter.controller.MasterController;
 import br.com.ggdio.workmeter.dao.MasterDao;
 import br.com.ggdio.workmeter.dao.exception.DaoException;
+import br.com.ggdio.workmeter.dao.exception.EntityAlreadyExistException;
 import br.com.ggdio.workmeter.service.exception.ServiceException;
 
 /**
@@ -47,6 +48,10 @@ public abstract class MasterService<T>
 		{
 			dao.saveOrUpdate(entity);
 		}
+		catch(EntityAlreadyExistException e)
+		{
+			throw e;
+		}
 		catch(DaoException e)
 		{
 			throw e;
@@ -67,6 +72,10 @@ public abstract class MasterService<T>
 		try
 		{
 			dao.saveOrUpdate(entity);
+		}
+		catch(EntityAlreadyExistException e)
+		{
+			throw e;
 		}
 		catch(DaoException e)
 		{
@@ -107,10 +116,9 @@ public abstract class MasterService<T>
 	 */
 	public T get(Serializable identifier)
 	{
-		T entity;
 		try
 		{
-			entity = dao.get(identifier);
+			return dao.get(identifier);
 		}
 		catch(DaoException e)
 		{
@@ -121,7 +129,6 @@ public abstract class MasterService<T>
 			String msg = "An unexpected error has occurred while getting the entity '"+dao.getClazzType().getSimpleName()+"'";
 			throw new ServiceException(msg,e);
 		}
-		return entity;
 	}
 	
 	/**
@@ -130,10 +137,9 @@ public abstract class MasterService<T>
 	 */
 	public List<T> listAll(Integer firstResult,Integer maxResults)
 	{
-		List<T> entities;
 		try
 		{
-			entities = dao.listAll(firstResult,maxResults);
+			return dao.listAll(firstResult,maxResults);
 		}
 		catch(DaoException e)
 		{
@@ -144,7 +150,6 @@ public abstract class MasterService<T>
 			String msg = "An unexpected error has occurred while listing the values of the entity '"+dao.getClazzType().getSimpleName()+"'";
 			throw new ServiceException(msg,e);
 		}
-		return entities;
 	}
 	
 	/**
@@ -162,7 +167,7 @@ public abstract class MasterService<T>
 	 */
 	public List<T> listAll()
 	{
-		return listAll(0);
+		return listAll(0,0);
 	}
 	
 	/**

@@ -1,6 +1,7 @@
 package br.com.ggdio.workmeter.dao;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -10,10 +11,12 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.core.GenericTypeResolver;
 
 import br.com.ggdio.workmeter.dao.exception.DaoException;
 import br.com.ggdio.workmeter.dao.exception.DaoInitializationException;
+import br.com.ggdio.workmeter.dao.exception.EntityAlreadyExistException;
 import br.com.ggdio.workmeter.dao.exception.EntityNotFoundException;
 import br.com.sourcesphere.core.util.Assert;
 
@@ -68,26 +71,29 @@ public abstract class MasterDao<T>
 	 */
 	public void saveOrUpdate(T entity)
 	{
-		assertion.notNull(entity);
-		Exception error = null;
+		assertion.notNull(entity,"The entity cannot be null");
 		try 
 		{
 			begin();
 			getSession().saveOrUpdate(entity);
 			commit();
 		}
+		catch(ConstraintViolationException e)
+		{
+			rollback();
+			throw new EntityAlreadyExistException("The entity '"+entity.getClass().getSimpleName()+"' already exist on the database");
+		}
 		catch (Exception e) 
 		{
 			rollback();
-			String msg = "The save/update of entity '"+entity.getClass().getSimpleName()+"' caused an exception";
+			String msg = "An unexpected error has occurred while trying to save/update the entity '"+entity.getClass().getSimpleName()+"'";
 			log.error(msg,e);
-			error = e;
+			throw new DaoException(msg,e);
 		}
 		finally
 		{
 			close();
 		}
-		if(error != null) throw new DaoException(error);
 	}
 	
 	/**
@@ -96,8 +102,7 @@ public abstract class MasterDao<T>
 	 */
 	public void delete(T entity)
 	{
-		assertion.notNull(entity);
-		Exception error = null;
+		assertion.notNull(entity,"The entity cannot be null");
 		try
 		{
 			begin();
@@ -107,15 +112,14 @@ public abstract class MasterDao<T>
 		catch(Exception e)
 		{
 			rollback();
-			String msg = "The delete of entity '"+entity.getClass().getSimpleName()+"' caused an exception";
+			String msg = "An unexpected error has occurred while trying to delete the entity '"+entity.getClass().getSimpleName()+"' from the database";
 			log.error(msg,e);
-			error = e;
+			throw new DaoException(msg,e);
 		}
 		finally
 		{
 			close();
 		}
-		if(error != null) throw new DaoException(error);
 	}
 	
 	/**
@@ -128,13 +132,12 @@ public abstract class MasterDao<T>
 	{
 		assertion.notNull(identifier);
 		T entity = null;
-		Exception error = null;
 		try
 		{
 			begin();
 			entity = (T) getSession().get(clazzType, identifier);
-			if(entity == null)
-				error = new EntityNotFoundException("Unnable to find the entity '"+clazzType.getSimpleName()+"' with an ID equals to '"+identifier+"'");
+			if(entity == null) 
+				throw new EntityNotFoundException("Unnable to find the entity '"+clazzType.getSimpleName()+"' with an identifier equals to '"+identifier+"'");
 			commit();
 		}
 		catch(Exception e)
@@ -142,13 +145,12 @@ public abstract class MasterDao<T>
 			rollback();
 			String msg = "The delete of entity '"+entity.getClass().getSimpleName()+"' caused an exception";
 			log.error(msg,e);
-			error = e;
+			throw new DaoException(msg, e);
 		}
 		finally
 		{
 			close();
 		}
-		if(error != null) throw new DaoException(error);
 		return entity;
 	}
 	
@@ -163,8 +165,7 @@ public abstract class MasterDao<T>
 	{
 		assertion.notNull(firstResult);
 		assertion.notNull(maxResults);
-		Exception error = null;
-		List<T> entities = null;
+		List<T> entities = new ArrayList<T>();
 		try
 		{
 			begin();
@@ -173,21 +174,20 @@ public abstract class MasterDao<T>
 				criteria.setFirstResult(firstResult);
 			if(maxResults > 0)
 				criteria.setMaxResults(maxResults);
-			entities = criteria.list();
+			entities.addAll(criteria.list());
 			commit();
 		}
 		catch(Exception e)
 		{
 			rollback();
-			String msg = "An error occured while listing the entity '"+clazzType.getSimpleName()+"'";
+			String msg = "An unexpected error occured while trying to list the entity '"+clazzType.getSimpleName()+"'";
 			log.error(msg,e);
-			error = e;
+			throw new DaoException(msg,e);
 		}
 		finally
 		{
 			close();
 		}
-		if(error != null) throw new DaoException(error);
 		return entities;
 	}
 	
@@ -198,7 +198,6 @@ public abstract class MasterDao<T>
 	 */
 	public List<T> listAll(Integer maxResults)
 	{
-		assertion.notNull(maxResults);
 		return listAll(0,maxResults);
 	}
 	
@@ -208,7 +207,7 @@ public abstract class MasterDao<T>
 	 */
 	public List<T> listAll()
 	{
-		return listAll(0);
+		return listAll(0,0);
 	}	
 	
 	/**
@@ -224,7 +223,6 @@ public abstract class MasterDao<T>
 		assertion.notEmpty(hql);
 		assertion.notNull(firstResult);
 		assertion.notNull(maxResults);
-		Exception error = null;
 		List<T> entities = null;
 		try
 		{
@@ -241,15 +239,16 @@ public abstract class MasterDao<T>
 		catch(Exception e)
 		{
 			rollback();
-			String msg = "An error occured while executing the following HQL: '"+hql+"' with an row limit of '"+maxResults+"' and first result '"+firstResult+"'";
+			String msg = "An unexpected error occured while executing the following HQL: '"+hql+"' with an row limit of '"+maxResults+"' and first result '"+firstResult+"'";
 			log.error(msg,e);
-			error = e;
+			throw new DaoException(msg, e);
 		}
 		finally
 		{
 			close();
 		}
-		if(error != null) throw new DaoException(error);
+		if(entities.size() == 0) 
+			throw new EntityNotFoundException("The execution of the following hql query, didn't brought any results: "+hql);
 		return entities;
 	}
 	
@@ -261,8 +260,6 @@ public abstract class MasterDao<T>
 	 */
 	public List<T> hqlQuery(String hql,Integer maxResults)
 	{
-		assertion.notNull(hql);
-		assertion.notNull(maxResults);
 		return hqlQuery(hql,0,maxResults);
 	}
 	
@@ -273,8 +270,7 @@ public abstract class MasterDao<T>
 	 */
 	public List<T> hqlQuery(String hql)
 	{
-		assertion.notNull(hql);
-		return hqlQuery(hql,0);
+		return hqlQuery(hql,0,0);
 	}
 	
 	/**
