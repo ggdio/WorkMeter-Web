@@ -36,10 +36,17 @@ public class HomeController implements ViewHandler,PathHandler
 	@RequestMapping("index/conteudo")
 	public String viewConteudoIndex(HttpSession sessao)
 	{
-		if(!new SessionUtil(sessao).hasUsuario())
+		//Verifica se possui sessao
+		if(new SessionUtil(sessao).hasUsuario())
+		{
+			//View com conteudo restrito
 			return getView("logado");
-		
-		return getView("deslogado");
+		}
+		else
+		{
+			//View com conteudo aberto
+			return getView("deslogado");
+		}
 	}
 	
 	@Override

@@ -110,7 +110,7 @@ public final class UsuarioController extends MasterController<Usuario>
 		{
 			//Forward para o formulario de login com msg de erro
 			model.addAttribute(identificador,montaResponse(Response.ERROR, "Login e/ou Senha invalidos", null));
-			return "forward:"+viewAcesso();
+			return "forward:/usuario/login/acesso";
 		}
 		else
 		{
