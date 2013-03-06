@@ -100,18 +100,18 @@
 			</plugin>
 			
 			<!-- JAVADOC -->
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-javadoc-plugin</artifactId> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>attach-javadocs</id> -->
-<!-- 						<goals> -->
-<!-- 							<goal>jar</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			
 			<!-- MANIFEST -->
 			<plugin>
@@ -154,6 +154,13 @@
 			<groupId>br.com.sourcesphere</groupId>
 			<artifactId>core</artifactId>
 			<version>${br.com.sourcesphere.core.version}</version>
+		</dependency>
+		
+		<!-- SOURCESPHERE CORE-WEB -->
+		<dependency>
+			<groupId>br.com.sourcesphere</groupId>
+			<artifactId>core-web</artifactId>
+			<version>1.0.0.RELEASE</version>
 		</dependency>
 		
 		<!-- SOURCESPHERE CORE-WEB-RESOURCES -->

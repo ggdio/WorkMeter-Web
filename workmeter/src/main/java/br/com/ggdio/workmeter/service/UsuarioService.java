@@ -5,12 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ggdio.workmeter.dao.UsuarioDao;
-import br.com.ggdio.workmeter.dao.exception.DaoException;
-import br.com.ggdio.workmeter.dao.exception.EntityNotFoundException;
 import br.com.ggdio.workmeter.model.Usuario;
-import br.com.ggdio.workmeter.service.exception.ServiceException;
 import br.com.sourcesphere.core.seguranca.Criptografia;
 import br.com.sourcesphere.core.seguranca.TipoAlgoritmo;
+import br.com.sourcesphere.core.web.dao.exception.DaoException;
+import br.com.sourcesphere.core.web.dao.exception.EntityNotFoundException;
+import br.com.sourcesphere.core.web.service.MasterService;
+import br.com.sourcesphere.core.web.service.exception.ServiceException;
 
 @Service("usuarioService")
 public final class UsuarioService extends MasterService<Usuario>

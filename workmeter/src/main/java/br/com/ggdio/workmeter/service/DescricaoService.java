@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.ggdio.workmeter.dao.DescricaoDao;
 import br.com.ggdio.workmeter.model.Descricao;
+import br.com.sourcesphere.core.web.service.MasterService;
 
 @Service("descricaoService")
 public final class DescricaoService extends MasterService<Descricao>

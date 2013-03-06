@@ -8,11 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import br.com.ggdio.workmeter.controller.response.Response;
 import br.com.ggdio.workmeter.model.Usuario;
 import br.com.ggdio.workmeter.model.util.UsuarioUtil;
 import br.com.ggdio.workmeter.service.UsuarioService;
 import br.com.ggdio.workmeter.session.SessionUtil;
+import br.com.sourcesphere.core.web.controller.MasterController;
+import br.com.sourcesphere.core.web.controller.response.Response;
 
 @Controller
 @RequestMapping("/usuario/")

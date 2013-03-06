@@ -8,10 +8,11 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import br.com.ggdio.workmeter.dao.exception.DaoException;
-import br.com.ggdio.workmeter.dao.exception.EntityNotFoundException;
 import br.com.ggdio.workmeter.model.Usuario;
 import br.com.sourcesphere.core.util.StringUtils;
+import br.com.sourcesphere.core.web.dao.MasterDao;
+import br.com.sourcesphere.core.web.dao.exception.DaoException;
+import br.com.sourcesphere.core.web.dao.exception.EntityNotFoundException;
 
 /**
  * Implementação do {@link DefaultDao}
