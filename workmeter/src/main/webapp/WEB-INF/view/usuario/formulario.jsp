@@ -15,7 +15,7 @@
 		<label for="login"><b>Login</b></label>
 		<input class="span4" type="text" id="txtLogin" name="login" maxlength="20" placeholder="Login..."/><br/>
 		<label for="senha"><b>Senha</b></label>
-		<input class="span4" type="password" id="txtSenha" name="senha" maxlength="20" placeholder="Senha..."/><br/>
+		<input class="span4" type="password" id="txtSenha" name="senha" maxlength="20" placeholder="Senha..."/>
 	</fieldset>
 	<div class="form-actions">
 		<button id="btnConcluir" type="submit" class="btn btn-primary btn-large">

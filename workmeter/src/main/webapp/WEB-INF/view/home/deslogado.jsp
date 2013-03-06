@@ -19,7 +19,7 @@
 </div>
 
 <!-- Formulario de Login -->
-<sc:popup id="popupLogin" component="btnPopupLogin" imagem="${icon}" titulo="Login" retornar="retornar">
+<sc:popup identificador="popupLogin" component="btnPopupLogin" imagem="${icon}" titulo="Login" retornar="retornar">
 	<jsp:attribute name="texto">
 		<div class="well">
 	 		<c:import url="/usuario/login/formulario">
@@ -30,7 +30,7 @@
 </sc:popup>
 
 <!-- Formulario de Cadstro -->
-<sc:popup id="popupCriarConta" component="btnPopupDetalhes" imagem="${icon}" titulo="Criar Conta" retornar="retornar">
+<sc:popup identificador="popupCriarConta" component="btnPopupDetalhes" imagem="${icon}" titulo="Criar Conta" retornar="retornar">
 	<jsp:attribute name="texto">
 		<c:import url="/usuario/formulario"/>
 	</jsp:attribute>
