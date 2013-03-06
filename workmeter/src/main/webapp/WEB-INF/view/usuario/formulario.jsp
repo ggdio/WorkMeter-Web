@@ -1,11 +1,10 @@
-<!-- FORMULARIO DE CADASTRO DE USUARIO -->
-
 <!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="tag" %>
 
+<!-- FORMULARIO DE CADASTRO DE USUARIO -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:url value="/usuario/criar" var="pathCriar"/>
+
 
 <form id="formUsuario" class="well" action="${pathCriar}" method="post">
 	<fieldset>

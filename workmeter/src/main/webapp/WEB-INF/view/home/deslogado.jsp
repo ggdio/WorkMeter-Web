@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="tag" %>
+<%@ taglib uri="http://sourcesphere.com.br/jsp/tags/style-bootstrap/sc" prefix="sc" %>
+
 
 <c:url value="/resources/img/icon.png" var="icon"/>
 
@@ -18,7 +19,7 @@
 </div>
 
 <!-- Formulario de Login -->
-<tag:popup id="popupLogin" component="btnPopupLogin" imagem="${icon}" titulo="Login" retornar="retornar">
+<sc:popup id="popupLogin" component="btnPopupLogin" imagem="${icon}" titulo="Login" retornar="retornar">
 	<jsp:attribute name="texto">
 		<div class="well">
 	 		<c:import url="/usuario/login/formulario">
@@ -26,11 +27,11 @@
 	 		</c:import>
 	 	</div>
 	</jsp:attribute>
-</tag:popup>
+</sc:popup>
 
 <!-- Formulario de Cadstro -->
-<tag:popup id="popupCriarConta" component="btnPopupDetalhes" imagem="${icon}" titulo="Criar Conta" retornar="retornar">
+<sc:popup id="popupCriarConta" component="btnPopupDetalhes" imagem="${icon}" titulo="Criar Conta" retornar="retornar">
 	<jsp:attribute name="texto">
 		<c:import url="/usuario/formulario"/>
 	</jsp:attribute>
-</tag:popup>
+</sc:popup>

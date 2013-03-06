@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="tag" %>
+<%@ taglib uri="http://sourcesphere.com.br/jsp/tags/style-bootstrap/sc" prefix="sc" %>
 
 <c:set value="/usuario/login/formulario" var="pathFormulario"/>
 
@@ -14,7 +14,7 @@
 	<div class="row-fluid">
 		<div class="span4 pull-left"></div>
 		<div class="span4">
-			<tag:label texto="Acesso ao Workmeter" tipo="label-success" align="left" fontSize="x-large"/>
+			<sc:label texto="Acesso ao Workmeter" tipo="label-success" align="left" fontSize="x-large"/>
 		</div>
 		<div class="row-fluid span4 pull-right"></div>
 	</div>
