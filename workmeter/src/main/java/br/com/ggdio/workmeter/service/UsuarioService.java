@@ -8,10 +8,10 @@ import br.com.ggdio.workmeter.dao.UsuarioDao;
 import br.com.ggdio.workmeter.model.Usuario;
 import br.com.sourcesphere.core.seguranca.Criptografia;
 import br.com.sourcesphere.core.seguranca.TipoAlgoritmo;
-import br.com.sourcesphere.core.web.dao.exception.DaoException;
-import br.com.sourcesphere.core.web.dao.exception.EntityNotFoundException;
-import br.com.sourcesphere.core.web.service.MasterService;
-import br.com.sourcesphere.core.web.service.exception.ServiceException;
+import br.com.sourcesphere.core.web.generic.dao.exception.DaoException;
+import br.com.sourcesphere.core.web.generic.dao.exception.EntityNotFoundException;
+import br.com.sourcesphere.core.web.generic.service.MasterService;
+import br.com.sourcesphere.core.web.generic.service.exception.ServiceException;
 
 @Service("usuarioService")
 public final class UsuarioService extends MasterService<Usuario>

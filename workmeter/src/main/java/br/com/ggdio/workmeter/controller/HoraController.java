@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.ggdio.workmeter.model.Hora;
 import br.com.ggdio.workmeter.service.HoraService;
-import br.com.sourcesphere.core.web.controller.MasterController;
+import br.com.sourcesphere.core.web.generic.controller.MasterController;
 
 @Controller
 @RequestMapping("/hora/")

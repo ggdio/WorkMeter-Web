@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 
 import br.com.ggdio.workmeter.model.Usuario;
 import br.com.sourcesphere.core.util.StringUtils;
-import br.com.sourcesphere.core.web.dao.MasterDao;
-import br.com.sourcesphere.core.web.dao.exception.DaoException;
-import br.com.sourcesphere.core.web.dao.exception.EntityNotFoundException;
+import br.com.sourcesphere.core.web.generic.dao.MasterDao;
+import br.com.sourcesphere.core.web.generic.dao.exception.DaoException;
+import br.com.sourcesphere.core.web.generic.dao.exception.EntityNotFoundException;
 
 /**
  * Implementação do {@link DefaultDao}

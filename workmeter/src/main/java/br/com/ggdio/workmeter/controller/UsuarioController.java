@@ -13,8 +13,8 @@ import br.com.ggdio.workmeter.http.SessionUtil;
 import br.com.ggdio.workmeter.model.Usuario;
 import br.com.ggdio.workmeter.model.util.UsuarioUtil;
 import br.com.ggdio.workmeter.service.UsuarioService;
-import br.com.sourcesphere.core.web.controller.MasterController;
-import br.com.sourcesphere.core.web.controller.response.Response;
+import br.com.sourcesphere.core.web.generic.controller.MasterController;
+import br.com.sourcesphere.core.web.generic.controller.response.Response;
 
 @Controller
 @RequestMapping("/usuario/")

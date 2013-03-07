@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.ggdio.workmeter.http.SessionUtil;
-import br.com.sourcesphere.core.web.view.PathHandler;
-import br.com.sourcesphere.core.web.view.ViewHandler;
+import br.com.sourcesphere.core.web.generic.view.PathHandler;
+import br.com.sourcesphere.core.web.generic.view.ViewHandler;
 
 
 /**

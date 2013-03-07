@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import br.com.ggdio.workmeter.model.Hora;
-import br.com.sourcesphere.core.web.dao.MasterDao;
+import br.com.sourcesphere.core.web.generic.dao.MasterDao;
 
 /**
  * Implementação do {@link DefaultDao}
