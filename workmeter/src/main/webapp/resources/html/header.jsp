@@ -5,7 +5,8 @@
 <c:set var="estilo" value="cerulean"/>
 
 <!-- URL's -->
-<c:url var="home" value="/"/>
+<c:url value="/" var="pathHome"/>
+<c:url value="/usuario/login/sair" var="pathSair" />
 <c:url value="/webresources/jquery/JQuery.js" var="jquery"/>
 <c:url value="/webresources/twitter-bootstrap/js/bootstrap.js" var="bootstrap_js"/>
 <c:url value="/webresources/twitter-bootstrap/css/bootstrap-${estilo}.css" var="bootstrap_css" />
@@ -24,21 +25,12 @@
 	{
 		$('#btnDropdown').dropdown();
 		
-		$('#btnPesquisar').click(function(event)
+		$('#btnSair').click(function(event)
 		{
-			alert('Nao implementado');
-		});
-		$('form#formPesquisa').submit(function(event)
-		{
-			alert('Nao implementado');
-		});
-		$('form#formPesquisa').bind('keydown',function(event)
-		{
-			var key = e.keyCode || e.which;
-            if (key === 13) 
-            {
-            	alert('Nao implementado');
-            }
+			if(confirm('Deseja realmente sair ?'))
+			{
+				location.href = "${pathSair}";
+			}
 		});
 	});
 </script>
@@ -65,9 +57,9 @@
     <div class="navbar navbar-fixed-top">
 	    <div class="navbar-inner">
 		    <div class="container pull-left">
-		    	<a class="brand" href="${home}"><b>WorkMeter</b></a>
+		    	<a class="brand" href="${pathHome}"><b>WorkMeter</b></a>
 	    	    <ul class="nav">
-				    <li><a href="${home}"><i class="icon-home icon-white"></i><b>Home</b></a></li>
+				    <li><a href="${pathHome}"><i class="icon-home icon-white"></i><b>Home</b></a></li>
 			    	<li class="dropdown">
 					    <a id="btnDropdown" class="dropdown-toggle" data-toggle="dropdown" href="#"><b>Menu</b><b class="caret"></b></a>
 					    <ul class="dropdown-menu">
@@ -78,10 +70,10 @@
 				    </li>
 			    </ul>
 		    </div>
-		    <form id="formPesquisa" class="pull-right">
-		    	<input id="txtPesquisa" style="vertical-align: baseline;" name="pesquisa" class="search-query span3" placeholder="Pesquisar..." type="text">
-		    	<a id="btnPesquisar" href="#" class="btn">Buscar</a>
-		    </form>
+		    <c:if test="${not empty usuarioLogado}">
+		    	<a id="btnUsurio" href="#" class="btn pull-right">${usuarioLogado.nome}</a>
+		    	<a id="btnSair" href="#" class="btn pull-right">Sair</a>
+		    </c:if>
 	    </div>
     </div>
 

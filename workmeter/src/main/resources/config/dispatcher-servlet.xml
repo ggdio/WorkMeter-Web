@@ -25,6 +25,10 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
+	<mvc:interceptors>
+		<bean class="br.com.ggdio.workmeter.interceptor.GeralInterceptor"/>
+	</mvc:interceptors>
+	
 	<!-- Handler de Upload -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10000000" />

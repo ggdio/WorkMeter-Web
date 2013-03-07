@@ -1,5 +1,6 @@
 package br.com.ggdio.workmeter.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import br.com.ggdio.workmeter.http.SessionUtil;
 import br.com.ggdio.workmeter.model.Usuario;
 import br.com.ggdio.workmeter.model.util.UsuarioUtil;
 import br.com.ggdio.workmeter.service.UsuarioService;
-import br.com.ggdio.workmeter.session.SessionUtil;
 import br.com.sourcesphere.core.web.controller.MasterController;
 import br.com.sourcesphere.core.web.controller.response.Response;
 
@@ -122,6 +123,18 @@ public final class UsuarioController extends MasterController<Usuario>
 			//Invoca o controller de index
 			return "redirect:/";
 		}
+	}
+	
+	@RequestMapping("login/sair")
+	public String executaLogout(HttpServletRequest request)
+	{
+		SessionUtil sessionUtil = new SessionUtil(request);
+		
+		//Limpa a sessao
+		sessionUtil.clearSession();
+		
+		//Invoca o controller de index
+		return "redirect:/";
 	}
 	
 	@Override
