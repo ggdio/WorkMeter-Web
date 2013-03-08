@@ -8,10 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.Where;
+import org.joda.time.DateTime;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import br.com.sourcesphere.core.util.Assert;
 
@@ -24,22 +28,30 @@ public final class Usuario
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@Column(unique=true)
-	private String login;
+	private String email;
 	private String senha;
 	private String nome;
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+	@DateTimeFormat(pattern="dd/MM/yyyy")
+	private DateTime nascimento;
 	private String empresa;
 	@OneToMany
 	private List<Hora> horas;
+	@OneToOne
+	private Preferencia preferencia;
 	private Boolean ativo;
 	
 	public Usuario() 
 	{
+		Preferencia preferencia = new Preferencia();
+		preferencia.setIdioma(Idioma.PORTUGUES_BR);
+		setPreferencia(preferencia);
 		setAtivo(true);
 	}
 	
 	public Usuario(String login,String senha)
 	{
-		setLogin(login);
+		setEmail(login);
 		setSenha(senha);
 	}
 	
@@ -58,14 +70,14 @@ public final class Usuario
 		assertion.notNull(id);
 		this.id = id;
 	}
-	public String getLogin() 
+	public String getEmail() 
 	{
-		return login;
+		return email;
 	}
-	public void setLogin(String login) 
+	public void setEmail(String email) 
 	{
-		assertion.notEmpty(login);
-		this.login = login;
+		assertion.notEmpty(email);
+		this.email = email;
 	}
 	public String getSenha() 
 	{
@@ -85,6 +97,14 @@ public final class Usuario
 		assertion.notEmpty(nome);
 		this.nome = nome;
 	}
+	public DateTime getNascimento() 
+	{
+		return nascimento;
+	}
+	public void setNascimento(DateTime nascimento) 
+	{
+		this.nascimento = nascimento;
+	}
 	public String getEmpresa() 
 	{
 		assertion.notEmpty(empresa);
@@ -102,6 +122,14 @@ public final class Usuario
 	{
 		assertion.noNullElements(horas.toArray());
 		this.horas = horas;
+	}
+	public Preferencia getPreferencia() 
+	{
+		return preferencia;
+	}
+	public void setPreferencia(Preferencia preferencia) 
+	{
+		this.preferencia = preferencia;
 	}
 	public Boolean isAtivo()
 	{

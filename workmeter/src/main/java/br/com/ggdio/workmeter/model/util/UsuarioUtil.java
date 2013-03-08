@@ -42,7 +42,7 @@ public final class UsuarioUtil
 	{
 		try
 		{
-			this.usuario = service.buscaPorLoginESenha(usuario.getLogin(), usuario.getSenha());
+			this.usuario = service.buscaPorLoginESenha(usuario.getEmail(), usuario.getSenha());
 		}
 		catch(EntityNotFoundException e)
 		{

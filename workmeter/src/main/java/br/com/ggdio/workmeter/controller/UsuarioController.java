@@ -1,5 +1,9 @@
 package br.com.ggdio.workmeter.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.ggdio.workmeter.http.SessionUtil;
+import br.com.ggdio.workmeter.model.Estilo;
+import br.com.ggdio.workmeter.model.Idioma;
 import br.com.ggdio.workmeter.model.Usuario;
 import br.com.ggdio.workmeter.model.util.UsuarioUtil;
 import br.com.ggdio.workmeter.service.UsuarioService;
@@ -29,19 +35,22 @@ public final class UsuarioController extends MasterController<Usuario>
 	/**
 	 * Adiciona um usuario
 	 */
-	@Override
 	@RequestMapping(value="criar",method=RequestMethod.POST)
-	public void add(Usuario usuario)
+	public String adicionar(HttpSession sessao,Usuario usuario)
 	{
 		super.add(usuario);
+		
+		SessionUtil sessionUtil = new SessionUtil(sessao);
+		sessionUtil.addUsuario(usuario);
+		
+		return "redirect:/";
 	}
 	
 	/**
 	 * Altera um usuario
 	 */
-	@Override
-	@RequestMapping(value="alterar",method=RequestMethod.POST)
-	public void alter(Usuario usuario)
+	@RequestMapping(value="salvar",method=RequestMethod.POST)
+	public void salvar(Usuario usuario)
 	{
 		super.alter(usuario);
 	}
@@ -49,9 +58,8 @@ public final class UsuarioController extends MasterController<Usuario>
 	/**
 	 * Remove um usuario
 	 */
-	@Override
 	@RequestMapping(value="remover",method=RequestMethod.POST)
-	public void delete(Usuario usuario)
+	public void deleta(Usuario usuario)
 	{
 		super.delete(usuario);
 	}
@@ -90,6 +98,30 @@ public final class UsuarioController extends MasterController<Usuario>
 	public String viewAcesso()
 	{
 		return getView("login/acesso");
+	}
+	
+	/**
+	 * Formulario de preferencias
+	 */
+	@RequestMapping("preferencias")
+	public String viewPreferencias()
+	{
+		
+		return getView("preferencias");
+	}
+	
+	/**
+	 * Tela de dados do usuario
+	 */
+	@RequestMapping("meusDados")
+	public String viewDadosUsuario(HttpSession sessao,Model model)
+	{
+		List<Estilo> estilos = new ArrayList<Estilo>();
+		List<Idioma> idiomas = Arrays.asList(Idioma.values());
+//		idiomas.remove(Idioma.PORTUGUES_BR);
+		model.addAttribute("estilos", estilos);
+		model.addAttribute("idiomas", idiomas);
+		return getView("dadosUsuario");
 	}
 	
 	/**

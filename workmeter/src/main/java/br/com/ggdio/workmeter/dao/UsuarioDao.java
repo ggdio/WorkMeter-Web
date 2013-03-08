@@ -43,28 +43,19 @@ public final class UsuarioDao extends MasterDao<Usuario>
 	{
 		try
 		{
-			begin();
 			String tabela = Usuario.class.getAnnotation(Entity.class).name();
 			if(!StringUtils.hasText(tabela))
 				tabela = "Usuario";
-			List<Usuario> resultado = super.hqlQuery("from "+tabela+" where login = '"+login+"' and senha = '"+senha+"'",1);
-			commit();
+			List<Usuario> resultado = super.hqlQuery("from "+tabela+" where email = '"+login+"' and senha = '"+senha+"'",1);
 			return resultado.get(0);
 		}
 		catch(EntityNotFoundException e)
 		{
-			rollback();
 			throw new EntityNotFoundException("Nenhum usuario foi encontrado com o login='"+login+"' e senha(criptografada)='"+senha+"'");
-			
 		}
 		catch(Exception e)
 		{
-			rollback();
 			throw new DaoException("Um erro inesperado ocorreu ao buscar o usuario na base de dados", e);
-		}
-		finally
-		{
-			close();
 		}
 	}
 }

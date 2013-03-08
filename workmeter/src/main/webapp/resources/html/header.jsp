@@ -2,10 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:set var="estilo" value="cerulean"/>
+<c:set var="estilo" value="spacelab"/>
 
 <!-- URL's -->
 <c:url value="/" var="pathHome"/>
+<c:url value="/usuario/meusDados" var="pathMeusDados" />
 <c:url value="/usuario/login/sair" var="pathSair" />
 <c:url value="/webresources/jquery/JQuery.js" var="jquery"/>
 <c:url value="/webresources/twitter-bootstrap/js/bootstrap.js" var="bootstrap_js"/>
@@ -25,7 +26,7 @@
 	{
 		$('#btnDropdown').dropdown();
 		
-		$('#btnSair').click(function(event)
+		$('#btnLogout').click(function(event)
 		{
 			if(confirm('Deseja realmente sair ?'))
 			{
@@ -37,7 +38,7 @@
 
 <head>
 	<!-- ICONE -->
-	<title>WorkMeter</title>
+	<title>{Work}Meter</title>
 	
 	<!-- FAVICON -->
 	<link type="image/png" rel="icon" href="${favicon}">
@@ -57,7 +58,7 @@
     <div class="navbar navbar-fixed-top">
 	    <div class="navbar-inner">
 		    <div class="container pull-left">
-		    	<a class="brand" href="${pathHome}"><b>WorkMeter</b></a>
+		    	<a class="brand" href="${pathHome}"><b>{Work}Meter</b></a>
 	    	    <ul class="nav">
 				    <li><a href="${pathHome}"><i class="icon-home icon-white"></i><b>Home</b></a></li>
 			    	<li class="dropdown">
@@ -71,9 +72,21 @@
 			    </ul>
 		    </div>
 		    <c:if test="${not empty usuarioLogado}">
-		    	<a id="btnUsurio" href="#" class="btn pull-right">${usuarioLogado.nome}</a>
-		    	<a id="btnSair" href="#" class="btn pull-right">Sair</a>
-		    </c:if>
+		    	<div class="pull-right">
+			    	<ul class="nav">
+				    	<li class="dropdown">
+						    <a id="btnMenuUsuario" class="dropdown-toggle" data-toggle="dropdown" href="#"><b>${usuarioLogado.nome}</b><b class="caret"></b></a>
+						    <ul class="dropdown-menu">
+						    	<li><a href="${pathMeusDados}">Meus Dados</a></li>
+							    <li><a href="#sair" id="btnLogout">Logout</a></li>
+						    </ul>
+				   		</li>
+				    </ul>
+			    </div>
+		    	<script>
+		    		$('#btnMenuUsuario').dropdown();
+		    	</script>
+		    </c:if>    
 	    </div>
     </div>
 

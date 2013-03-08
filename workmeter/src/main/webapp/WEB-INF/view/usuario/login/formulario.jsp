@@ -9,9 +9,9 @@
 <!-- Formulário -->
 <form id="formUsuario" action="${pathExecutaLogin}" method="post">
 	<fieldset>
-		<label for="nome"><b>Login</b></label>
-		<input class="${param.campoSpan}" type="text" id="txtNome" name="login" maxlength="100" placeholder="Seu login..."/>
-		<label for="nome"><b>Senha</b></label>
+		<label for="email"><b>Email</b></label>
+		<input class="${param.campoSpan}" type="text" id="txtEmail" name="email" maxlength="100" placeholder="Seu email(login)..."/>
+		<label for="senha"><b>Senha</b></label>
 		<input class="${param.campoSpan}" type="password" id="txtSenha" name="senha" maxlength="100" placeholder="Sua senha..."/>
 	</fieldset>
 	<div class="form-actions">
