@@ -1,9 +1,5 @@
 package br.com.ggdio.workmeter.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.ggdio.workmeter.http.SessionUtil;
-import br.com.ggdio.workmeter.model.Estilo;
-import br.com.ggdio.workmeter.model.Idioma;
 import br.com.ggdio.workmeter.model.Usuario;
 import br.com.ggdio.workmeter.model.util.UsuarioUtil;
 import br.com.ggdio.workmeter.service.UsuarioService;
@@ -49,8 +43,8 @@ public final class UsuarioController extends MasterController<Usuario>
 	/**
 	 * Altera um usuario
 	 */
-	@RequestMapping(value="salvar",method=RequestMethod.POST)
-	public void salvar(Usuario usuario)
+	@RequestMapping(value="atualizar",method=RequestMethod.POST)
+	public void atualizar(Usuario usuario)
 	{
 		super.alter(usuario);
 	}
@@ -100,28 +94,14 @@ public final class UsuarioController extends MasterController<Usuario>
 		return getView("login/acesso");
 	}
 	
-	/**
-	 * Formulario de preferencias
-	 */
-	@RequestMapping("preferencias")
-	public String viewPreferencias()
-	{
-		
-		return getView("preferencias");
-	}
 	
 	/**
 	 * Tela de dados do usuario
 	 */
-	@RequestMapping("meusDados")
+	@RequestMapping("dados")
 	public String viewDadosUsuario(HttpSession sessao,Model model)
 	{
-		List<Estilo> estilos = new ArrayList<Estilo>();
-		List<Idioma> idiomas = Arrays.asList(Idioma.values());
-//		idiomas.remove(Idioma.PORTUGUES_BR);
-		model.addAttribute("estilos", estilos);
-		model.addAttribute("idiomas", idiomas);
-		return getView("dadosUsuario");
+		return getView("dados");
 	}
 	
 	/**

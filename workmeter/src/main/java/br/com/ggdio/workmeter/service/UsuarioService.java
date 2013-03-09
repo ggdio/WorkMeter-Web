@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ggdio.workmeter.dao.UsuarioDao;
+import br.com.ggdio.workmeter.model.Idioma;
+import br.com.ggdio.workmeter.model.Preferencia;
 import br.com.ggdio.workmeter.model.Usuario;
 import br.com.sourcesphere.core.seguranca.Criptografia;
 import br.com.sourcesphere.core.seguranca.TipoAlgoritmo;
@@ -43,6 +45,13 @@ public final class UsuarioService extends MasterService<Usuario>
 	{
 		//Criptografa a senha do usuario
 		criptografarSenha(entity);
+		
+		//Adiciona as preferencias default
+		Preferencia preferencia = new Preferencia();
+		preferencia.setIdioma(Idioma.PORTUGUES_BR);
+		entity.setPreferencia(preferencia);
+		entity.setAtivo(true);
+		
 		super.add(entity);
 	}
 	

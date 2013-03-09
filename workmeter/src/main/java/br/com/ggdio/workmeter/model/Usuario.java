@@ -2,6 +2,7 @@ package br.com.ggdio.workmeter.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,16 +38,13 @@ public final class Usuario
 	private String empresa;
 	@OneToMany
 	private List<Hora> horas;
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private Preferencia preferencia;
 	private Boolean ativo;
 	
 	public Usuario() 
 	{
-		Preferencia preferencia = new Preferencia();
-		preferencia.setIdioma(Idioma.PORTUGUES_BR);
-		setPreferencia(preferencia);
-		setAtivo(true);
+		
 	}
 	
 	public Usuario(String login,String senha)
@@ -67,7 +65,6 @@ public final class Usuario
 	}
 	public void setId(Long id) 
 	{
-		assertion.notNull(id);
 		this.id = id;
 	}
 	public String getEmail() 
@@ -103,15 +100,16 @@ public final class Usuario
 	}
 	public void setNascimento(DateTime nascimento) 
 	{
+		assertion.notNull(nascimento);
 		this.nascimento = nascimento;
 	}
 	public String getEmpresa() 
 	{
-		assertion.notEmpty(empresa);
 		return empresa;
 	}
 	public void setEmpresa(String empresa) 
 	{
+		assertion.notEmpty(empresa);
 		this.empresa = empresa;
 	}
 	public List<Hora> getHoras() 
@@ -120,7 +118,6 @@ public final class Usuario
 	}
 	public void setHoras(List<Hora> horas) 
 	{
-		assertion.noNullElements(horas.toArray());
 		this.horas = horas;
 	}
 	public Preferencia getPreferencia() 

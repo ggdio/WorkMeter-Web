@@ -2,10 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://sourcesphere.com.br/jsp/tags/style-bootstrap/sc" prefix="sc" %>
-<c:set value="/usuario/preferencias" var="pathFormularioPreferencias"/>
+
+<c:set value="/preferencias/formulario" var="pathFormularioPreferencias"/>
 
 <jsp:include page="/resources/html/header.jsp"/>
-
 <br/>
 <br/>
 <div class="container-fluid">

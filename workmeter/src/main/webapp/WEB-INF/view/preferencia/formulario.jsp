@@ -4,21 +4,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://sourcesphere.com.br/jsp/tags/style-bootstrap/sc" prefix="sc" %>
 
-<c:url value="/usuario/salvar" var="pathSalvar"/>
-
-<form id="formPreferencia" action="${pathSalvar}" method="post">
+<c:url value="/preferencias/atualizar" var="pathAtualizarPreferencias"/>
+<script>alert("${preferencia.idioma}");</script>
+<form id="formPreferencia" action="${pathAtualizarPreferencias}" method="post">
 	<fieldset>
 	
-		<input type="hidden" value="${usuarioLogado.id}"/>
+		<input type="hidden" id="txtId" name="id" value="${preferencia.id}"/><br/>
 		
 		<label for="estilo"><b>Estilo das Paginas</b></label>
-		<sc:combobox identificador="cbEstilo" name="estilo" dados="${estilos}" converter="${estiloConverter}" /><br/>
+		<sc:combobox identificador="cbEstilo" name="estilo" dados="${estilos}" converter="${estiloConverter}" selecionado="${preferencia.estilo.descricao}"/><br/>
 		
 		<label for="idioma"><b>Idioma</b></label>
 		<select id="cbIdioma" class="combobox" name="idioma">
-<%-- 			<option selected="selected">${usuarioLogado.preferencia.idioma}</option> --%>
+			<option selected="selected">${preferencia.idioma}</option>
 			<c:forEach items="${idiomas}" var="idioma" varStatus="index">
-				<option>${idioma}</option>
+				<c:if test="${idioma != preferencia.idioma}">
+					<option>${idioma}</option>
+				</c:if>
 			</c:forEach>
 		</select>
 		

@@ -2,11 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:set var="estilo" value="spacelab"/>
+<c:set var="estilo" value="slate"/>
 
 <!-- URL's -->
 <c:url value="/" var="pathHome"/>
-<c:url value="/usuario/meusDados" var="pathMeusDados" />
+<c:url value="/usuario/dados" var="pathDados" />
 <c:url value="/usuario/login/sair" var="pathSair" />
 <c:url value="/webresources/jquery/JQuery.js" var="jquery"/>
 <c:url value="/webresources/twitter-bootstrap/js/bootstrap.js" var="bootstrap_js"/>
@@ -77,8 +77,8 @@
 				    	<li class="dropdown">
 						    <a id="btnMenuUsuario" class="dropdown-toggle" data-toggle="dropdown" href="#"><b>${usuarioLogado.nome}</b><b class="caret"></b></a>
 						    <ul class="dropdown-menu">
-						    	<li><a href="${pathMeusDados}">Meus Dados</a></li>
-							    <li><a href="#sair" id="btnLogout">Logout</a></li>
+						    	<li><a href="${pathDados}">Meus Dados</a></li>
+							    <li><a id="btnLogout" href="#sair">Logout</a></li>
 						    </ul>
 				   		</li>
 				    </ul>

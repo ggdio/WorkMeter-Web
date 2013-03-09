@@ -20,6 +20,12 @@ public class EstiloController extends MasterController<Estilo>
 		super(estiloService);
 	}
 	
+	@RequestMapping("formulario")
+	public String viewFormulario()
+	{
+		return getView("");
+	}
+	
 	@RequestMapping("listar")
 	public List<Estilo> listar()
 	{
