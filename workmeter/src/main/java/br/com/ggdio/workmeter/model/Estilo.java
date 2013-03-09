@@ -1,30 +1,31 @@
 package br.com.ggdio.workmeter.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.Where;
+
 @Entity
-@EntityListeners({})
+@Where(clause="ativo = 't'")
 public class Estilo 
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(unique=true)
 	private String descricao;
+	private String url;
+	private Boolean ativo;
 	
 	public Estilo() 
 	{
 	}
 	
-	public Estilo(String descricao)
+	public Estilo(String descricao,String url)
 	{
 		setDescricao(descricao);
+		setUrl(url);
 	}
 	
 	public Long getId()
@@ -42,5 +43,21 @@ public class Estilo
 	public void setDescricao(String descricao) 
 	{
 		this.descricao = descricao;
+	}
+	public String getUrl() 
+	{
+		return url;
+	}
+	public void setUrl(String url)
+	{
+		this.url = url;
+	}
+	public Boolean isAtivo()
+	{
+		return ativo;
+	}
+	public void setAtivo(Boolean ativo) 
+	{
+		this.ativo = ativo;
 	}
 }

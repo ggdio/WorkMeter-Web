@@ -17,11 +17,9 @@ import br.com.sourcesphere.core.web.generic.service.exception.ServiceException;
 
 @Service("usuarioService")
 public final class UsuarioService extends MasterService<Usuario>
-{
-	/**
-	 * Dao de Usuario
-	 */
-	private UsuarioDao dao;
+{	
+	@Autowired
+	private EstiloService estiloService;
 	
 	/**
 	 * Tipo de algoritmo padrão para hash
@@ -37,7 +35,6 @@ public final class UsuarioService extends MasterService<Usuario>
 	public UsuarioService(UsuarioDao usuarioDao) 
 	{
 		super(usuarioDao);
-		this.dao = (UsuarioDao) super.getDao();
 	}
 	
 	@Override
@@ -48,6 +45,7 @@ public final class UsuarioService extends MasterService<Usuario>
 		
 		//Adiciona as preferencias default
 		Preferencia preferencia = new Preferencia();
+		preferencia.setEstilo(estiloService.getEstiloDefault());
 		preferencia.setIdioma(Idioma.PORTUGUES_BR);
 		entity.setPreferencia(preferencia);
 		entity.setAtivo(true);
@@ -64,6 +62,7 @@ public final class UsuarioService extends MasterService<Usuario>
 	 */
 	public Usuario buscaPorLoginESenha(String login,String senha)
 	{
+		UsuarioDao dao = (UsuarioDao) super.getDao();
 		try
 		{
 			//Criptografa a senha e faz a busca
