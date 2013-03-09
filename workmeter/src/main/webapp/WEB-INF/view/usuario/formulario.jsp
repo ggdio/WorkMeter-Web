@@ -13,7 +13,7 @@
 		<input class="span5" type="text" id="txtNome" name="nome" maxlength="100" placeholder="Nome Completo..."/><br/>
 		
 		<label for="nascimento"><b>Data de Nascimento</b></label>
-		<sc:dateField  identificador="txtNascimento"/><br/>
+		<sc:dateField nome="nascimento" identificador="txtNascimento"/><br/>
 		
 		<label for="empresa"><b>Empresa</b></label>
 		<input class="span5" type="text" id="txtEmpresa" name="empresa" maxlength="100" placeholder="Empresa em que trabalha..."/><br/>

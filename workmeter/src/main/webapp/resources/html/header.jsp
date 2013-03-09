@@ -7,7 +7,7 @@
 		<c:set var="estilo" value="${usuarioLogado.preferencia.estilo.url}"/>
 	</c:when>
 	<c:otherwise>
-		<c:set var="estilo" value="/webresources/twitter-bootstrap/css/bootstrap.css}"/>
+		<c:set var="estilo" value="/webresources/twitter-bootstrap/css/bootstrap-cerulean.css"/>
 	</c:otherwise>	
 </c:choose>
 
