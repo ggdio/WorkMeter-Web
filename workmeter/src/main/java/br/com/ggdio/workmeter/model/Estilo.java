@@ -2,11 +2,13 @@ package br.com.ggdio.workmeter.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@EntityListeners({})
 public class Estilo 
 {
 	@Id
@@ -15,6 +17,15 @@ public class Estilo
 	
 	@Column(unique=true)
 	private String descricao;
+	
+	public Estilo() 
+	{
+	}
+	
+	public Estilo(String descricao)
+	{
+		setDescricao(descricao);
+	}
 	
 	public Long getId()
 	{

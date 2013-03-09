@@ -5,7 +5,7 @@
 <%@ taglib uri="http://sourcesphere.com.br/jsp/tags/style-bootstrap/sc" prefix="sc" %>
 
 <c:url value="/preferencias/atualizar" var="pathAtualizarPreferencias"/>
-<script>alert("${preferencia.idioma}");</script>
+
 <form id="formPreferencia" action="${pathAtualizarPreferencias}" method="post">
 	<fieldset>
 	
