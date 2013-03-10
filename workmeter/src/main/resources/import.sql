@@ -1,4 +1,4 @@
-INSERT INTO estilo(descricao,url,ativo) VALUES('Twitter Bootstrap','/webresources/twitter-bootstrap/css/bootstrap.css',true);
+--INSERT INTO estilo(descricao,url,ativo) VALUES('Twitter Bootstrap','/webresources/twitter-bootstrap/css/bootstrap.css',true);
 INSERT INTO estilo(descricao,url,ativo) VALUES('Amelia','/webresources/twitter-bootstrap/css/bootstrap-amelia.css',true);
 INSERT INTO estilo(descricao,url,ativo) VALUES('Cerulean','/webresources/twitter-bootstrap/css/bootstrap-cerulean.css',true);
 INSERT INTO estilo(descricao,url,ativo) VALUES('Cyborg','/webresources/twitter-bootstrap/css/bootstrap-cyborg.css',true);
