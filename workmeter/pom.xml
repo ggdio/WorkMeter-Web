@@ -380,7 +380,7 @@
 		<repository>
 			<id>sourcesphere-nexus</id>
 			<name>Sourcesphere Nexus Repo</name>
-			<url>http://nexus.sourcesphere.com.br/content/groups/public/</url>
+			<url>https://nexus.sourcesphere.com.br/content/groups/public/</url>
 		</repository>
 		
 	</repositories>
