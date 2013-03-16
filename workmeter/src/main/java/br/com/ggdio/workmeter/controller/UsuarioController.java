@@ -117,7 +117,7 @@ public final class UsuarioController extends MasterController<Usuario>
 			return "redirect:/";
 		
 		UsuarioUtil usuarioUtil = new UsuarioUtil(usuario, (UsuarioService)super.getService());
-		String identificador = super.getGenericAttributeIdentifier();
+		String identificador = getGenericAttributeIdentifier();
 		
 		//Valida login/senha
 		if(!usuarioUtil.isUsuarioValido())
@@ -159,6 +159,12 @@ public final class UsuarioController extends MasterController<Usuario>
 	public String getPathBase() 
 	{
 		return "/usuario/";
+	}
+	
+	@Override
+	public String getGenericAttributeIdentifier() 
+	{
+		return "responseLogin";
 	}
 	
 	private Response<Object> montaResponse(String status,String message,Object informacao)

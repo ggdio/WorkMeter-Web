@@ -6,8 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.ggdio.workmeter.http.SessionUtil;
-import br.com.sourcesphere.core.web.generic.view.PathHandler;
-import br.com.sourcesphere.core.web.generic.view.ViewHandler;
 
 
 /**
@@ -17,7 +15,7 @@ import br.com.sourcesphere.core.web.generic.view.ViewHandler;
  */
 @Controller
 @RequestMapping("/")
-public class HomeController implements ViewHandler,PathHandler
+public class HomeController extends br.com.sourcesphere.core.web.generic.controller.Controller
 {
 	/**
 	 * Recupera a view index
@@ -65,5 +63,11 @@ public class HomeController implements ViewHandler,PathHandler
 	public String getPathBase() 
 	{
 		return "/";
+	}
+
+	@Override
+	public String getGenericAttributeIdentifier() 
+	{
+		return "homeControllerResponse";
 	}
 }

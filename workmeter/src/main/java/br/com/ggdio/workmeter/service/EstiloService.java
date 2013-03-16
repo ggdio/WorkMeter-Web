@@ -42,4 +42,28 @@ public class EstiloService extends MasterService<Estilo>
 			throw new ServiceException(e);
 		}
 	}
+	
+	public Estilo getEstiloPorDescricao(String descricao)
+	{
+		EstiloDao dao = (EstiloDao) super.getDao();
+		try
+		{
+			return dao.getEstiloPorDescricao(descricao);
+		}
+		catch(EntityNotFoundException e)
+		{
+			log.warn(e.getMessage(), e);
+			throw e;
+		}
+		catch(DaoException e)
+		{
+			log.error(e.getMessage(), e);
+			throw e;
+		}
+		catch(Exception e)
+		{
+			log.error(e.getMessage(), e);
+			throw new ServiceException(e);
+		}
+	}
 }

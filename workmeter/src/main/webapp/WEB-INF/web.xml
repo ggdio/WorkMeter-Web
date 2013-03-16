@@ -6,8 +6,18 @@
 	<display-name>WorkMeter</display-name>
 	
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>/</welcome-file>
 	</welcome-file-list>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/view/error/404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>405</error-code>
+		<location>/WEB-INF/view/error/405.jsp</location>
+	</error-page>
 	
 	<!-- i18n -->
 	<context-param>

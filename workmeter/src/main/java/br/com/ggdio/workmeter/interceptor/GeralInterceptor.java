@@ -25,7 +25,7 @@ public class GeralInterceptor extends HandlerInterceptorAdapter
 		
 		//Carrega os atributos
 		Attribute usuarioLogado = new Attribute(ConstantesAtributos.USUARIO_REQUEST, usuario);
-		Attribute idiomas = new Attribute(ConstantesAtributos.IDIOMAS, Arrays.asList(Idioma.values()));
+		Attribute idiomas = new Attribute(ConstantesAtributos.IDIOMAS_REQUEST, Arrays.asList(Idioma.values()));
 		
 		
 		//Adiciona o usuario no request, e os idiomas necessarios

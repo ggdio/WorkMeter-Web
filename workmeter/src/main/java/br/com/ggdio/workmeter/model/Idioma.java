@@ -18,6 +18,14 @@ public enum Idioma
 	private final String bundle;
 	private final String pais;
 	
+	public static Idioma getValorDe(String valor)
+	{
+		Idioma idioma = Idioma.valueOf(valor);
+		if(idioma == null)
+			idioma = Idioma.PORTUGUES_BR;
+		return idioma;
+	}
+	
 	public String getBundle() 
 	{
 		return bundle;

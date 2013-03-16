@@ -27,19 +27,35 @@ public class EstiloDao extends MasterDao<Estilo>
 	{
 		try
 		{
+			return getEstiloPorDescricao("Cerulean");
+		}
+		catch(EntityNotFoundException e)
+		{
+			throw new EntityNotFoundException("O estilo default 'Cerulean' nao foi encontrado na base, provavelmente nao foi cadastrado corretamente");
+		}
+	}
+	
+	public Estilo getEstiloPorDescricao(String descricao)
+	{
+		try
+		{
 			String tabela = Estilo.class.getAnnotation(Entity.class).name();
 			if(!StringUtils.hasText(tabela))
 				tabela = "Estilo";
-			List<Estilo> resultado = super.hqlQuery("from "+tabela+" where descricao = 'Cerulean'",1);
+			List<Estilo> resultado = super.hqlQuery("from "+tabela+" where descricao = '"+descricao+"'",1);
 			return resultado.get(0);
 		}
 		catch(EntityNotFoundException e)
 		{
-			throw new EntityNotFoundException("Estilo default foi encontrado");
+			throw new EntityNotFoundException("Estilo "+descricao+" nao encontrado");
+		}
+		catch(DaoException e)
+		{
+			throw e;
 		}
 		catch(Exception e)
 		{
-			throw new DaoException("Um erro inesperado ocorreu ao buscar o estilo na base de dados", e);
+			throw new DaoException("Um erro inesperado ocorreu ao buscar o estilo "+descricao+" na base de dados", e);
 		}
 	}
 }

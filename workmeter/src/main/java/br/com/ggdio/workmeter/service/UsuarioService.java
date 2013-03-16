@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ggdio.workmeter.dao.UsuarioDao;
+import br.com.ggdio.workmeter.model.Estilo;
 import br.com.ggdio.workmeter.model.Idioma;
 import br.com.ggdio.workmeter.model.Preferencia;
 import br.com.ggdio.workmeter.model.Usuario;
@@ -45,7 +46,7 @@ public final class UsuarioService extends MasterService<Usuario>
 		
 		//Adiciona as preferencias default
 		Preferencia preferencia = new Preferencia();
-		preferencia.setEstilo(estiloService.getEstiloDefault());
+		preferencia.setEstilo(carregaEstiloInicial());
 		preferencia.setIdioma(Idioma.PORTUGUES_BR);
 		entity.setPreferencia(preferencia);
 		entity.setAtivo(true);
@@ -105,5 +106,17 @@ public final class UsuarioService extends MasterService<Usuario>
 		Criptografia.limpar();
 		
 		return criptografia;
+	}
+	
+	private Estilo carregaEstiloInicial()
+	{
+		try
+		{
+			return estiloService.getEstiloDefault();
+		}
+		catch(Exception e)
+		{
+			return new Estilo("[nulo]", "[nulo]");
+		}
 	}
 }

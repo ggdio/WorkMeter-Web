@@ -7,6 +7,8 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.Where;
 
+import br.com.sourcesphere.core.util.EqualsUtil;
+
 @Entity
 @Where(clause="ativo = 't'")
 public class Estilo 
@@ -59,5 +61,11 @@ public class Estilo
 	public void setAtivo(Boolean ativo) 
 	{
 		this.ativo = ativo;
+	}
+	
+	@Override
+	public boolean equals(Object obj) 
+	{
+		return new EqualsUtil(this).isEquals(obj);
 	}
 }

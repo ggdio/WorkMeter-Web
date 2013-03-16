@@ -25,9 +25,9 @@
 		<div class="span4 pull-left"></div>
 			<div class="span4 well">
 				<div class="span11">
-					<c:if test="${not empty responseUsuarioController}">
+					<c:if test="${not empty responseLogin}">
 						<div align="center">
-							<font color="red"><strong>${responseUsuarioController.message}</strong></font>
+							<font color="red"><strong>${responseLogin.message}</strong></font>
 						</div>
 					</c:if>
 					<jsp:include page="${pathFormulario}">

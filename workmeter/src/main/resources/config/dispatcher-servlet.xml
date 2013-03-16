@@ -27,6 +27,7 @@
 	
 	<mvc:interceptors>
 		<bean class="br.com.ggdio.workmeter.interceptor.GeralInterceptor"/>
+		<bean class="br.com.ggdio.workmeter.interceptor.LoginInterceptor"/>
 	</mvc:interceptors>
 	
 	<!-- Handler de Upload -->

@@ -3,6 +3,7 @@ package br.com.ggdio.workmeter.http;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import br.com.ggdio.workmeter.model.Preferencia;
 import br.com.ggdio.workmeter.model.Usuario;
 import br.com.ggdio.workmeter.session.exception.SessionException;
 
@@ -91,5 +92,12 @@ public class SessionUtil implements AttributeHandler
 		{
 			throw new SessionException("A sessao ja foi desalocada",e);
 		}
+	}
+	
+	public void sincronizarPreferencias(Preferencia preferencia)
+	{
+		Usuario usuario = getUsuario();
+		if(usuario != null)
+			usuario.setPreferencia(preferencia);
 	}
 }

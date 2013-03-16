@@ -2,25 +2,24 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:choose>
-	<c:when test="${not empty usuarioLogado }">
-		<c:set var="estilo" value="${usuarioLogado.preferencia.estilo.url}"/>
-	</c:when>
-	<c:otherwise>
-		<c:set var="estilo" value="/webresources/twitter-bootstrap/css/bootstrap-cerulean.css"/>
-	</c:otherwise>	
-</c:choose>
+<!-- Estilo do CSS -->
+<c:set var="estilo" value="/webresources/twitter-bootstrap/css/bootstrap-cerulean.css"/>
+<c:if test="${not empty usuarioLogado}">
+	<c:set var="estilo" value="${usuarioLogado.preferencia.estilo.url}"/>
+</c:if>
 
 <!-- Controllers -->
 <c:url value="/" var="pathHome"/>
 <c:url value="/usuario/dados" var="pathDados" />
 <c:url value="/usuario/login/sair" var="pathSair" />
+
 <!-- Resources Servlet -->
 <c:url value="/webresources/jquery/JQuery.js" var="jquery_js"/>
 <c:url value="/webresources/jquery/JQueryUI.js" var="jqueryui_js"/>
 <c:url value="/webresources/jquery/JQueryUI.css" var="jqueryui_css"/>
 <c:url value="/webresources/twitter-bootstrap/js/bootstrap.js" var="bootstrap_js"/>
 <c:url value="${estilo}" var="bootstrap_css" />
+
 <!-- Resources -->
 <c:url value="/resources/img/favicon.png" var="favicon"/>
 <c:url value="/resources/img/background.jpg" var="background"/>
