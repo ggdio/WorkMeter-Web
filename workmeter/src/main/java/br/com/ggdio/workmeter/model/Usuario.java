@@ -1,14 +1,11 @@
 package br.com.ggdio.workmeter.model;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
@@ -36,8 +33,6 @@ public final class Usuario
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private DateTime nascimento;
 	private String empresa;
-	@OneToMany
-	private List<Hora> horas;
 	@OneToOne(cascade=CascadeType.ALL)
 	private Preferencia preferencia;
 	private Boolean ativo;
@@ -111,14 +106,6 @@ public final class Usuario
 	{
 		assertion.notEmpty(empresa);
 		this.empresa = empresa;
-	}
-	public List<Hora> getHoras() 
-	{
-		return horas;
-	}
-	public void setHoras(List<Hora> horas) 
-	{
-		this.horas = horas;
 	}
 	public Preferencia getPreferencia() 
 	{

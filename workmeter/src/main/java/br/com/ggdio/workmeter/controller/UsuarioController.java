@@ -53,7 +53,7 @@ public final class UsuarioController extends MasterController<Usuario>
 	 * Remove um usuario
 	 */
 	@RequestMapping(value="remover",method=RequestMethod.POST)
-	public void deleta(Usuario usuario)
+	public void deletar(Usuario usuario)
 	{
 		super.delete(usuario);
 	}

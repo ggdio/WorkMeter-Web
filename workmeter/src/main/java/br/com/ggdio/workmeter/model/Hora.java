@@ -6,6 +6,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
@@ -14,7 +15,7 @@ import org.joda.time.DateTime;
 import br.com.sourcesphere.core.util.Assert;
 
 @Entity
-public final class Hora
+public final class Hora implements Comparable<Hora>
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -23,12 +24,26 @@ public final class Hora
 	private DateTime registro;
 	@Enumerated(EnumType.STRING)
 	private TipoHora tipo;
+	@OneToOne
+	private Usuario usuario;
 	
 	/**
 	 * Assert para segurança
 	 */
 	@Transient
 	private final Assert assertion = new Assert();
+	
+	public Hora() 
+	{
+		
+	}
+	
+	public Hora(DateTime registro,TipoHora tipo,Usuario usuario)
+	{
+		setRegistro(registro);
+		setTipo(tipo);
+		setUsuario(usuario);
+	}
 	
 	public Long getId() 
 	{
@@ -56,5 +71,19 @@ public final class Hora
 	{
 		assertion.notNull(tipo);
 		this.tipo = tipo;
+	}
+	public Usuario getUsuario()
+	{
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario)
+	{
+		this.usuario = usuario;
+	}
+	
+	@Override
+	public int compareTo(Hora outro)
+	{
+		return getRegistro().compareTo(outro.getRegistro());
 	}
 }
