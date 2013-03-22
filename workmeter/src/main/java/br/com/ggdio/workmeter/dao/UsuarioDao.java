@@ -1,7 +1,5 @@
 package br.com.ggdio.workmeter.dao;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 
 import org.hibernate.SessionFactory;

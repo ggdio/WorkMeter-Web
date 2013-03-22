@@ -22,10 +22,12 @@ public class Estilo
 	
 	public Estilo() 
 	{
+		setAtivo(true);
 	}
 	
 	public Estilo(String descricao,String url)
 	{
+		this();
 		setDescricao(descricao);
 		setUrl(url);
 	}

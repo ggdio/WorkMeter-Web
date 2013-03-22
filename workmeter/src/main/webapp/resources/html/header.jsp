@@ -40,6 +40,7 @@
 	
 	<!-- CSS -->
 	<link type="text/css" rel="stylesheet" href="${bootstrap_css}"/>
+	<link type="text/css" rel="stylesheet" href="${jqueryui_css}"/>
 	
 	<!-- METAS -->
 	<meta name="description" content="Calculo o tempo que gasta no trabalho, com pausa para diversos motivos. Extração de relatorios."/>

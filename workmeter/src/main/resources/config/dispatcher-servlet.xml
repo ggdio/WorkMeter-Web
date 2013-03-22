@@ -25,10 +25,14 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
+	<!-- Interceptors -->
 	<mvc:interceptors>
 		<bean class="br.com.ggdio.workmeter.interceptor.GeralInterceptor"/>
 		<bean class="br.com.ggdio.workmeter.interceptor.LoginInterceptor"/>
 	</mvc:interceptors>
+	
+	<!-- Bean de inicialização -->
+	<bean id="inicializador" init-method="init" class="br.com.ggdio.workmeter.init.Inicializador" lazy-init="false"/>
 	
 	<!-- Handler de Upload -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
