@@ -38,8 +38,8 @@ public final class HoraDao extends MasterDao<Hora>
 			String tblHora = Hora.class.getAnnotation(Entity.class).name();
 			String cmpUsuario = "usuario_id";
 			if(!StringUtils.hasText(tblHora))
-				cmpUsuario = "hora";
-			return super.hqlQuery("from "+tblHora+" where "+cmpUsuario+" = '"+usuario.getId()+"' order by registro desc", 1).get(0);
+				tblHora = "Hora";
+			return super.hqlQuery("from "+tblHora+" where "+cmpUsuario+" = "+usuario.getId()+" order by registro desc", 1).get(0);
 		}
 		catch(EntityNotFoundException e)
 		{

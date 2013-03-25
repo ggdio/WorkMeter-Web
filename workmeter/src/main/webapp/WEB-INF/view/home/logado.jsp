@@ -13,18 +13,20 @@
 	<div class="row-fluid">
 		<div class="span3 pull-left"></div>
 		<div class="span6">
-			<sc:label texto="{Work}Meter" tipo="label-success" align="center" fontSize="x-large"/>
+			<sc:label texto="Painel Geral" tipo="label-success" align="center" fontSize="x-large"/>
 		</div>
 		<div class="span3 pull-right"></div>
 	</div>
 	<br/>
 	<br/>
 	
-	<!-- FORMULARIO DE LOGIN -->
 	<div class="row-fluid">
-		<div class="span4 pull-right" align="center">Minhas Horas</div>
-		<div class="span4" align="center"><a href="${pathInicioHora}" class="btn btn-large btn-primary">Dia de Trabalho</a></div>
-		<div class="span4 pull-left" align="center">Descrições</div>
+		<div class="well">
+			<div class="span4 pull-right" align="center"><a href="#" class="btn btn-large btn-primary">Relatórios</a></div>
+			<div class="span4" align="center"><a href="${pathInicioHora}" class="btn btn-large btn-primary">Gerenciador de Horas</a></div>
+			<div class="span4 pull-left" align="center"><a href="#" class="btn btn-large btn-primary">Calculos</a></div>
+			<br/>
+		</div>
 	</div>
 
 </div>

@@ -30,7 +30,7 @@ public final class HoraController extends MasterController<Hora>
 	@RequestMapping("")
 	public String viewInicio()
 	{
-		return getView("conteudo");
+		return getView("gerenciador");
 	}
 	
 	@RequestMapping("conteudo")
@@ -62,7 +62,7 @@ public final class HoraController extends MasterController<Hora>
 		return getView(view);
 	}
 	
-	@RequestMapping("iniciarDia")
+	@RequestMapping("iniciar")
 	public String iniciarDia(HttpSession sessao)
 	{
 		HoraService horaService = (HoraService) super.getService();

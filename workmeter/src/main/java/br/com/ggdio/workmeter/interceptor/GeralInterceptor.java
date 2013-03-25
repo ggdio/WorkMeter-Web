@@ -1,6 +1,7 @@
 package br.com.ggdio.workmeter.interceptor;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,11 +27,12 @@ public class GeralInterceptor extends HandlerInterceptorAdapter
 		//Carrega os atributos
 		Attribute usuarioLogado = new Attribute(ConstantesAtributos.USUARIO_REQUEST, usuario);
 		Attribute idiomas = new Attribute(ConstantesAtributos.IDIOMAS_REQUEST, Arrays.asList(Idioma.values()));
-		
+		Attribute data = new Attribute(ConstantesAtributos.DATA_ATUAL_REQUEST, new Date());
 		
 		//Adiciona o usuario no request, e os idiomas necessarios
 		reqUtil.addAttribute(usuarioLogado);
 		reqUtil.addAttribute(idiomas);
+		reqUtil.addAttribute(data);
 		
 		//Continua
 		super.postHandle(request, response, handler, modelAndView);

@@ -33,6 +33,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter
 		restritos.add("/estilo/adicionar/");
 		
 		//Controller de Hora
+		restritos.add("/hora/");
+		restritos.add("/hora/iniciar/");
 		restritos.add("/hora/declarar/");
 		restritos.add("/hora/descrever/");
 		restritos.add("/hora/atualizar/");

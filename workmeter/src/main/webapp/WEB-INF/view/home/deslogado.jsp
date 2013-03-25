@@ -29,7 +29,7 @@
 	</jsp:attribute>
 </sc:popup>
 
-<!-- Formulario de Cadstro -->
+<!-- Formulario de Cadastro -->
 <sc:popup identificador="popupCriarConta" component="btnPopupDetalhes" imagem="${icon}" titulo="Criar Conta" retornar="retornar">
 	<jsp:attribute name="texto">
 		<c:import url="/usuario/formulario"/>

@@ -15,7 +15,7 @@
 
 <!-- Resources Servlet -->
 <c:url value="/webresources/jquery/JQuery.js" var="jquery_js"/>
-<c:url value="/webresources/jquery/JQueryUI.js" var="jqueryui_js"/>
+<c:url value="/webresources/jquery/JQueryMask.js" var="jquerymask_js"/>
 <c:url value="/webresources/jquery/JQueryUI.css" var="jqueryui_css"/>
 <c:url value="/webresources/twitter-bootstrap/js/bootstrap.js" var="bootstrap_js"/>
 <c:url value="${estilo}" var="bootstrap_css" />
@@ -23,6 +23,7 @@
 <!-- Resources -->
 <c:url value="/resources/img/favicon.png" var="favicon"/>
 <c:url value="/resources/img/background.jpg" var="background"/>
+<c:url value="/resources/css/main.css" var="main_css"/>
 
 <html>
 
@@ -35,12 +36,13 @@
 	
 	<!-- JS -->
 	<script type="text/javascript" src="${jquery_js}"></script>
-	<script type="text/javascript" src="${jqueryui_js}"></script>
+	<script type="text/javascript" src="${jquerymask_js}"></script>
 	<script type="text/javascript" src="${bootstrap_js}"></script>
 	
 	<!-- CSS -->
-	<link type="text/css" rel="stylesheet" href="${bootstrap_css}"/>
 	<link type="text/css" rel="stylesheet" href="${jqueryui_css}"/>
+	<link type="text/css" rel="stylesheet" href="${bootstrap_css}"/>
+	<link type="text/css" rel="stylesheet" href="${main_css}"/>
 	
 	<!-- METAS -->
 	<meta name="description" content="Calculo o tempo que gasta no trabalho, com pausa para diversos motivos. Extração de relatorios."/>
