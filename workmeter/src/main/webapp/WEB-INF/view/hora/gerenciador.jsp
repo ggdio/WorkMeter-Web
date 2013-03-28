@@ -16,6 +16,12 @@
 		<!-- ESQUERDA -->
 		<div class="span3" style="min-height: 100%;position: relative;height: 100%;bottom: auto;">
 			<div class="row">
+				<div class="span12">
+				</div>
+				<br/>
+				<br/>
+			</div>
+			<div class="row">
 				<div class="span12 well-silver">
 					<sc:label tipo="label-transparent" texto="Informações de Hora" fontSize="medium"/>
 					<br/>
@@ -39,21 +45,25 @@
 			<div class="row">
 				<div class="span12">
 					<sc:label tipo="label-info" texto="Gerenciador de Hora" align="center" fontSize="x-large"/>
-					<br/>
-					<br/>
 				</div>
+				<br/>
+				<br/>
 			</div>
 			<div class="row">
-				<div class="span12">
-					<div class="well-silver">
-						<jsp:include page="${pathConteudo}"/>
-					</div>
+				<div class="span12 well-silver">
+					<jsp:include page="${pathConteudo}"/>
 				</div>
 			</div>
 		</div>
 		
 		<!-- DIREITA -->
 		<div class="span3">
+			<div class="row">
+				<div class="span12">
+				</div>
+				<br/>
+				<br/>
+			</div>
 			<div class="row">
 				<div class="span12 well-silver">
 					<sc:label tipo="label-transparent" texto="Informações Gerais" fontSize="medium"/><br/>

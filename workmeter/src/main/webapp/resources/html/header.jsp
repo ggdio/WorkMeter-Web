@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!-- Estilo do CSS -->
-<c:set var="estilo" value="/webresources/twitter-bootstrap/css/bootstrap-cerulean.css"/>
+<c:set var="estilo" value="/resources/css/default.css"/>
 <c:if test="${not empty usuarioLogado}">
 	<c:set var="estilo" value="${usuarioLogado.preferencia.estilo.url}"/>
 </c:if>
@@ -12,6 +12,7 @@
 <c:url value="/" var="pathHome"/>
 <c:url value="/usuario/dados" var="pathDados" />
 <c:url value="/usuario/login/sair" var="pathSair" />
+<c:url value="/hora/" var="pathGerenciadorHora"/>
 
 <!-- Resources Servlet -->
 <c:url value="/webresources/jquery/JQuery.js" var="jquery_js"/>
@@ -21,9 +22,12 @@
 <c:url value="${estilo}" var="bootstrap_css" />
 
 <!-- Resources -->
+<c:set value="/resources/html/menuUsuario.jsp" var="menuUsuario"/>
 <c:url value="/resources/img/favicon.png" var="favicon"/>
 <c:url value="/resources/img/background.jpg" var="background"/>
 <c:url value="/resources/css/main.css" var="main_css"/>
+<c:url value="/resources/js/main.js" var="main_js"/>
+<c:url value="/resources/js/jquery-validate.js" var="jqueryvalidate_js"/>
 
 <html>
 
@@ -37,7 +41,9 @@
 	<!-- JS -->
 	<script type="text/javascript" src="${jquery_js}"></script>
 	<script type="text/javascript" src="${jquerymask_js}"></script>
+	<script type="text/javascript" src="${jqueryvalidate_js}"></script>
 	<script type="text/javascript" src="${bootstrap_js}"></script>
+	<script type="text/javascript" src="${main_js}"></script>
 	
 	<!-- CSS -->
 	<link type="text/css" rel="stylesheet" href="${jqueryui_css}"/>
@@ -78,32 +84,18 @@
 			    	<li class="dropdown">
 					    <a id="btnDropdown" class="dropdown-toggle" data-toggle="dropdown" href="#"><b>Menu</b><b class="caret"></b></a>
 					    <ul class="dropdown-menu">
-						    <li><a href="#itemA">Item A</a></li>
-						    <li><a href="#itemB">Item B</a></li>
-						    <li><a href="#itemC">Item C</a></li>
+						    <li><a href="${pathGerenciadorHora}">Gerenciador de Horas</a></li>
+						    <li><a href="#relatorios">Relatórios</a></li>
+						    <li><a href="#calculos">Cálculos</a></li>
 					    </ul>
 				    </li>
 			    </ul>
 		    </div>
 		    <c:if test="${not empty usuarioLogado}">
-		    	<div class="pull-right">
-			    	<ul class="nav">
-				    	<li class="dropdown">
-						    <a id="btnMenuUsuario" class="dropdown-toggle" data-toggle="dropdown" href="#"><b>${usuarioLogado.nome}</b><b class="caret"></b></a>
-						    <ul class="dropdown-menu">
-						    	<li><a href="${pathDados}">Meus Dados</a></li>
-							    <li><a id="btnLogout" href="#sair">Logout</a></li>
-						    </ul>
-				   		</li>
-				    </ul>
-			    </div>
-		    	<script>
-		    		$('#btnMenuUsuario').dropdown();
-		    	</script>
+		    	<jsp:include page="${menuUsuario}"/>
 		    </c:if>    
 	    </div>
     </div>
-
-	<br/>
-	<br/>
-	<br/>
+    <br/>
+    <br/>
+    <br/>

@@ -116,7 +116,7 @@ public final class UsuarioService extends MasterService<Usuario>
 		}
 		catch(Exception e)
 		{
-			return new Estilo("[nulo]", "[nulo]");
+			return null;
 		}
 	}
 }

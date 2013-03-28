@@ -26,8 +26,8 @@
 			<div class="span4 well">
 				<div class="span11">
 					<c:if test="${not empty responseLogin}">
-						<div align="center">
-							<font color="red"><strong>${responseLogin.message}</strong></font>
+						<div class="mensagem-erro" align="center">
+							${responseLogin.message}
 						</div>
 					</c:if>
 					<jsp:include page="${pathFormulario}">

@@ -4,7 +4,7 @@
 <%@ taglib uri="http://sourcesphere.com.br/jsp/tags/style-bootstrap/sc" prefix="sc" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:url value="/hora/" var="pathInicioHora"/>
+<c:url value="/hora/" var="pathGerenciadorHora"/>
 
 <br/>
 <br/>
@@ -23,7 +23,7 @@
 	<div class="row-fluid">
 		<div class="well">
 			<div class="span4 pull-right" align="center"><a href="#" class="btn btn-large btn-primary">Relatórios</a></div>
-			<div class="span4" align="center"><a href="${pathInicioHora}" class="btn btn-large btn-primary">Gerenciador de Horas</a></div>
+			<div class="span4" align="center"><a href="${pathGerenciadorHora}" class="btn btn-large btn-primary">Gerenciador de Horas</a></div>
 			<div class="span4 pull-left" align="center"><a href="#" class="btn btn-large btn-primary">Calculos</a></div>
 			<br/>
 		</div>

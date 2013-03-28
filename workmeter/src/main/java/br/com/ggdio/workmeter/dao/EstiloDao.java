@@ -27,11 +27,11 @@ public class EstiloDao extends MasterDao<Estilo>
 	{
 		try
 		{
-			return getEstiloPorDescricao("Cerulean");
+			return getEstiloPorDescricao("Default");
 		}
 		catch(EntityNotFoundException e)
 		{
-			throw new EntityNotFoundException("O estilo default 'Cerulean' nao foi encontrado na base, provavelmente nao foi cadastrado corretamente");
+			throw new EntityNotFoundException("O estilo default nao foi encontrado na base, provavelmente nao foi cadastrado corretamente");
 		}
 	}
 	

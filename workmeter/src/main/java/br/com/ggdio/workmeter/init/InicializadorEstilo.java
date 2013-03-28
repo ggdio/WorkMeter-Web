@@ -20,8 +20,8 @@ public class InicializadorEstilo
 	@SuppressWarnings("serial")
 	private static final List<Estilo> estilos = new ArrayList<Estilo>()
 	{{
+		add(new Estilo("Default","/webresources/twitter-bootstrap/css/bootstrap-cerulean.css"));
 		add(new Estilo("Amelia","/webresources/twitter-bootstrap/css/bootstrap-amelia.css"));
-		add(new Estilo("Cerulean","/webresources/twitter-bootstrap/css/bootstrap-cerulean.css"));
 		add(new Estilo("Cyborg","/webresources/twitter-bootstrap/css/bootstrap-cyborg.css"));
 		add(new Estilo("Readable","/webresources/twitter-bootstrap/css/bootstrap-readable.css"));
 		add(new Estilo("Responsive","/webresources/twitter-bootstrap/css/bootstrap-responsive.css"));
@@ -37,7 +37,7 @@ public class InicializadorEstilo
 	{
 		if(isEstilosSalvos(dao))
 		{
-			log.info("InicializadorEstilos: O sistema já possuí os estilos default cadastrados");
+			log.info("InicializadorEstilos: O sistema jï¿½ possuï¿½ os estilos default cadastrados");
 			return;
 		}
 		
@@ -48,9 +48,9 @@ public class InicializadorEstilo
 		}
 		catch(Exception e)
 		{
-			throw new InicializadorEstiloException("Não foi possivel inicializar os estilos default do sistema: "+e.getMessage());
+			throw new InicializadorEstiloException("Nï¿½o foi possivel inicializar os estilos default do sistema: "+e.getMessage());
 		}
-		log.info("InicializadorEstilos: Inicialização dos estilos default concluída com sucesso");
+		log.info("InicializadorEstilos: Inicializaï¿½ï¿½o dos estilos default concluï¿½da com sucesso");
 	}
 	
 	private static Boolean isEstilosSalvos(EstiloDao dao)

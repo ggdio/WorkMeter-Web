@@ -1,5 +1,10 @@
 @CHARSET "ISO-8859-1";
 
+.centralizado{
+    margin-left:auto;
+	margin-right:auto;
+}
+
 .well-yellow {
   min-height: 20px;
   padding: 19px;
@@ -135,22 +140,37 @@
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
-.label-navy,
-.badge-info {
+.mensagem-erro{
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
+.label-navy{
   background-color: navy;
+  color: white;
 }
 
-.label-navy,
-.badge-info {
+.label-teal{
   background-color: teal;
+  color: white;
 }
 
-.label-navy,
-.badge-info {
+.label-silver{
   background-color: silver;
 }
 
-.label-transparent,
-.badge-info {
+.label-transparent{
   background-color: transparent;
+}
+
+.label-green{
+	background-color: #669533;
+	color: white;
+}
+
+.alert-teste {
+  background-color: #edebe1;
+  border-color: #e0d9cb;
+  color: #817b58;
 }

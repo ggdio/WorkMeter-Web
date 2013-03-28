@@ -68,6 +68,15 @@ public final class UsuarioController extends MasterController<Usuario>
 	}
 	
 	/**
+	 * Popup com Formulario de cadastro de usuario
+	 */
+	@RequestMapping("popup-formulario")
+	public String viewPopupFormularioCadastro()
+	{
+		return getView("popupFormulario");
+	}
+	
+	/**
 	 * Tela de cadastro de usuario
 	 */
 	@RequestMapping("cadastro")
@@ -83,6 +92,15 @@ public final class UsuarioController extends MasterController<Usuario>
 	public String viewFormularioAcesso()
 	{
 		return getView("login/formulario");
+	}
+	
+	/**
+	 * Popup com Formulario de acesso ao sistema
+	 */
+	@RequestMapping("login/popup-formulario")
+	public String viewPopupFormularioAcesso()
+	{
+		return getView("login/popupFormulario");
 	}
 	
 	/**

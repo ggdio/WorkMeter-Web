@@ -5,25 +5,38 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://sourcesphere.com.br/jsp/tags/style-bootstrap/sc" prefix="sc" %>
 <c:url value="/usuario/criar" var="pathCriar"/>
-
-<form id="formUsuario" class="well" action="${pathCriar}" method="post">
+<sc:alert titulo="Atenção" texto="" identificador="alertErro" hidden="hidden" tipo="alert-danger"/>
+<form id="formUsuario" action="${pathCriar}" method="post" class="form-inline">
 	<fieldset>
-	
-		<label for="nome"><b>Nome</b></label>
-		<input class="span5" type="text" id="txtNome" name="nome" maxlength="100" placeholder="Nome Completo..."/><br/>
+		<p>
+			<label for="nome"><b>Nome</b></label>
+			<input class="${param.campoSpan}" type="text" id="txtNome" name="nome" maxlength="100" placeholder="Nome Completo..."/>
+		</p>
 		
-		<label for="nascimento"><b>Data de Nascimento</b></label>
-		<sc:dateField nome="nascimento" identificador="txtNascimento"/><br/>
+		<p>
+			<label for="nascimento"><b>Data de Nascimento</b></label>
+			<sc:dateField classe="${param.campoSpan}" nome="nascimento" identificador="txtNascimento"/>
+		</p>
 		
-		<label for="empresa"><b>Empresa</b></label>
-		<input class="span5" type="text" id="txtEmpresa" name="empresa" maxlength="100" placeholder="Empresa em que trabalha..."/><br/>
+		<p>
+			<label for="empresa"><b>Empresa</b></label>
+			<input class="${param.campoSpan}" type="text" id="txtEmpresa" name="empresa" maxlength="100" placeholder="Empresa em que trabalha..."/>
+		</p>
 		
-		<label for="email"><b>Email</b></label>
-		<input class="span4" type="text" id="txtEmail" name="email" maxlength="100" placeholder="meu_email@exemplo.com.br..."/><br/>
+		<p>
+			<label for="email"><b>Email</b></label>
+			<input class="${param.campoSpan}" type="text" id="txtEmail" name="email" maxlength="100" placeholder="meu_email@exemplo.com.br..."/>
+		</p>
 		
-		<label for="senha"><b>Senha</b></label>
-		<input class="span4" type="password" id="txtSenha" name="senha" maxlength="20" placeholder="Senha..."/>
+		<p>
+			<label for="senha"><b>Senha</b></label>
+			<input class="${param.campoSpan}" type="password" id="txtSenha" name="senha" maxlength="20" placeholder="Senha..."/>
+		</p>
 		
+		<p>
+			<label for="confSenha"><b>Confirmação de Senha</b></label>
+			<input class="${param.campoSpan}" type="password" id="txtConfSenha" name="confSenha" maxlength="20" placeholder="Confirmação de Senha..."/>
+		</p>
 	</fieldset>
 	<div class="form-actions">
 		<button id="btnConcluir" type="submit" class="btn btn-primary btn-large">
@@ -33,3 +46,65 @@
 		<button type="reset" class="btn btn-warning btn-large">Limpar</button>
 	</div>
 </form>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#formUsuario').validate({
+			rules:{ 
+				nome:{ 
+					required: true,
+					minlength: 4
+				},
+				nascimento:{
+					required: true,
+					minlength: 10
+				},
+				email: {
+					required: true,
+					email: true
+				},
+				senha: {
+					required: true,
+					minlength: 10
+				},
+				confSenha:{
+					required: true,
+					equalTo: "#senha"
+				}
+			},
+			messages:{
+				nome:{ 
+					required: "O campo nome é obrigatorio.",
+					minlength: "O campo nome deve conter no mínimo 3 caracteres."
+				},
+				nascimento: {
+					required: "O campo data de nascimento é obrigatorio."
+				},
+				email: {
+					required: "O campo email é obrigatorio.",
+					email: "O campo email deve conter um email válido."
+				},
+				senha: {
+					required: "O campo senha é obrigatorio.",
+					
+				},
+				confSenha:{
+					required: "O campo confirmação de senha é obrigatorio.",
+					equalTo: "O campo confirmação de senha deve ser identico ao campo senha."
+				}
+			},
+			invalidHandler: function(form, validator) {
+			    var errors = validator.numberOfInvalids();
+			    if (errors) 
+			    {
+			    	elementoAlerta = getElemento("alertErro");
+			    	$('span', elementoAlerta).empty().remove();
+			    	elementoAlerta.append('<span>'+validator.errorList[0].message+'</span>');
+			    	elementoAlerta.show();
+			        validator.errorList[0].element.focus();
+			    }
+			},
+		    errorPlacement: function(error, element) {}
+		});
+	});
+</script>
