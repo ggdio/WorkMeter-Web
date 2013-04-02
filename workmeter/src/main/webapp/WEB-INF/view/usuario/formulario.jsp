@@ -97,10 +97,8 @@
 			    var errors = validator.numberOfInvalids();
 			    if (errors) 
 			    {
-			    	elementoAlerta = getElemento("alertErro");
-			    	$('span', elementoAlerta).empty().remove();
-			    	elementoAlerta.append('<span>'+validator.errorList[0].message+'</span>');
-			    	elementoAlerta.show();
+			    	trocarTextoInterno("alertErro", "span", "<span>"+validator.errorList[0].message+"</span>");
+			    	getElemento("alertErro").show();
 			        validator.errorList[0].element.focus();
 			    }
 			},

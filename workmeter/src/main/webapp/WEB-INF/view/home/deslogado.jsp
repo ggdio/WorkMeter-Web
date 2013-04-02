@@ -6,6 +6,7 @@
 <c:url value="/resources/img/icon.png" var="icon"/>
 <c:set value="/usuario/popup-formulario" var="popupFormularioCadastro"/>
 <c:set value="/usuario/login/popup-formulario" var="popupFormularioAcesso"/>
+<c:url value="/usuario/cadastro" var="pathCadastro"/>
 
 <!-- Introducao -->
 <div id="banner" class="container">
@@ -14,18 +15,13 @@
 	    <br/>
 	    <br/>
 	    <a id="btnPopupLogin" class="btn btn-primary btn-large span2">Login</a>
-	    <a id="btnPopupCadastro" class="btn btn-warning btn-large span5">Criar uma conta</a>
+	    <a id="btnPopupCadastro" class="btn btn-warning btn-large span5" href="${pathCadastro}">Criar uma conta</a>
     </div>
 </div>
 
 <!-- Formulario de Login -->
 <jsp:include page="${popupFormularioAcesso}">
 	<jsp:param name="botaoClique" value="btnPopupLogin"/>
-</jsp:include>
-
-<!-- Formulario de Cadastro -->
-<jsp:include page="${popupFormularioCadastro}">
-	<jsp:param name="botaoClique" value="btnPopupCadastro"/>
 </jsp:include>
 
 <script>
