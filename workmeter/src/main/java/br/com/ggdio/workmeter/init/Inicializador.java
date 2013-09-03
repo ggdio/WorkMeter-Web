@@ -31,7 +31,7 @@ public class Inicializador
 		}
 		catch(Exception e)
 		{
-			log.warn(e.getMessage());
+			log.warn("Ocorreu um problema durante a inicialização: "+e.getMessage());
 		}
 	}
 	

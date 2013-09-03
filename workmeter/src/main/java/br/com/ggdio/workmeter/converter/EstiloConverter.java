@@ -22,7 +22,6 @@ public class EstiloConverter implements Converter<Estilo, String>
 		return estilo;
 	}
 	
-	@Override
 	public Serializable getValue(Estilo objeto) 
 	{
 		return objeto.getId().longValue();

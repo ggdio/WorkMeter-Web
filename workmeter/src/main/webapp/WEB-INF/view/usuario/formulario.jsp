@@ -69,7 +69,7 @@
 				},
 				confSenha:{
 					required: true,
-					equalTo: "#senha"
+					equalTo: "#txtSenha"
 				}
 			},
 			messages:{

@@ -20,8 +20,7 @@ public class IdiomaConverter implements Converter<Idioma, String>
 	{
 		return EnumType.valueOf(Idioma.class, objeto);
 	}
-	
-	@Override
+
 	public Serializable getValue(Idioma objeto) 
 	{
 		return convertTo(objeto);

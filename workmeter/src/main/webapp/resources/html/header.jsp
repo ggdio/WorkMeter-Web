@@ -10,7 +10,6 @@
 
 <!-- Controllers -->
 <c:url value="/" var="pathHome"/>
-<c:url value="/usuario/dados" var="pathDados" />
 <c:url value="/usuario/login/sair" var="pathSair" />
 <c:url value="/hora/" var="pathGerenciadorHora"/>
 
