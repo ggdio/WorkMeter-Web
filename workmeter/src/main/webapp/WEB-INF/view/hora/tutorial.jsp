@@ -10,9 +10,9 @@
 	<jsp:attribute name="texto">
 		<div class="well" id="inicial" align="left">
 	 		<p>Bem vindo ao módulo de gerenciamento de horas !</p>
-	 		<p>Identificamos que você está utilizando o sistema pela primeira vez, portante isso iremos lhe apresentar um pequeno tutorial
-	 		   onde você aprenderá como acompanhar suas horas de trabalho no dia-a-dia.</p>
-	 		<p>Para iniciar, clique em Voltar ou Pressione ESC...</p>
+	 		<p>Identificamos que você está utilizando o sistema pela primeira vez, portanto iremos lhe apresentar um pequeno tutorial
+	 		   sobre como acompanhar suas horas de trabalho no dia-a-dia.</p>
+	 		<p>Para iniciar, feche este popup ou pressione ESC...</p>
 	 	</div>
 	</jsp:attribute>
 </sc:popup>
@@ -32,8 +32,9 @@ $(document).ready(function()
 
 function init()
 {
+	//Força o popup a ser apresentado no início
 	getElemento('hiddenInicio').click();
-	getElemento('btnVoltar_popupInicial').hide();
+	getElemento('btnVoltar_popupTutorial').hide();
 }
 </script>
 

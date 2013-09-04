@@ -9,6 +9,7 @@ import br.com.ggdio.workmeter.dao.HoraDao;
 import br.com.ggdio.workmeter.model.Hora;
 import br.com.ggdio.workmeter.model.TipoHora;
 import br.com.ggdio.workmeter.model.Usuario;
+import br.com.ggdio.workmeter.service.strategy.ValidadorHora;
 import br.com.sourcesphere.core.web.generic.dao.exception.DaoException;
 import br.com.sourcesphere.core.web.generic.dao.exception.EntityAlreadyExistException;
 import br.com.sourcesphere.core.web.generic.dao.exception.EntityNotFoundException;
@@ -48,7 +49,7 @@ public final class HoraService extends MasterService<Hora>
 		}
 	}
 	
-	public void declararHora(Hora hora)
+	private void declararHora(Hora hora)
 	{
 		if(hora.getUsuario() == null) throw new ServiceException("A hora deve estar vinculada a um usuario");
 		HoraDao dao = (HoraDao) super.getDao();
@@ -75,74 +76,16 @@ public final class HoraService extends MasterService<Hora>
 	
 	public void iniciarDia(Usuario usuario)
 	{
-		Hora ultima = getUltimaDeclarada(usuario);
-		DateTime hoje = DateTime.now();
-		Integer dias = Days.daysBetween(ultima.getRegistro(), hoje).getDays();
-		if(dias == 0)
-			throw new ServiceException("O dia de trabalho já foi iniciado");
-		declararHora(new Hora(hoje, TipoHora.INICIO, usuario));
+		Hora hora = new Hora(DateTime.now(), TipoHora.INICIO, usuario);
+		validaHora(hora);
+		declararHora(hora);
 	}
 	
 	public void validaHora(Hora hora)
 	{
-		switch(hora.getTipo())
-		{
-			case INICIO:
-				validaHoraInicio(hora);
-				break;
-			case PAUSA:
-				validaHoraPausa(hora);
-				break;
-			case RETORNO:
-				validaHoraRetorno(hora);
-				break;
-			case FIM:
-				validaHoraFim(hora);
-				break;
-		}
-	}
-	
-	public void validaHoraInicio(Hora hora)
-	{
+		//Valida a hora(exception lancada caso esteja irregular)
 		Hora ultima = getUltimaDeclarada(hora.getUsuario());
-		DateTime hoje = DateTime.now();
-		Integer dias = Days.daysBetween(ultima.getRegistro(), hoje).getDays();
-		if(dias == 0)
-		{
-			if(ultima.getTipo() == TipoHora.FIM)
-			{
-				throw new ServiceException("O dia de trabalho já foi finalizado por hoje, aguarde até amanhã para poder iniciar");
-			}
-			throw new ServiceException("O dia de trabalho já foi iniciado");
-		}
-	}
-	
-	public void validaHoraRetorno(Hora hora)
-	{
-		Hora ultima = getUltimaDeclarada(hora.getUsuario());
-		if(ultima.getTipo() == TipoHora.FIM)
-			throw new ServiceException("O dia de trabalho ainda não foi iniciado");
-		else if(ultima.getTipo() != TipoHora.PAUSA)
-			throw new ServiceException("O trabalho ainda não foi pausado");
-	}
-	
-	public void validaHoraPausa(Hora hora)
-	{
-		Hora ultima = getUltimaDeclarada(hora.getUsuario());
-		if(ultima.getTipo() == TipoHora.FIM)
-			throw new ServiceException("O dia de trabalho ainda não foi iniciado");
-		else if(ultima.getTipo() != TipoHora.RETORNO)
-			throw new ServiceException("O trabalho ainda não foi retomado");
-	}
-	
-	public void validaHoraFim(Hora hora)
-	{
-		Hora ultima = getUltimaDeclarada(hora.getUsuario());
-		DateTime hoje = DateTime.now();
-		Integer dias = Days.daysBetween(ultima.getRegistro(), hoje).getDays();
-		if(dias > 0)
-			throw new ServiceException("O dia de trabalho ainda não foi iniciado");
-		else if(ultima.getTipo() == TipoHora.FIM)
-			throw new ServiceException("O dia de trabalho já foi finalizado");
+		ValidadorHora validador = hora.getTipo().getValidadorHora();
+		validador.validaHora(hora, ultima);
 	}
 }
