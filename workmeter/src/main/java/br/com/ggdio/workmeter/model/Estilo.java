@@ -4,17 +4,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.Where;
 
 import br.com.sourcesphere.core.util.EqualsUtil;
 
 @Entity
+@SequenceGenerator(name="estilo_seq",sequenceName="estilo_id_seq",allocationSize=1)
 @Where(clause="ativo = 't'")
 public class Estilo 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="estilo_seq")
 	private Long id;
 	private String descricao;
 	private String url;

@@ -10,9 +10,6 @@
 						http://www.springframework.org/schema/context 
 						http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<!-- Datasource -->
-	<import resource="classpath:database/datasource.xml"/>
-
 	<!-- Hibernate -->
 	<import resource="classpath:database/hibernate.xml"/>
 	

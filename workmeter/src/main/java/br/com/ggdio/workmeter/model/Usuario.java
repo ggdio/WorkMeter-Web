@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.SQLDelete;
@@ -18,12 +19,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import br.com.sourcesphere.core.util.Assert;
 
 @Entity
+@SequenceGenerator(name="usuario_seq",sequenceName="usuario_id_seq",allocationSize=1)
 @SQLDelete(sql="UPDATE usuario SET ativo = false where id = ?")
 @Where(clause="ativo = 't'")
 public final class Usuario 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="usuario_seq")
 	private Long id;
 	@Column(unique=true)
 	private String email;
