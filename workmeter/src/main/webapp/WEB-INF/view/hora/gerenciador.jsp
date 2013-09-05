@@ -24,18 +24,17 @@
 			<div class="row">
 				<div class="span12 well-silver">
 					<sc:label tipo="label-transparent" texto="Informações de Hora" fontSize="medium"/>
-					<br/>
-					<br/>
-					<br/>
-					<br/>
-					<br/>
-					<br/>
-					<br/>
-					<br/>
-					<br/>
-					<br/>
-					<br/>
-					<br/>
+					<div id="divInfoHora" align="right">
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -67,7 +66,7 @@
 			<div class="row">
 				<div class="span12 well-silver">
 					<sc:label tipo="label-transparent" texto="Informações Gerais" fontSize="medium"/><br/>
-					<div align="left">
+					<div id="divInfoGeral" align="left">
 						<h5>Data: ${data}</h5>
 						<h5>Hora: ${hora}</h5>
 						<h5>Empresa: ${usuarioLogado.empresa}</h5>
