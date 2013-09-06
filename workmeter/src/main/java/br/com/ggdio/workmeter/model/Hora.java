@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
@@ -16,11 +15,12 @@ import org.joda.time.DateTime;
 import br.com.sourcesphere.core.util.Assert;
 
 @Entity
-@SequenceGenerator(name="hora_seq",sequenceName="hora_id_seq",allocationSize=1)
+//@SequenceGenerator(name="hora_seq",sequenceName="hora_id_seq",allocationSize=1)
 public final class Hora implements Comparable<Hora>
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="hora_seq")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="hora_seq")
 	private Long id;
 	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime registro;

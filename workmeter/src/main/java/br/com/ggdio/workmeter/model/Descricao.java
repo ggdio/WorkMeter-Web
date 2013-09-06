@@ -5,17 +5,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
 import br.com.sourcesphere.core.util.Assert;
 
 @Entity
-@SequenceGenerator(name="descricao_seq",sequenceName="descricao_id_seq",allocationSize=1)
+//@SequenceGenerator(name="descricao_seq",sequenceName="descricao_id_seq",allocationSize=1)
 public class Descricao 
 {
-	@Id 
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="descricao_seq")
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="descricao_seq")
 	private Long id;
 	@OneToOne
 	private Hora horaInicial;

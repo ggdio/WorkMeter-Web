@@ -42,7 +42,7 @@ public class EstiloDao extends MasterDao<Estilo>
 			String tabela = Estilo.class.getAnnotation(Entity.class).name();
 			if(!StringUtils.hasText(tabela))
 				tabela = "Estilo";
-			List<Estilo> resultado = super.hqlQuery("from "+tabela+" where descricao = '"+descricao+"'",1);
+			List<Estilo> resultado = super.hqlQuery("from "+tabela+" where str(descricao) = '"+descricao+"'",1);
 			return resultado.get(0);
 		}
 		catch(EntityNotFoundException e)

@@ -7,15 +7,16 @@ import org.apache.log4j.Logger;
 
 import br.com.ggdio.workmeter.dao.EstiloDao;
 import br.com.ggdio.workmeter.model.Estilo;
+import br.com.sourcesphere.core.web.generic.dao.MasterDao;
 
 /**
  * Inicializador de estilos default
  * @author Guilherme Dio
  *
  */
-public class InicializadorEstilo 
+public class EstilosInicializavel implements Inicializavel 
 {
-	private static final Logger log = Logger.getLogger(InicializadorEstilo.class);
+	private static final Logger log = Logger.getLogger(EstilosInicializavel.class);
 	
 	@SuppressWarnings("serial")
 	private static final List<Estilo> estilos = new ArrayList<Estilo>()
@@ -33,11 +34,15 @@ public class InicializadorEstilo
 		add(new Estilo("United","/webresources/twitter-bootstrap/css/bootstrap-united.css"));
 	}};
 	
-	public static void init(EstiloDao dao) throws InicializadorEstiloException
+	public void init(MasterDao<?>...daos)
 	{
+		if(daos[0] instanceof EstiloDao == false) {
+			log.warn("InicializadorEstilos: Finalizando pois o parametro nao se trata de um estiloDao");
+		}
+		EstiloDao dao = (EstiloDao) daos[0];
 		if(isEstilosSalvos(dao))
 		{
-			log.info("InicializadorEstilos: O sistema j� possu� os estilos default cadastrados");
+			log.info("InicializadorEstilos: O sistema ja possui os estilos default cadastrados");
 			return;
 		}
 		
@@ -48,9 +53,9 @@ public class InicializadorEstilo
 		}
 		catch(Exception e)
 		{
-			throw new InicializadorEstiloException("N�o foi possivel inicializar os estilos default do sistema: "+e.getMessage());
+			log.error("Nao foi possivel inicializar os estilos dafult do sistema: ",e);
 		}
-		log.info("InicializadorEstilos: Inicializa��o dos estilos default conclu�da com sucesso");
+		log.info("InicializadorEstilos: Inicializacaoo dos estilos default concluida com sucesso");
 	}
 	
 	private static Boolean isEstilosSalvos(EstiloDao dao)

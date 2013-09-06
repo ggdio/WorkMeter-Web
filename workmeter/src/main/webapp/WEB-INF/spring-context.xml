@@ -13,6 +13,9 @@
 	<!-- Hibernate -->
 	<import resource="classpath:database/hibernate.xml"/>
 	
+	<!-- Inicializador do Sistema -->
+	<import resource="classpath:config/inicializavel.xml"/>
+	
 	<!-- Spring -->
 	<import resource="classpath:config/dispatcher-servlet.xml"/>
 
