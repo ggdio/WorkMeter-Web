@@ -39,11 +39,13 @@
 		</p>
 	</fieldset>
 	<div class="form-actions">
-		<button id="btnConcluir" type="submit" class="btn btn-primary btn-large">
-			<i class="icon-ok icon-white"></i>
-			<span>Concluir</span>
-		</button>
-		<button type="reset" class="btn btn-warning btn-large">Limpar</button>
+		<div class="pull-right">
+			<button type="reset" class="btn btn-danger btn-medium">Limpar</button>
+			<button id="btnConcluir" type="submit" class="btn btn-primary btn-medium">
+				<i class="icon-ok icon-white"></i>
+				<span>Concluir</span>
+			</button>
+		</div>
 	</div>
 </form>
 

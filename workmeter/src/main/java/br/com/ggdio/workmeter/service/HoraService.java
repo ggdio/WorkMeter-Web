@@ -1,7 +1,6 @@
 package br.com.ggdio.workmeter.service;
 
 import org.joda.time.DateTime;
-import org.joda.time.Days;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

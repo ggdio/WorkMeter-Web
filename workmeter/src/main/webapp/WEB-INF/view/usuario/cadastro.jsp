@@ -7,33 +7,24 @@
 
 <jsp:include page="/resources/html/header.jsp"/>
 
-<br/>
-<br/>
 <div class="container-fluid">
-	
-	<div class="row-fluid">
-		<div class="span4 pull-left"></div>
-		<div class="span4">
-			<sc:label texto="Cadastro de Acesso" tipo="label-success" align="center" fontSize="x-large"/>
-		</div>
-		<div class="row-fluid span4 pull-right"></div>
-	</div>
-	<br/>
-	
+
 	<!-- FORMULARIO DE CADASTRO -->
-	<div class="row-fluid">
-		<div class="span3"></div>
-		<div class="span6 well">
+	<div class="row-fluid vertical-aligned">
+		<div class="span4"></div>
+		<div class="span4 well">
+			<div class="titulo-secao" align="center">Cadastro de Acesso</div>
+			<br/>
 			<c:if test="${not empty responseCadastro}">
 				<div class="mensagem-erro" align="center">
 					<strong>${responseCadastro.message}</strong>
 				</div>
 			</c:if>
 			<jsp:include page="${pathFormulario}">
-				<jsp:param name="campoSpan" value="span7"/>
+				<jsp:param name="campoSpan" value="span12"/>
 			</jsp:include>
 		</div>
-		<div class="span3"></div>
+		<div class="span4"></div>
 	</div>
 
 </div>

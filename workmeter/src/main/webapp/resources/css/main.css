@@ -1,5 +1,31 @@
 @CHARSET "ISO-8859-1";
 
+.form-actions{
+  padding: 15px 0px 0px;
+  margin-top: 20px;
+  margin-bottom: -20px;
+  background-color: transparent;
+  border-top: 1px solid #e5e5e5;
+  *zoom: 1;
+}
+.teste{
+	
+}
+
+.vertical-aligned{
+	margin-top: 13%;
+}
+
+.titulo-secao{
+	margin: 0;
+    font-family: 'Telex', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    color: #317eac;
+    text-rendering: optimizelegibility;
+	text-shadow: 1px 1px 0px rgba(150,150,150,1);
+}
+
 .centralizado{
     margin-left:auto;
 	margin-right:auto;
@@ -141,9 +167,14 @@
 }
 
 .mensagem-erro{
-  background-color: red;
-  color: white;
-  font-weight: bold;
+	margin: 0;
+	font-family: 'Telex', sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	color: #E32331;
+	text-rendering: optimizelegibility;
+	text-shadow: 1px 1px 0px rgba(150,150,150,1);
+  	font-weight: bold;
 }
 
 .label-navy{

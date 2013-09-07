@@ -14,11 +14,13 @@
 		<label for="senha"><b>Senha</b></label>
 		<input class="${param.campoSpan}" type="password" id="txtSenha" name="senha" maxlength="100" placeholder="Sua senha..."/>
 	</fieldset>
-	<div class="form-actions" style="margin-bottom: 0px;">
-		<button id="btnLogin" type="submit" class="btn btn-primary btn-large">
-			<i class="icon-ok icon-white"></i>
-			<span>Login</span>
-		</button>
-		<button type="reset" class="btn btn-warning btn-large">Limpar</button>
+	<div class="form-actions">
+		<div class="pull-right">
+			<button type="reset" class="btn btn-medium btn-danger">Limpar</button>
+			<button id="btnLogin" type="submit" class="btn btn-medium btn-primary">
+				<i class="icon-ok icon-white"></i>
+				<span>Login</span>
+			</button>
+		</div>
 	</div>
 </form>

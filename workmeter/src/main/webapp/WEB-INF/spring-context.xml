@@ -13,7 +13,7 @@
 	<!-- Hibernate -->
 	<import resource="classpath:database/hibernate.xml"/>
 	
-	<!-- Inicializador do Sistema -->
+	<!-- Inicializador -->
 	<import resource="classpath:config/inicializavel.xml"/>
 	
 	<!-- Spring -->

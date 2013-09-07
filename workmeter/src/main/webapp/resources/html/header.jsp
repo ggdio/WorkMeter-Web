@@ -77,9 +77,11 @@
     <div class="navbar navbar-fixed-top">
 	    <div class="navbar-inner">
 		    <div class="container pull-left">
+		    	<!-- BRAND -->
 		    	<a class="brand" href="${pathHome}"><b>{Work}Meter</b></a>
 	    	    <ul class="nav">
 				    <li><a href="${pathHome}"><i class="icon-home icon-white"></i><b>Home</b></a></li>
+			    	<c:if test="${not empty usuarioLogado}">
 			    	<li class="dropdown">
 					    <a id="btnDropdown" class="dropdown-toggle" data-toggle="dropdown" href="#"><b>Menu</b><b class="caret"></b></a>
 					    <ul class="dropdown-menu">
@@ -88,13 +90,11 @@
 						    <li><a href="#calculos">Cálculos</a></li>
 					    </ul>
 				    </li>
+				    </c:if>
 			    </ul>
 		    </div>
 		    <c:if test="${not empty usuarioLogado}">
 		    	<jsp:include page="${menuUsuario}"/>
-		    </c:if>    
+		    </c:if>
 	    </div>
     </div>
-    <br/>
-    <br/>
-    <br/>

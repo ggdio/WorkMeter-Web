@@ -3,16 +3,15 @@
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   					   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
- 
+	   					   
 	<bean id="estilosInicializavel" class="br.com.ggdio.workmeter.init.EstilosInicializavel"/>
 	<bean id="adminUserInicializavel" class="br.com.ggdio.workmeter.init.AdminUserInicializavel"/>
 	
-	<!-- INICIALIZAVEIS DO SISTEMA -->
 	<bean id="inicializaveis" class="java.util.ArrayList">
 	    <constructor-arg>
 	        <list>
-	            <ref bean="estilosInicializavel" />
-	            <ref bean="adminUserInicializavel" />                
+	            <ref bean="estilosInicializavel"/>
+				<ref bean="adminUserInicializavel"/>             
 	        </list>
 	    </constructor-arg>
 	</bean>

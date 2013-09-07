@@ -9,6 +9,8 @@
 <br/>
 <br/>
 <div class="container-fluid">
+
+	<div class="row-fluid vertical-aligned">
 	<c:if test="${not empty responsePreferenciaController}">
 		<div class="row-fluid">
 			<div class="span2 pull-left"></div>
@@ -21,20 +23,14 @@
 	</c:if>
 	
 	<div class="row-fluid">
-		<div class="span2 pull-left"></div>
-		<div class="span8">
-			<sc:label texto="Meus Dados" tipo="label-success" align="left" fontSize="x-large"/>
-		</div>
-		<div class="row-fluid span2 pull-right"></div>
-	</div>
-	<br/>
-	
-	<div class="row-fluid">
-		<div class="span2 pull-left"></div>
-			<div class="span8 well">
+		<div class="span4 pull-left"></div>
+			<div class="span4 well">
+				<div class="titulo-secao" align="center">Meus Dados</div>
+				<br/>
 				<jsp:include page="${pathFormularioPreferencias}"/>
 			</div>
-		<div class="span2 pull-right"></div>
+		<div class="span4 pull-right"></div>
+	</div>
 	</div>
 
 </div>

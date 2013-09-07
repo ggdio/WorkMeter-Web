@@ -6,25 +6,17 @@
 
 <c:url value="/hora/" var="pathGerenciadorHora"/>
 
-<br/>
-<br/>
 <div class="container-fluid">
 	
-	<div class="row-fluid">
-		<div class="span3 pull-left"></div>
-		<div class="span6">
-			<sc:label texto="Painel Geral" tipo="label-success" align="center" fontSize="x-large"/>
-		</div>
-		<div class="span3 pull-right"></div>
-	</div>
-	<br/>
-	<br/>
-	
-	<div class="row-fluid">
+	<div class="row-fluid vertical-aligned">
 		<div class="well">
-			<div class="span4 pull-right" align="center"><a href="#" class="btn btn-large btn-primary">Relatórios</a></div>
-			<div class="span4" align="center"><a href="${pathGerenciadorHora}" class="btn btn-large btn-primary">Gerenciador de Horas</a></div>
-			<div class="span4 pull-left" align="center"><a href="#" class="btn btn-large btn-primary">Calculos</a></div>
+			<div class="titulo-secao" align="center">Painel Geral</div>
+			<br/>
+			<div class="span12">
+				<div class="span4" align="center"><a href="#" class="btn btn-medium btn-primary">Relatórios</a></div>
+				<div class="span4" align="center"><a href="${pathGerenciadorHora}" class="btn btn-medium btn-primary">Gerenciador de Horas</a></div>
+				<div class="span4" align="center"><a href="#" class="btn btn-medium btn-primary">Calculos</a></div>
+			</div>
 			<br/>
 		</div>
 	</div>

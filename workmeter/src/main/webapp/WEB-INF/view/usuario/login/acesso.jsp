@@ -11,19 +11,12 @@
 <br/>
 <div class="container-fluid">
 	
-	<div class="row-fluid">
-		<div class="span4 pull-left"></div>
-		<div class="span4">
-			<sc:label texto="Acesso ao Workmeter" tipo="label-success" align="left" fontSize="x-large"/>
-		</div>
-		<div class="row-fluid span4 pull-right"></div>
-	</div>
-	<br/>
-	
 	<!-- FORMULARIO DE LOGIN -->
-	<div class="row-fluid">
+	<div class="row-fluid vertical-aligned">
 		<div class="span4 pull-left"></div>
 			<div class="span4 well">
+				<div class="titulo-secao" align="center">Acesso ao Workmeter</div>
+				<br/>
 				<div class="span11">
 					<c:if test="${not empty responseLogin}">
 						<div class="mensagem-erro" align="center">
