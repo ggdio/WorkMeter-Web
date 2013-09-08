@@ -21,11 +21,10 @@ public class EstilosInicializavel implements Inicializavel
 	@SuppressWarnings("serial")
 	private static final List<Estilo> estilos = new ArrayList<Estilo>()
 	{{
-		add(new Estilo("Default","/webresources/twitter-bootstrap/css/bootstrap-cerulean.css"));
+		add(new Estilo("Default","/resources/css/default.css"));
 		add(new Estilo("Amelia","/webresources/twitter-bootstrap/css/bootstrap-amelia.css"));
 		add(new Estilo("Cyborg","/webresources/twitter-bootstrap/css/bootstrap-cyborg.css"));
 		add(new Estilo("Readable","/webresources/twitter-bootstrap/css/bootstrap-readable.css"));
-		add(new Estilo("Responsive","/webresources/twitter-bootstrap/css/bootstrap-responsive.css"));
 		add(new Estilo("Simplex","/webresources/twitter-bootstrap/css/bootstrap-simplex.css"));
 		add(new Estilo("Slate","/webresources/twitter-bootstrap/css/bootstrap-slate.css"));
 		add(new Estilo("Spacelab","/webresources/twitter-bootstrap/css/bootstrap-spacelab.css"));

@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:url value="/resources/img/footer/oracle.png" var="oracle"/>
 <c:url value="/resources/img/footer/openshift.png" var="openshift"/>
-<c:url value="/resources/img/footer/redhat.png" var="redhat"/>
+<c:url value="/resources/img/footer/oracle.png" var="redhat"/>
 <br/>
 <br/>
 <div class="navbar navbar-fixed-bottom">

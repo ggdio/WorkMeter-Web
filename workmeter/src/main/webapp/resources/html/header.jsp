@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tag" %>
 
 <!-- Estilo do CSS -->
 <c:set var="estilo" value="/resources/css/default.css"/>
@@ -71,7 +72,7 @@
 	});
 </script>
 
-<body background="${background}">
+<body>
 	
     <!-- BARRA DE NAVEGAÇÃO -->
     <div class="navbar navbar-fixed-top">
@@ -81,16 +82,24 @@
 		    	<a class="brand" href="${pathHome}"><b>{Work}Meter</b></a>
 	    	    <ul class="nav">
 				    <li><a href="${pathHome}"><i class="icon-home icon-white"></i><b>Home</b></a></li>
-			    	<c:if test="${not empty usuarioLogado}">
-			    	<li class="dropdown">
-					    <a id="btnDropdown" class="dropdown-toggle" data-toggle="dropdown" href="#"><b>Menu</b><b class="caret"></b></a>
-					    <ul class="dropdown-menu">
-						    <li><a href="${pathGerenciadorHora}">Gerenciador de Horas</a></li>
-						    <li><a href="#relatorios">Relatórios</a></li>
-						    <li><a href="#calculos">Cálculos</a></li>
-					    </ul>
-				    </li>
-				    </c:if>
+				    <c:choose>
+				    	<c:when test="${not empty usuarioLogado}">
+				    		<li class="dropdown">
+							    <a id="btnDropdown" class="dropdown-toggle" data-toggle="dropdown" href="#">
+							    	<i class="icon-book icon-white"></i>
+							    	<b>Menu</b><b class="caret"></b>
+							    </a>
+							    <ul class="dropdown-menu">
+								    <li><a href="${pathGerenciadorHora}">Gerenciador de Horas</a></li>
+								    <li><a href="#relatorios">Relatórios</a></li>
+								    <li><a href="#calculos">Cálculos</a></li>
+							    </ul>
+						    </li>
+				    	</c:when>
+				    	<c:otherwise>
+							<tag:formLogin inputSpans="span4"/>
+				    	</c:otherwise>
+				    </c:choose>
 			    </ul>
 		    </div>
 		    <c:if test="${not empty usuarioLogado}">
