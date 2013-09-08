@@ -44,6 +44,9 @@ public final class UsuarioUtil
 		{
 			this.usuario = service.buscaPorLoginESenha(usuario.getEmail(), usuario.getSenha());
 		}
+		catch(NullPointerException e){
+			return false;
+		}
 		catch(EntityNotFoundException e)
 		{
 			return false;

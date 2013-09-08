@@ -5,6 +5,7 @@
 
 <!-- PATH -->
 <c:url value="/usuario/cadastro" var="pathCadastro"/>
+<c:url value="/usuario/login/entrar-ajax" var="pathExecutaLogin"/>
 
 <!-- IMG -->
 <c:url value="/resources/img/apresentacao/completo.png" var="imgCompleto"/>

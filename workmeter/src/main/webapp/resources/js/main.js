@@ -29,6 +29,12 @@ function getElemento(id)
 	return $('#'+id);
 }
 
+var MasterController = (function(){
+	this.sistema = "workmeter";
+	this.versao = "1.0.0";
+	this.desenvolvedor = "guilherme";
+});
+
 /**
  * Realiza a troca de html de uma tag especifica dentro de uma tag pai
  * @param elementoPai - Tag pai
@@ -81,4 +87,13 @@ function exibirEFocarElemento(id)
 {
 	exibirElemento(id);
 	focarElemento(id);
+}
+
+/**
+ * Deserializa Json retornado em ajax
+ * @param ajaxResponse - O response vindo no ajax
+ * @returns Objeto com os dados
+ */
+function parseJson(ajaxResponse){
+	return $.parseJSON(ajaxResponse.responseText).response;
 }

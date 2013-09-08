@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://sourcesphere.com.br/jsp/tags/style-bootstrap/sc" prefix="sc" %>
 <c:url value="/usuario/criar" var="pathCriar"/>
+<c:url value="/usuario/login/acesso" var="pathAcesso"/>
+
 <sc:alert titulo="Atenção" texto="" identificador="alertErro" hidden="hidden" tipo="alert-danger"/>
 <form id="formUsuario" action="${pathCriar}" method="post" class="form-inline">
 	<fieldset>
@@ -39,6 +41,9 @@
 		</p>
 	</fieldset>
 	<div class="form-actions">
+		<div class="pull-left">
+			<a href="${pathAcesso}" class="btn btn-primary btn-medium">Já possuí cadastro ?</a>
+		</div>
 		<div class="pull-right">
 			<button type="reset" class="btn btn-danger btn-medium">Limpar</button>
 			<button id="btnConcluir" type="submit" class="btn btn-primary btn-medium">

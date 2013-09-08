@@ -35,4 +35,8 @@
 
 </div>
 
+<script>
+	alert(MasterController.sistema);
+</script>
+
 <jsp:include page="/resources/html/footer.jsp"/>

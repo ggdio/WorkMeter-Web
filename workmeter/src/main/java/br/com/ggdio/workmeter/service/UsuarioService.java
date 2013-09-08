@@ -71,7 +71,7 @@ public final class UsuarioService extends MasterService<Usuario>
 		}
 		catch(EntityNotFoundException e)
 		{
-			log.warn(e.getMessage(), e);
+			log.warn(e.getMessage());
 			throw e;
 		}
 		catch(DaoException e)
