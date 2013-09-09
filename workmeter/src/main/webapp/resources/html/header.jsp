@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tag" %>
 
 <!-- Estilo do CSS -->
@@ -64,7 +65,7 @@
 		
 		$('#btnLogout').click(function(event)
 		{
-			if(confirm('Deseja realmente sair ?'))
+			if(confirm('<fmt:message key="header.menu_usuario.logout.mensagem" />'))
 			{
 				location.href = "${pathSair}";
 			}
@@ -77,11 +78,11 @@
     <!-- BARRA DE NAVEGAÇÃO -->
     <div class="navbar navbar-fixed-top">
 	    <div class="navbar-inner">
-		    <div class="container pull-left">
+		    <div class="pull-left">
 		    	<!-- BRAND -->
 		    	<a class="brand" href="${pathHome}"><b>{Work}Meter</b></a>
 	    	    <ul class="nav">
-				    <li><a href="${pathHome}"><i class="icon-home icon-white"></i><b>Home</b></a></li>
+				    <li><a href="${pathHome}"><i class="icon-home icon-white"></i><b><fmt:message key="header.home.texto"/></b></a></li>
 				    <c:choose>
 				    	<c:when test="${not empty usuarioLogado}">
 				    		<li class="dropdown">
@@ -90,7 +91,7 @@
 							    	<b>Menu</b><b class="caret"></b>
 							    </a>
 							    <ul class="dropdown-menu">
-								    <li><a href="${pathGerenciadorHora}">Gerenciador de Horas</a></li>
+								    <li><a href="${pathGerenciadorHora}"><fmt:message key="header.menu.gerenciador_horas.texto" /></a></li>
 								    <li><a href="#relatorios">Relatórios</a></li>
 								    <li><a href="#calculos">Cálculos</a></li>
 							    </ul>

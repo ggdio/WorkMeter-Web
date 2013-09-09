@@ -4,6 +4,7 @@
 <c:url value="/resources/img/footer/openshift.png" var="openshift"/>
 <c:url value="/resources/img/footer/oracle.png" var="redhat"/>
 
+<br/>
 <div class="navbar navbar-fixed-bottom">
 	    <div class="navbar-inner">
 	    	<div class="pull-left">
