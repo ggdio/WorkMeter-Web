@@ -1,43 +1,43 @@
-<!DOCTYPE HTML>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
-<!-- FORMULARIO DE CADASTRO DE USUARIO -->
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ tag language="java" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="http://sourcesphere.com.br/jsp/tags/style-bootstrap/sc" prefix="sc" %>
+
+<%@ attribute name="inputSpans" required="false"%>
+
 <c:url value="/usuario/criar" var="pathCriar"/>
-<c:url value="/usuario/login/acesso" var="pathAcesso"/>
+<c:url value="/usuario/acesso" var="pathAcesso"/>
 
 <sc:alert titulo="Atenção" texto="" identificador="alertErro" hidden="hidden" tipo="alert-danger"/>
 <form id="formUsuario" action="${pathCriar}" method="post" class="form-inline">
 	<fieldset>
 		<p>
 			<label for="nome"><b>Nome</b></label>
-			<input class="${param.campoSpan}" type="text" id="txtNome" name="nome" maxlength="100" placeholder="Nome Completo..."/>
+			<input class="${inputSpans}" type="text" id="txtNome" name="nome" maxlength="100" placeholder="Nome Completo..."/>
 		</p>
 		
 		<p>
 			<label for="nascimento"><b>Data de Nascimento</b></label>
-			<sc:dateField classe="${param.campoSpan}" nome="nascimento" identificador="txtNascimento"/>
+			<sc:dateField classe="${inputSpans}" nome="nascimento" identificador="txtNascimento"/>
 		</p>
 		
 		<p>
 			<label for="empresa"><b>Empresa</b></label>
-			<input class="${param.campoSpan}" type="text" id="txtEmpresa" name="empresa" maxlength="100" placeholder="Empresa em que trabalha..."/>
+			<input class="${inputSpans}" type="text" id="txtEmpresa" name="empresa" maxlength="100" placeholder="Empresa em que trabalha..."/>
 		</p>
 		
 		<p>
 			<label for="email"><b>Email</b></label>
-			<input class="${param.campoSpan}" type="text" id="txtEmail" name="email" maxlength="100" placeholder="meu_email@exemplo.com.br..."/>
+			<input class="${inputSpans}" type="text" id="txtEmail" name="email" maxlength="100" placeholder="meu_email@exemplo.com.br..."/>
 		</p>
 		
 		<p>
 			<label for="senha"><b>Senha</b></label>
-			<input class="${param.campoSpan}" type="password" id="txtSenha" name="senha" maxlength="20" placeholder="Senha..."/>
+			<input class="${inputSpans}" type="password" id="txtSenha" name="senha" maxlength="20" placeholder="Senha..."/>
 		</p>
 		
 		<p>
 			<label for="confSenha"><b>Confirmação de Senha</b></label>
-			<input class="${param.campoSpan}" type="password" id="txtConfSenha" name="confSenha" maxlength="20" placeholder="Confirmação de Senha..."/>
+			<input class="${inputSpans}" type="password" id="txtConfSenha" name="confSenha" maxlength="20" placeholder="Confirmação de Senha..."/>
 		</p>
 	</fieldset>
 	<div class="form-actions">
@@ -72,11 +72,11 @@
 				},
 				senha: {
 					required: true,
-					minlength: 10
+					minlength: 8,
+					equalTo: "#txtConfSenha"
 				},
 				confSenha:{
-					required: true,
-					equalTo: "#txtSenha"
+					required: true
 				}
 			},
 			messages:{
@@ -93,7 +93,7 @@
 				},
 				senha: {
 					required: "O campo senha é obrigatorio.",
-					
+					minlength: "Utilize no mínimo 8 caracteres para a senha."
 				},
 				confSenha:{
 					required: "O campo confirmação de senha é obrigatorio.",

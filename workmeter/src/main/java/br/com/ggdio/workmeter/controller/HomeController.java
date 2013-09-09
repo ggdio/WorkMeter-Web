@@ -2,7 +2,9 @@ package br.com.ggdio.workmeter.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.ggdio.workmeter.http.SessionUtil;
@@ -17,6 +19,8 @@ import br.com.ggdio.workmeter.http.SessionUtil;
 @RequestMapping("/")
 public class HomeController extends br.com.sourcesphere.core.web.generic.controller.Controller
 {
+	private final Logger log = Logger.getLogger(HomeController.class);
+	
 	/**
 	 * Recupera a view index
 	 * @return index
@@ -32,7 +36,7 @@ public class HomeController extends br.com.sourcesphere.core.web.generic.control
 	 * @return Conteudo index
 	 */
 	@RequestMapping("index/conteudo")
-	public String viewConteudoIndex(HttpSession sessao)
+	public String viewConteudoIndex(HttpSession sessao,Model model)
 	{
 		//Verifica se possui sessao
 		if(new SessionUtil(sessao).hasUsuario())

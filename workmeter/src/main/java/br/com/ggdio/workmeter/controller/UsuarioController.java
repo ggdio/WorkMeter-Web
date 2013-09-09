@@ -134,24 +134,6 @@ public final class UsuarioController extends AbstractController<Usuario>
 	}
 	
 	/**
-	 * Formulario de cadastro de usuario
-	 */
-	@RequestMapping("formulario")
-	public String viewFormularioCadastro()
-	{
-		return getView("formulario");
-	}
-	
-	/**
-	 * Formulario de acesso ao sistema
-	 */
-	@RequestMapping("login/formulario")
-	public String viewFormularioAcesso()
-	{
-		return getView("login/formulario");
-	}
-	
-	/**
 	 * Tela de cadastro de usuario
 	 */
 	@RequestMapping("cadastro")
@@ -163,17 +145,17 @@ public final class UsuarioController extends AbstractController<Usuario>
 	/**
 	 * Tela de acesso ao sistema
 	 */
-	@RequestMapping("login/acesso")
+	@RequestMapping("acesso")
 	public String viewAcesso()
 	{
-		return getView("login/acesso");
+		return getView("acesso");
 	}
 	
 	/**
 	 * Tela de dados do usuario
 	 */
 	@RequestMapping("dados")
-	public String viewDadosUsuario(HttpSession sessao,Model model)
+	public String viewDados(HttpSession sessao,Model model)
 	{
 		return getView("dados");
 	}

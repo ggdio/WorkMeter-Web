@@ -97,13 +97,16 @@
 						    </li>
 				    	</c:when>
 				    	<c:otherwise>
-							<tag:formLogin inputSpans="span4"/>
+							<tag:formLoginDropdown inputSpans="span4"/>
 				    	</c:otherwise>
 				    </c:choose>
 			    </ul>
 		    </div>
-		    <c:if test="${not empty usuarioLogado}">
-		    	<jsp:include page="${menuUsuario}"/>
-		    </c:if>
+		    <div class="pull-right">
+			    <tag:idiomaDropdown/>
+			    <c:if test="${not empty usuarioLogado}">
+			    	<jsp:include page="${menuUsuario}"/>
+			    </c:if>
+			</div>
 	    </div>
     </div>

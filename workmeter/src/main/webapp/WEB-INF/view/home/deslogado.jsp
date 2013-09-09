@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://sourcesphere.com.br/jsp/tags/style-bootstrap/sc" prefix="sc" %>
 
 <!-- PATH -->
@@ -14,22 +15,24 @@
 <c:url value="/resources/img/apresentacao/opensource.png" var="imgOpensource"/>
 <c:url value="/resources/img/apresentacao/powered.png" var="imgPowered"/>
 
+<fmt:setLocale value="en"/>
+
 <div class="jumbotron masthead">
   <div class="container">
-    <h1 class="titulo-apresentacao">WorkMeter</h1>
-	<p>Um facilitador para o seu dia-a-dia de trabalho.</p>
+    <h1 class="titulo-apresentacao"><fmt:message key="sistema.nome"/></h1>
+	<p><fmt:message key="index.deslogado.area_introducao.descricao"/></p>
     <p>
-      <a href="${pathCadastro}" class="btn btn-primary btn-large">Cadastre-se agora mesmo !</a>
+      <a href="${pathCadastro}" class="btn btn-primary btn-large"><fmt:message key="index.deslogado.area_introducao.cadastrar"/></a>
     </p>
     <ul class="masthead-links">
       <li>
         <a href="https://github.com/ggdio/WorkMeter-Web">Github</a>
       </li>
       <li>
-        <a href="#">Demonstração</a>
+        <a href="#"><fmt:message key="index.deslogado.area_introducao.demonstracao"/></a>
       </li>
       <li>
-        Versão 1.0.0
+        <fmt:message key="index.deslogado.area_introducao.versao"/> ${versao}
       </li>
     </ul>
   </div>
@@ -55,31 +58,31 @@
 
   <div class="marketing">
 
-    <h1>Apresentação</h1>
-    <p class="marketing-byline">Quais as vantagens de se utilizar o Workmeter ???</p>
+    <h1><fmt:message key="index.deslogado.area_apresentacao.descricao"/></h1>
+    <p class="marketing-byline"><fmt:message key="index.deslogado.area_apresentacao.marketing"/></p>
 
     <div class="row-fluid">
 	  <div class="span4">
         <img class="marketing-img" src="${imgCompleto}">
-        <h2>Completo</h2>
-        <p>Com muitas funcionalidades interessantes, você tem todo o controle das horas gastas em seu dia-a-dia de trabalho. Facilita muito na agilidade e no detalhamento das tarefas realizadas em determinados períodos, assim como as paradas para o café.</p>
+        <h2><fmt:message key="index.deslogado.area_apresentacao.completo.titulo"/></h2>
+        <p><fmt:message key="index.deslogado.area_apresentacao.completo.texto"/></p>
       </div>
       <div class="span4">
         <img class="marketing-img" src="${imgMultiPlataforma}">
-        <h2>Multi-Plataforma</h2>
-        <p>O Workmeter foi desenvolvido pensando no dia-a-dia das pessoas, e para isso criamos uma aplicação multi-plataforma, assim você acessa o sistema de qualquer dispositivo.</p>
+        <h2><fmt:message key="index.deslogado.area_apresentacao.multiplataforma.titulo"/></h2>
+        <p><fmt:message key="index.deslogado.area_apresentacao.multiplataforma.texto"/></p>
       </div>
 	  <div class="span4">
         <img class="marketing-img" src="${imgOpensource}">
-        <h2>Opensource</h2>
-        <p>O projeto é opensource, livre para modificações, basta acessar página do projeto no <a href="http://github.com/ggdio/WorkMeter-Web">github</a>.</p>
+        <h2><fmt:message key="index.deslogado.area_apresentacao.opensource.titulo"/></h2>
+        <p><fmt:message key="index.deslogado.area_apresentacao.opensource.texto"/>&nbsp;<a href="http://github.com/ggdio/WorkMeter-Web">github</a>.</p>
       </div>
     </div>
 
     <hr class="soften">
 
-    <h1>Tecnologia <a href="http://github.com/sourcesphere/">Sourcesphere</a></h1>
-    <p class="marketing-byline">Todo o sistema foi desenvolvido com a tecnologia dos frameworks SourceSphere.</p>
+    <h1><fmt:message key="index.deslogado.area_tecnologia.descricao"/>&nbsp;<a href="http://github.com/sourcesphere/">Sourcesphere</a></h1>
+    <p class="marketing-byline"><fmt:message key="index.deslogado.area_tecnologia.marketing"/></p>
     <div class="row-fluid">
       <ul class="thumbnails example-sites">
 		 <li class="span2"></li>
