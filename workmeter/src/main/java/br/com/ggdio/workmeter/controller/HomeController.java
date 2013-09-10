@@ -19,7 +19,7 @@ import br.com.ggdio.workmeter.http.SessionUtil;
 @RequestMapping("/")
 public class HomeController extends br.com.sourcesphere.core.web.generic.controller.Controller
 {
-	private final Logger log = Logger.getLogger(HomeController.classe);
+	private final Logger log = Logger.getLogger(HomeController.class);
 	
 	/**
 	 * Recupera a view index
