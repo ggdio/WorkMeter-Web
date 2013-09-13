@@ -1,4 +1,5 @@
 <%@ tag language="java" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="http://sourcesphere.com.br/jsp/tags/style-bootstrap/sc" prefix="sc" %>
 
@@ -7,48 +8,48 @@
 <c:url value="/usuario/criar" var="pathCriar"/>
 <c:url value="/usuario/acesso" var="pathAcesso"/>
 
-<sc:alert titulo="Atenção" texto="" identificador="alertErro" hidden="hidden" tipo="alert-danger"/>
+<sc:alert titulo='<fmt:message key="geral.alerta.atencao" />' texto="" identificador="alertErroCadastro" hidden="hidden" tipo="alert-danger"/>
 <form id="formUsuario" action="${pathCriar}" method="post" class="form-inline">
 	<fieldset>
 		<p>
-			<label for="nome"><b>Nome</b></label>
-			<input class="${inputSpans}" type="text" id="txtNome" name="nome" maxlength="100" placeholder="Nome Completo..."/>
+			<label for="nome"><b><fmt:message key="usuario.cadastro.formulario.label.nome.texto" /></b></label>
+			<input class="${inputSpans}" type="text" id="txtNome" name="nome" maxlength="100" placeholder='<fmt:message key="usuario.cadastro.formulario.text.nome.placeholder" />'/>
 		</p>
 		
 		<p>
-			<label for="nascimento"><b>Data de Nascimento</b></label>
+			<label for="nascimento"><b><fmt:message key="usuario.cadastro.formulario.label.nascimento.texto" /></b></label>
 			<sc:dateField classe="${inputSpans}" nome="nascimento" identificador="txtNascimento"/>
 		</p>
 		
 		<p>
-			<label for="empresa"><b>Empresa</b></label>
-			<input class="${inputSpans}" type="text" id="txtEmpresa" name="empresa" maxlength="100" placeholder="Empresa em que trabalha..."/>
+			<label for="empresa"><b><fmt:message key="usuario.cadastro.formulario.label.empresa.texto" /></b></label>
+			<input class="${inputSpans}" type="text" id="txtEmpresa" name="empresa" maxlength="100" placeholder='<fmt:message key="usuario.cadastro.formulario.text.empresa.placeholder" />'/>
 		</p>
 		
 		<p>
-			<label for="email"><b>Email</b></label>
-			<input class="${inputSpans}" type="text" id="txtEmail" name="email" maxlength="100" placeholder="meu_email@exemplo.com.br..."/>
+			<label for="email"><b><fmt:message key="usuario.cadastro.formulario.label.email.texto" /></b></label>
+			<input class="${inputSpans}" type="text" id="txtEmail" name="email" maxlength="100" placeholder='<fmt:message key="usuario.cadastro.formulario.text.empresa.placeholder" />'/>
 		</p>
 		
 		<p>
-			<label for="senha"><b>Senha</b></label>
-			<input class="${inputSpans}" type="password" id="txtSenha" name="senha" maxlength="20" placeholder="Senha..."/>
+			<label for="senha"><b><fmt:message key="usuario.cadastro.formulario.label.senha.texto" /></b></label>
+			<input class="${inputSpans}" type="password" id="txtSenha" name="senha" maxlength="20" placeholder='<fmt:message key="usuario.cadastro.formulario.text.senha.placeholder" />'/>
 		</p>
 		
 		<p>
-			<label for="confSenha"><b>Confirmação de Senha</b></label>
-			<input class="${inputSpans}" type="password" id="txtConfSenha" name="confSenha" maxlength="20" placeholder="Confirmação de Senha..."/>
+			<label for="confSenha"><b><fmt:message key="usuario.cadastro.formulario.label.confirmacaosenha.texto" /></b></label>
+			<input class="${inputSpans}" type="password" id="txtConfSenha" name="confSenha" maxlength="20" placeholder='<fmt:message key="usuario.cadastro.formulario.text.confirmacaosenha.placeholder" />'/>
 		</p>
 	</fieldset>
 	<div class="form-actions">
 		<div class="pull-left">
-			<a href="${pathAcesso}" class="btn btn-primary btn-medium">Já possuí cadastro ?</a>
+			<a href="${pathAcesso}" class="btn btn-primary btn-medium"><fmt:message key="usuario.cadastro.formulario.button.possuicadastro.texto" /></a>
 		</div>
 		<div class="pull-right">
-			<button type="reset" class="btn btn-danger btn-medium">Limpar</button>
+			<button type="reset" class="btn btn-danger btn-medium"><fmt:message key="usuario.cadastro.formulario.button.limpar.texto" /></button>
 			<button id="btnConcluir" type="submit" class="btn btn-primary btn-medium">
 				<i class="icon-ok icon-white"></i>
-				<span>Concluir</span>
+				<span><fmt:message key="usuario.cadastro.formulario.button.concluir.texto" /></span>
 			</button>
 		</div>
 	</div>
@@ -81,31 +82,31 @@
 			},
 			messages:{
 				nome:{ 
-					required: "O campo nome é obrigatorio.",
-					minlength: "O campo nome deve conter no mínimo 3 caracteres."
+					required: '<fmt:message key="usuario.cadastro.formulario.alerta.digitar.nome" />',
+					minlength: '<fmt:message key="usuario.cadastro.formulario.alerta.minimo.nome" />'
 				},
 				nascimento: {
-					required: "O campo data de nascimento é obrigatorio."
+					required: '<fmt:message key="usuario.cadastro.formulario.alerta.digitar.nascimento" />'
 				},
 				email: {
-					required: "O campo email é obrigatorio.",
-					email: "O campo email deve conter um email válido."
+					required: '<fmt:message key="usuario.cadastro.formulario.alerta.digitar.email" />',
+					email: '<fmt:message key="usuario.cadastro.formulario.alerta.valido.email" />'
 				},
 				senha: {
-					required: "O campo senha é obrigatorio.",
-					minlength: "Utilize no mínimo 8 caracteres para a senha."
+					required: '<fmt:message key="usuario.cadastro.formulario.alerta.digitar.senha" />',
+					minlength: '<fmt:message key="usuario.cadastro.formulario.alerta.minimo.senha" />',
+					equalTo: '<fmt:message key="usuario.cadastro.formulario.alerta.valido.confirmacaosenha" />'
 				},
 				confSenha:{
-					required: "O campo confirmação de senha é obrigatorio.",
-					equalTo: "O campo confirmação de senha deve ser identico ao campo senha."
+					required: '<fmt:message key="usuario.cadastro.formulario.alerta.digitar.confirmacaosenha" />'
 				}
 			},
 			invalidHandler: function(form, validator) {
 			    var errors = validator.numberOfInvalids();
 			    if (errors) 
 			    {
-			    	trocarTextoInterno("alertErro", "span", "<span>"+validator.errorList[0].message+"</span>");
-			    	getElemento("alertErro").show();
+			    	trocarTextoInterno("alertErroCadastro", "span", "<span>"+validator.errorList[0].message+"</span>");
+			    	getElemento("alertErroCadastro").show();
 			        validator.errorList[0].element.focus();
 			    }
 			},
