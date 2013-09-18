@@ -35,6 +35,26 @@
 	margin-top: 10%;
 }
 
+.footer-separated{
+	margin-bottom: 7%;
+}
+
+.footer-separated-small{
+	margin-bottom: 5%;
+}
+
+.footer-separated-medium{
+	margin-bottom: 10%;
+}
+
+.footer-separated-large{
+	margin-bottom: 15%;
+}
+
+.footer-separated-giant{
+	margin-bottom: 20%;
+}
+
 .titulo-secao{
 	margin: 0;
     font-family: 'Telex', sans-serif;
@@ -832,6 +852,7 @@ h2 + .row {
   margin-left: 0;
   margin-right: 0;
 }
+
 .bs-navbar-top-example {
   -webkit-border-radius: 0 0 4px 4px;
      -moz-border-radius: 0 0 4px 4px;

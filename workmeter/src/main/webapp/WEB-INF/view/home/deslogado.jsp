@@ -83,7 +83,7 @@
 
     <h1><fmt:message key="index.deslogado.area_tecnologia.descricao"/>&nbsp;<a href="http://github.com/sourcesphere/">Sourcesphere</a></h1>
     <p class="marketing-byline"><fmt:message key="index.deslogado.area_tecnologia.marketing"/></p>
-    <div class="row-fluid">
+    <div class="row-fluid footer-separated">
       <ul class="thumbnails example-sites">
 		 <li class="span2"></li>
 		 <li class="span4">

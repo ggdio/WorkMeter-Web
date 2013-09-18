@@ -8,7 +8,8 @@
 <c:url value="/usuario/criar" var="pathCriar"/>
 <c:url value="/usuario/acesso" var="pathAcesso"/>
 
-<sc:alert titulo='<fmt:message key="geral.alerta.atencao" />' texto="" identificador="alertErroCadastro" hidden="hidden" tipo="alert-danger"/>
+<fmt:message var="alertErroCadastroAtencao" key="geral.alerta.atencao" />
+<sc:alert titulo="${alertErroCadastroAtencao}" texto="" identificador="alertErroCadastro" hidden="hidden" tipo="alert-danger"/>
 <form id="formUsuario" action="${pathCriar}" method="post" class="form-inline">
 	<fieldset>
 		<p>
@@ -57,7 +58,15 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('#formUsuario').validate({
+		
+		getElemento("formUsuario").on('submit',function(e) {
+			var isValid = getElemento('formUsuario').valid();
+			if(!isValid){
+				e.preventDefault();			
+			}
+		});
+		
+		getElemento("formUsuario").validate({
 			rules:{ 
 				nome:{ 
 					required: true,

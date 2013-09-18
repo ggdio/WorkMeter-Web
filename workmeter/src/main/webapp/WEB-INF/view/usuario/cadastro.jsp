@@ -11,7 +11,7 @@
 <div class="container-fluid">
 
 	<!-- FORMULARIO DE CADASTRO -->
-	<div class="row-fluid vertical-aligned">
+	<div class="row-fluid vertical-aligned footer-separated">
 		<div class="span4"></div>
 		<div class="span4 well">
 			<div class="titulo-secao" align="center">Cadastro de Acesso</div>

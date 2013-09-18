@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="tag" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tags" %>
 
 <!-- Estilo do CSS -->
 <c:set var="estilo" value="/resources/css/default.css"/>
@@ -34,7 +34,7 @@
 
 <head>
 	<!-- ICONE -->
-	<title>{Work}Meter</title>
+	<title><fmt:message key="sistema.nome" /></title>
 	
 	<!-- FAVICON -->
 	<link type="image/png" rel="icon" href="${favicon}">
@@ -65,7 +65,7 @@
 		
 		$('#btnLogout').click(function(event)
 		{
-			if(confirm('<fmt:message key="header.menu_usuario.logout.mensagem" />'))
+			if(confirm('<fmt:message key="geral.alerta.logout" />'))
 			{
 				location.href = "${pathSair}";
 			}
@@ -80,31 +80,30 @@
 	    <div class="navbar-inner">
 		    <div class="pull-left">
 		    	<!-- BRAND -->
-		    	<a class="brand" href="${pathHome}"><b>{Work}Meter</b></a>
+		    	<a class="brand" href="${pathHome}"><b><fmt:message key="sistema.nome.personalizado" /></b></a>
 	    	    <ul class="nav">
-				    <li><a href="${pathHome}"><i class="icon-home icon-white"></i><b><fmt:message key="header.home.texto"/></b></a></li>
+				    <li><a href="${pathHome}"><i class="icon-home icon-white"></i><b><fmt:message key="header.button.home.titulo.texto"/></b></a></li>
 				    <c:choose>
 				    	<c:when test="${not empty usuarioLogado}">
 				    		<li class="dropdown">
 							    <a id="btnDropdown" class="dropdown-toggle" data-toggle="dropdown" href="#">
 							    	<i class="icon-book icon-white"></i>
-							    	<b>Menu</b><b class="caret"></b>
+							    	<b><fmt:message key="header.button.menu.titulo.texto" /></b><b class="caret"></b>
 							    </a>
 							    <ul class="dropdown-menu">
-								    <li><a href="${pathGerenciadorHora}"><fmt:message key="header.menu.gerenciador_horas.texto" /></a></li>
-								    <li><a href="#relatorios">Relatórios</a></li>
-								    <li><a href="#calculos">Cálculos</a></li>
+								    <li><a href="${pathGerenciadorHora}"><fmt:message key="header.button.menu.gerenciador.texto" /></a></li>
+								    <li><a href="#relatorios"><fmt:message key="header.button.menu.relatorios.texto" /></a></li>
+								    <li><a href="#calculos"><fmt:message key="header.button.menu.calculos.texto" /></a></li>
 							    </ul>
 						    </li>
 				    	</c:when>
 				    	<c:otherwise>
-							<tag:formLoginDropdown inputSpans="span4"/>
+							<tags:formLoginDropdown inputSpans="span4"/>
 				    	</c:otherwise>
 				    </c:choose>
 			    </ul>
 		    </div>
 		    <div class="pull-right">
-			    <tag:idiomaDropdown/>
 			    <c:if test="${not empty usuarioLogado}">
 			    	<jsp:include page="${menuUsuario}"/>
 			    </c:if>
