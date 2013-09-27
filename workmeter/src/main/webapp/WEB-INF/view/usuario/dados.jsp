@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://sourcesphere.com.br/jsp/tags/style-bootstrap/sc" prefix="sc" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tags" %>
 
 <c:set value="/preferencias/formulario" var="pathFormularioPreferencias"/>
 
@@ -25,7 +27,7 @@
 	<div class="row-fluid">
 		<div class="span4 pull-left"></div>
 			<div class="span4 well">
-				<div class="titulo-secao" align="center">Meus Dados</div>
+				<div class="titulo-secao" align="center"><fmt:message key="usuario.dados.formulario.titulo.texto" /></div>
 				<br/>
 				<jsp:include page="${pathFormularioPreferencias}"/>
 			</div>

@@ -2,11 +2,11 @@
 <%@ tag language="java" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<c:url value="/idioma/alterar/" var="pathAlterarIdioma"/>
 
 <%@ attribute name="inputSpans" required="false"%>
-
-<jsp:useBean id="constantes" class="br.com.ggdio.workmeter.http.ConstantesAtributos"/>
-<jsp:useBean id="idiomaConverter" class="br.com.ggdio.workmeter.converter.IdiomaConverter"/>
 
 <ul class="nav">
 	<li class="dropdown">
@@ -16,7 +16,13 @@
 	    </a>
 	    <ul class="dropdown-menu">
 	    	<c:forEach items="<%=request.getAttribute(ConstantesAtributos.IDIOMAS_REQUEST)%>" var="idioma">
-	    		<li><a href="#">${idiomaConverter.convertTo(idioma)}</a></li>
+	    		<li><a id="btnIdioma_${idioma.toString()}" href="#">${idioma.nomeLocal}</a></li>
+	    		<script type="text/javascript">
+		    		getElemento("btnIdioma_${idioma.toString()}").click(function(){
+		    			var url = "${pathAlterarIdioma}?valor=${idioma.nome}&paginaAtual="+document.location.href;
+		    			document.location.href = url;
+		    		});
+	    		</script>
 	    	</c:forEach>
 	    </ul>
 	</li>
